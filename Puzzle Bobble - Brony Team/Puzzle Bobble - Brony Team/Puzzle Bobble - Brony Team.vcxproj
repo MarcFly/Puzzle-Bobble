@@ -78,11 +78,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Draw_Functions.cpp" />
+    <ClCompile Include="Input_Functions.cpp" />
+    <ClCompile Include="Load_TXT.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sound_Functions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Declare.h" />
+    <ClInclude Include="Declare_Draw.h" />
+    <ClInclude Include="Declare_Input.h" />
+    <ClInclude Include="Declare_Sound.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="Load_TXT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,3 @@
+Photoshop:
+	Ventana > Información
+		es pot veure posició del ratolí en pixels per trobar altura de la serie de sprites
