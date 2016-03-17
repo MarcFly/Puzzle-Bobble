@@ -85,9 +85,9 @@
     <ClCompile Include="Sound_Functions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Declare_Draw.h" />
-    <ClInclude Include="Declare_Input.h" />
-    <ClInclude Include="Declare_Sound.h" />
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="Load_TXT.h" />
   </ItemGroup>

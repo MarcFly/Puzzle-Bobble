@@ -8,9 +8,9 @@
 #include"Load_TXT.h"
 #include"Load_TXT.cpp"
 
-#include"Declare_Sound.h"
-#include"Declare_Draw.h"
-#include"Declare_Input.h"
+#include"Sound.h"
+#include"Draw.h"
+#include"Input.h"
 
 #include"Sound_Functions.cpp"
 #include"Draw_Functions.cpp"

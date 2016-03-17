@@ -32,20 +32,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Declare_Sound.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Declare_Draw.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Declare_Input.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Load_TXT.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
