@@ -1,20 +1,18 @@
-#ifndef __Include_H__
-#define __Include_H__
+#ifndef _INCLUDE_H_
+#define _INCLUDE_H_ 
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 
-#include"Load_TXT.h"
-#include"Load_TXT.cpp"
+#include "Module.h"
+#include "ModuleInput.h"
+#include "ModuleRender.h"
+#include "ModuleTextures.h"
 
-#include"Sound.h"
-#include"Draw.h"
-#include"Input.h"
-
-#include"Sound_Functions.cpp"
-#include"Draw_Functions.cpp"
-#include"Input_Functions.cpp"
+#include "SDL\include\SDL.h"
+#include "SDL_image\include\SDL_image.h"
+#include "SDL_mixer\include\SDL_mixer.h"
 
 // Whatever we create
 
