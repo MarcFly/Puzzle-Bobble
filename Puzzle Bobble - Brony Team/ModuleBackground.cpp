@@ -10,8 +10,8 @@ ModuleBackground::ModuleBackground()
 	// Background rect
 	background.x = 10;
 	background.y = 10;
-	background.w = 320;
-	background.h = 240;
+	background.w = 315;
+	background.h = 235;
 }
 
 ModuleBackground::~ModuleBackground()
