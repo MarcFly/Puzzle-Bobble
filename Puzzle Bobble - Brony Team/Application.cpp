@@ -3,10 +3,10 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "PuzzleBubble\ModuleScene1-3.h"
 #include "PuzzleBubble\ModuleScene4-6.h"
+#include "PuzzleBubble/ModuleFadeToBlack.h"
 
 Application::Application()
 {
@@ -17,6 +17,7 @@ Application::Application()
 	modules[4] = scene_1to3 = new ModuleScene1to3();
 	modules[5] = scene_4to6 = new ModuleScene4to6();
 	modules[6] = player = new ModulePlayer();
+	modules[7] = fade = new ModuleFadeToBlack();
 
 }	
 
