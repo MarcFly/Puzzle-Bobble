@@ -13,17 +13,17 @@ ModuleTextures::ModuleTextures() : Module()
 		textures[i] = nullptr;
 }
 
-// Destructor
+
 ModuleTextures::~ModuleTextures()
 {}
 
-// Called before render is available
+
 bool ModuleTextures::Init()
 {
 	LOG("Init Image library");
 	bool ret = true;
 
-	// load support for the PNG image format
+
 	int flags = IMG_INIT_PNG;
 	int init = IMG_Init(flags);
 
@@ -36,7 +36,7 @@ bool ModuleTextures::Init()
 	return ret;
 }
 
-// Called before q	uitting
+
 bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
@@ -49,7 +49,7 @@ bool ModuleTextures::CleanUp()
 	return true;
 }
 
-// Load new texture from file path
+
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
 	SDL_Texture* texture = NULL;
