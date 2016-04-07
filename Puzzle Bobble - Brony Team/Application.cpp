@@ -7,6 +7,7 @@
 #include "PuzzleBubble\ModuleScene1-3.h"
 #include "PuzzleBubble\ModuleScene4-6.h"
 #include "PuzzleBubble/ModuleSceneMainMenu.h"
+#include "PuzzleBubble/ModuleParticles.h"
 #include "PuzzleBubble\ModuleFadeToBlack.h"
 #include "PuzzleBubble\ModuleAudio.h"
 
@@ -20,8 +21,9 @@ Application::Application()
 	modules[5] = scene_1to3 = new ModuleScene1to3();
 	modules[6] = scene_4to6 = new ModuleScene4to6();
 	modules[7] = player = new ModulePlayer();
-	modules[8] = fade = new ModuleFadeToBlack();
-	modules[9] = audio = new ModuleAudio();
+	modules[8] = particles = new ModuleParticles();
+	modules[9] = fade = new ModuleFadeToBlack();
+	modules[10] = audio = new ModuleAudio();
 }	
 
 Application::~Application()

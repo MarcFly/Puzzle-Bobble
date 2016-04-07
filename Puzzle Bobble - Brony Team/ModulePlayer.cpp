@@ -4,15 +4,15 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "PuzzleBubble/ModuleParticles.h"
 
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 100;
-	position.y = 220;
+	position.x = 140;
+	position.y = 170;
 
-	idle.PushBack({16, 17, 18, 19});
-	idle.PushBack({49, 17, 18, 19});
+	idle.PushBack({15, 514, 23, 57});
 	idle.speed = 0.05f;
 
 }
@@ -35,7 +35,17 @@ update_status ModulePlayer::Update()
 
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		player_angle--;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		player_angle++;
+
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+		App->particles->AddParticle(App->particles->red_bubble, position.x, position.y - 25);
+	}
+
+	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	
 	return UPDATE_CONTINUE;
 }

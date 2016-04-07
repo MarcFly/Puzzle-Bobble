@@ -20,7 +20,7 @@ ModuleScene1to3::ModuleScene1to3()
 	background.x = 9;
 	background.y = 9;
 	background.w = 310;
-	background.h = 240;
+	background.h = 235;
 
 }
 

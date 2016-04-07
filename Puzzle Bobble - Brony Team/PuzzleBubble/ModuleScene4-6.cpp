@@ -13,13 +13,13 @@ ModuleScene4to6::ModuleScene4to6()
 {
 	foreground.x = 88;
 	foreground.y = 23;
-	foreground.w = 155;
+	foreground.w = 145;
 	foreground.h = 201;
 
 	background.x = 9;
 	background.y = 9;
 	background.w = 310;
-	background.h = 240;
+	background.h = 235;
 
 }
 

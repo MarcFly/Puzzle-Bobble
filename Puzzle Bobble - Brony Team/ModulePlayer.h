@@ -18,10 +18,11 @@ public:
 	update_status Update();
 
 public:
+	int player_angle = 0;
 
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
-	Animation shooting;
+	
 	iPoint position;
 
 };

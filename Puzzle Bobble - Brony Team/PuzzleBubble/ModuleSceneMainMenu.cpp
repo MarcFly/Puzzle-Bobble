@@ -14,7 +14,7 @@ ModuleSceneMainMenu::ModuleSceneMainMenu()
 	background.x = 9;
 	background.y = 9;
 	background.w = 310;
-	background.h = 230;
+	background.h = 225;
 
 	UI.PushBack({ 72, 154, 173, 22 });
 	UI.PushBack({ 0, 0, 0, 0 });

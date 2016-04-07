@@ -1,7 +1,12 @@
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleRender.h"
+#include "ModuleTextures.h"
 #include "ModuleWindow.h"
+
 #include "SDL/include/SDL.h"
+#include "SDL_image/include/SDL_image.h"
+#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
 ModuleWindow::ModuleWindow() : Module()
 {
@@ -72,5 +77,23 @@ bool ModuleWindow::CleanUp()
 
 	SDL_Quit();
 	return true;
+}
+
+bool ModuleTextures::Unload(SDL_Texture* texture)
+{
+	bool ret = false;
+
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
+	{
+		if (texture == textures[i])
+		{
+			SDL_DestroyTexture(textures[i]);
+			textures[i] = nullptr;
+			ret = true;
+			break;
+		}
+	}
+
+	return ret;
 }
 
