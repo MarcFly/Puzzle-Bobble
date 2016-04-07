@@ -18,12 +18,10 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
-	SDL_Rect ground;
+	SDL_Texture* background_graphics = nullptr;
+	SDL_Texture* foreground_graphics = nullptr;
 	SDL_Rect foreground;
 	SDL_Rect background;
-
-	float foreground_pos;
 };
 
 #endif 
