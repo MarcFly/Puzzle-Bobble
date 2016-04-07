@@ -8,6 +8,7 @@
 #include "PuzzleBubble\ModuleScene4-6.h"
 #include "PuzzleBubble/ModuleSceneMainMenu.h"
 #include "PuzzleBubble\ModuleFadeToBlack.h"
+#include "PuzzleBubble\ModuleAudio.h"
 
 Application::Application()
 {
@@ -20,7 +21,7 @@ Application::Application()
 	modules[6] = scene_4to6 = new ModuleScene4to6();
 	modules[7] = player = new ModulePlayer();
 	modules[8] = fade = new ModuleFadeToBlack();
-
+	modules[9] = audio = new ModuleAudio();
 }	
 
 Application::~Application()
