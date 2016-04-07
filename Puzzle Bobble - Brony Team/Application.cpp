@@ -5,6 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
+#include "PuzzleBubble\ModuleScene1-3.h"
+#include "PuzzleBubble\ModuleScene4-6.h"
 
 Application::Application()
 {
@@ -14,6 +16,8 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = background = new ModuleBackground();
 	modules[5] = player = new ModulePlayer();
+	modules[6] = scene_1to3 = new ModuleScene1to3();
+	modules[7] = scene_4to6 = new ModuleScene4to6();
 }	
 
 Application::~Application()

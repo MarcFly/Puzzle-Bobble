@@ -1,0 +1,29 @@
+#ifndef __MODULESCENE1TO3_H__
+#define __MODULESCENE1TO3_H__
+
+#include "../Module.h"
+#include "../Animation.h"
+#include "../Globals.h"
+
+struct SDL_Texture;
+
+class ModuleScene1to3 : public Module {
+public:
+	ModuleScene1to3();
+	~ModuleScene1to3();
+
+	bool Start();
+	update_status Update();
+	bool CleanUp();
+
+public:
+
+	SDL_Texture* graphics = nullptr;
+	SDL_Rect ground;
+	SDL_Rect foreground;
+	SDL_Rect background;
+
+	float foreground_pos;
+};
+
+#endif 
