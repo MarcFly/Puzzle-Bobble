@@ -1,3 +1,4 @@
+/*
 #ifndef __ModuleBackground_H__
 #define __ModuleBackground_H__
 
@@ -30,3 +31,4 @@ public:
 };
 
 #endif
+*/

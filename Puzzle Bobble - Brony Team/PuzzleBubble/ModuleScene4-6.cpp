@@ -37,7 +37,7 @@ bool ModuleScene4to6::Start()
 {
 	LOG("Loading 4-6 scene");
 
-	graphics = App->textures->Load("Sprites/Backgrounds/Background_4-6.png");
+	graphics = App->textures->Load("Sprites/Backgrounds/Background 4-6.png");
 
 	App->player->Enable();
 

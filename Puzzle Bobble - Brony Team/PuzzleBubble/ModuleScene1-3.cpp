@@ -12,22 +12,16 @@
 ModuleScene1to3::ModuleScene1to3()
 {
 
-	ground.x = 8;
-	ground.y = 391;
-	ground.w = 896;
-	ground.h = 72;
+	foreground.x = 88;
+	foreground.y = 23;
+	foreground.w = 145;
+	foreground.h = 201;
 
-	foreground.x = 8;
-	foreground.y = 24;
-	foreground.w = 521;
-	foreground.h = 181;
+	background.x = 9;
+	background.y = 9;
+	background.w = 310;
+	background.h = 240;
 
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
-
-	foreground_pos = 0;
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -37,7 +31,8 @@ bool ModuleScene1to3::Start()
 {
 	LOG("Loading 1-3 scene");
 
-	graphics = App->textures->Load("Sprites/Backgrounds/Background_1-3.png");
+	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
+	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
 
 	App->player->Enable();
 
@@ -56,11 +51,9 @@ bool ModuleScene1to3::CleanUp()
 update_status ModuleScene1to3::Update()
 {
 
-	App->render->Blit(graphics, 0, 0, &background, 0.75f);
+	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
-	App->render->Blit(graphics, 0, (int)foreground_pos, &foreground, 0.92f);
-
-	App->render->Blit(graphics, 0, 170, &ground);
+	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
