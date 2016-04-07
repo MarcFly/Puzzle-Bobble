@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+#define NUM_ARROW_SPRITES 130
+
 struct SDL_Texture;
 
 class ModulePlayer : public Module
@@ -19,9 +21,10 @@ public:
 
 public:
 	int player_angle = 0;
+	int current_arrow = 65;
 
 	SDL_Texture* graphics = nullptr;
-	Animation idle;
+	SDL_Rect arrow[NUM_ARROW_SPRITES];
 	
 	iPoint position;
 
