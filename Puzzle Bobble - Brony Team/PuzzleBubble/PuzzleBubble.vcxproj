@@ -78,6 +78,7 @@
     <ClInclude Include="..\ModuleWindow.h" />
     <ClInclude Include="..\p2Point.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
+    <ClInclude Include="ModuleSceneMainMenu.h" />
     <ClInclude Include="ModuleScene1-3.h" />
     <ClInclude Include="ModuleScene4-6.h" />
   </ItemGroup>
@@ -91,6 +92,7 @@
     <ClCompile Include="..\ModuleTextures.cpp" />
     <ClCompile Include="..\ModuleWindow.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
+    <ClCompile Include="ModuleSceneMainMenu.cpp" />
     <ClCompile Include="ModuleScene1-3.cpp" />
     <ClCompile Include="ModuleScene4-6.cpp" />
   </ItemGroup>

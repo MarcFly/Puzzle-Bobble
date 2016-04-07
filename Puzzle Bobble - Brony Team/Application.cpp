@@ -6,7 +6,8 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble\ModuleScene1-3.h"
 #include "PuzzleBubble\ModuleScene4-6.h"
-#include "PuzzleBubble/ModuleFadeToBlack.h"
+#include "PuzzleBubble/ModuleSceneMainMenu.h"
+#include "PuzzleBubble\ModuleFadeToBlack.h"
 
 Application::Application()
 {
@@ -14,10 +15,11 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene_1to3 = new ModuleScene1to3();
-	modules[5] = scene_4to6 = new ModuleScene4to6();
-	modules[6] = player = new ModulePlayer();
-	modules[7] = fade = new ModuleFadeToBlack();
+	modules[4] = scene_mainmenu = new ModuleSceneMainMenu();
+	modules[5] = scene_1to3 = new ModuleScene1to3();
+	modules[6] = scene_4to6 = new ModuleScene4to6();
+	modules[7] = player = new ModulePlayer();
+	modules[8] = fade = new ModuleFadeToBlack();
 
 }	
 
@@ -32,6 +34,7 @@ bool Application::Init()
 	bool ret = true;
 
 	player->Disable();
+	scene_1to3->Disable();
 	scene_4to6->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
