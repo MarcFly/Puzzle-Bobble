@@ -19,7 +19,10 @@ public:
 public:
 
 	SDL_Texture* background_graphics = nullptr;
+	SDL_Texture* UI_graphics = nullptr;
 	SDL_Rect background;
+	Animation UI;
+	
 };
 
 #endif 
