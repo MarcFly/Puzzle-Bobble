@@ -13,75 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{077e441f-b7a4-41a5-885b-8b8bbbb48e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{eaaebed7-92ba-41e9-af8b-253ffad0d52a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\MemLeaks.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\ModuleWindow.h">
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\Module.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\ModuleBackground.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\ModuleInput.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\ModulePlayer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\ModuleRender.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\ModuleTextures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ModuleWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="..\p2Point.h">
-      <Filter>Header Files</Filter>
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Animation.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Globals.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MemLeaks.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Globals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\ModuleBackground.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\ModuleInput.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\ModulePlayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\ModuleRender.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\ModuleTextures.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="..\ModuleWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Globals.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\log.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Main.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
