@@ -5,7 +5,6 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
@@ -25,7 +24,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Game Sprites.png");
+	graphics = App->textures->Load("Sprites/Game Sprites.png");
 	return ret;
 }
 
