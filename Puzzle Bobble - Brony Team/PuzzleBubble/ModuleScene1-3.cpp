@@ -6,7 +6,7 @@
 #include "../ModuleInput.h"
 #include "ModuleScene1-3.h"
 #include "../ModulePlayer.h"
-#include "../ModuleFadeToBlack.h"
+#include "ModuleFadeToBlack.h"
 
 
 ModuleScene1to3::ModuleScene1to3()

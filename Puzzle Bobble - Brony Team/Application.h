@@ -9,7 +9,6 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
-//class ModuleBackground;
 class ModulePlayer;
 class Module;
 class ModuleFadeToBlack;
