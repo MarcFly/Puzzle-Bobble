@@ -31,7 +31,8 @@ bool ModuleParticles::Start()
 	red_bubble.anim.loop = false;
 	red_bubble.anim.speed = 0.2f;
 	red_bubble.life = 499; //it should be infinte but since it has no collisions we dont want to get a memory overflow
-	red_bubble.speed.y = - 3;
+	red_bubble.speed.y = -2;
+	red_bubble.speed.x = 0;
 
 	return true;
 }
@@ -55,7 +56,9 @@ bool ModuleParticles::CleanUp()
 
 update_status ModuleParticles::Update()
 {
-	red_bubble.speed.x = App->player->player_angle;
+	
+	red_bubble.speed.x = cos((float)App->player->player_angle);
+	red_bubble.speed.y = sin((float)App->player->player_angle);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

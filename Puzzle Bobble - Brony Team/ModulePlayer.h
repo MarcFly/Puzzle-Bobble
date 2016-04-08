@@ -20,11 +20,10 @@ public:
 	update_status Update();
 
 public:
-	int player_angle = 0;
-	int current_arrow = 65;
+	double player_angle = 0;
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect arrow[NUM_ARROW_SPRITES];
+	SDL_Rect arrow;
 	
 	iPoint position;
 
