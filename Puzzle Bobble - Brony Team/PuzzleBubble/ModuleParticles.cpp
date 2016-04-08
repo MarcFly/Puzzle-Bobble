@@ -58,7 +58,7 @@ update_status ModuleParticles::Update()
 {
 	
 	red_bubble.speed.x = cos((float)App->player->player_angle);
-	red_bubble.speed.y = sin((float)App->player->player_angle);
+	red_bubble.speed.y = - sin((float)App->player->player_angle);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
