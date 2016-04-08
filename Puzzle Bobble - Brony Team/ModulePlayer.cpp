@@ -9,8 +9,8 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 140;
-	position.y = 170;
+	position.x = 139;
+	position.y = 155;
 	
 	arrow.x = 14;
 	arrow.y = 514;
@@ -30,6 +30,8 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 
+	arrow_center.x = 50;
+	arrow_center.y = 130;
 
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
 	return ret;
@@ -50,7 +52,7 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->red_bubble, position.x, position.y - 25);
 	}
 	
-	App->render->BlitRotation(graphics, 134, 155, &arrow, 0.75f, player_angle, NULL, SDL_FLIP_NONE);
+	App->render->BlitRotation(graphics, position.x, position.y, &arrow, 0.75f, player_angle - 90, &arrow_center, SDL_FLIP_NONE);
 
 	return UPDATE_CONTINUE;
 }

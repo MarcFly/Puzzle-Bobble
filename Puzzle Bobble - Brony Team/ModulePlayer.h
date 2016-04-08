@@ -20,11 +20,12 @@ public:
 	update_status Update();
 
 public:
-	double player_angle = 0;
+	double player_angle = 90;
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect arrow;
-	
+	SDL_Point arrow_center;
+
 	iPoint position;
 
 };
