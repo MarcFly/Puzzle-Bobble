@@ -49,7 +49,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->red_bubble, position.x, position.y - 25);
+		App->particles->AddParticle(App->particles->red_bubble, App->particles->red_bubble.position.x, App->particles->red_bubble.position.y);
 	}
 	
 	App->render->BlitRotation(graphics, position.x, position.y, &arrow, 0.75f, player_angle - 90, &arrow_center, SDL_FLIP_NONE);

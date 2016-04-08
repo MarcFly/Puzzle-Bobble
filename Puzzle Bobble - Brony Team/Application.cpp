@@ -20,8 +20,8 @@ Application::Application()
 	modules[4] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[5] = scene_1to3 = new ModuleScene1to3();
 	modules[6] = scene_4to6 = new ModuleScene4to6();
-	modules[7] = player = new ModulePlayer();
-	modules[8] = particles = new ModuleParticles();
+	modules[7] = particles = new ModuleParticles();
+	modules[8] = player = new ModulePlayer();
 	modules[9] = fade = new ModuleFadeToBlack();
 	modules[10] = audio = new ModuleAudio();
 }	

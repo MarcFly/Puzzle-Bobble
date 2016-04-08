@@ -33,6 +33,8 @@ bool ModuleParticles::Start()
 	red_bubble.life = 499; //it should be infinte but since it has no collisions we dont want to get a memory overflow
 	red_bubble.speed.y = -2;
 	red_bubble.speed.x = 0;
+	red_bubble.position.x = 144;
+	red_bubble.position.y = 145;
 
 	return true;
 }
