@@ -34,7 +34,7 @@ bool ModuleParticles::Start()
 	red_bubble.speed.y = -2;
 	red_bubble.speed.x = 0;
 	red_bubble.position.x = 144;
-	red_bubble.position.y = 145;
+	red_bubble.position.y = 175;
 
 	return true;
 }
@@ -59,8 +59,8 @@ bool ModuleParticles::CleanUp()
 update_status ModuleParticles::Update()
 {
 	
-	red_bubble.speed.x = cos((float)App->player->player_angle);
-	red_bubble.speed.y = - sin((float)App->player->player_angle);
+	red_bubble.speed.x = cos(((float)App->player->player_angle) / M_PI) * 2;
+	red_bubble.speed.y = - sin(((float)App->player->player_angle) / M_PI) * 2;
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
