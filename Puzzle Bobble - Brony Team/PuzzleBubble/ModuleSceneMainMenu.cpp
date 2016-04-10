@@ -30,6 +30,7 @@ bool ModuleSceneMainMenu::Start()
 	LOG("Loading Main Menu scene");
 
 	background_graphics = App->textures->Load("Sprites/MainScreen.png");
+	graphics = App->textures->Load("Sprites/Game Sprites.png");
 	UI_graphics = App->textures->Load("Sprites/UIMainScreen.png");
 
 	return true;

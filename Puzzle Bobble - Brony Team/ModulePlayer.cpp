@@ -41,11 +41,11 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
-		player_angle -= 1;
+		player_angle -= 0.7;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
-		player_angle += 1;
+		player_angle += 0.7;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
