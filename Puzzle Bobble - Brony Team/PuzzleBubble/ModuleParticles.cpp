@@ -30,9 +30,7 @@ bool ModuleParticles::Start()
 	red_bubble.anim.PushBack({ 12, 312, 18, 16 });
 	red_bubble.anim.loop = false;
 	red_bubble.anim.speed = 0.2f;
-	red_bubble.life = 499; //it should be infinte but since it has no collisions we dont want to get a memory overflow
-	red_bubble.speed.y = -2;
-	red_bubble.speed.x = 0;
+	red_bubble.life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
 	red_bubble.position.x = 144;
 	red_bubble.position.y = 175;
 
@@ -59,7 +57,7 @@ bool ModuleParticles::CleanUp()
 update_status ModuleParticles::Update()
 {
 	
-	red_bubble.speed.x = - cos(((float)App->player->player_angle) * (M_PI / 180)) * 3;
+	red_bubble.speed.x = - cos(((float)App->player->player_angle) * (M_PI / 180)) * 2;
 	red_bubble.speed.y = - sin(((float)App->player->player_angle) * (M_PI / 180)) * 2;
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

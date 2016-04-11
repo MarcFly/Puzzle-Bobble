@@ -20,7 +20,7 @@ public:
 	update_status Update();
 
 public:
-	double player_angle = 90;
+	double player_angle;
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect arrow;
