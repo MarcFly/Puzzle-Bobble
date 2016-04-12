@@ -23,7 +23,7 @@ public:
 	double player_angle;
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect arrow;
+	Animation arrow;
 	SDL_Point arrow_center;
 
 	iPoint position;

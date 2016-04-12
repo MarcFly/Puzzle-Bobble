@@ -12,10 +12,10 @@ ModulePlayer::ModulePlayer()
 	position.x = 139;
 	position.y = 155;
 	
-	arrow.x = 14;
-	arrow.y = 514;
-	arrow.w = 24;
-	arrow.h = 55;
+	//all arrow animation frames
+	arrow.PushBack({ 14, 514, 24, 55 });
+	arrow.speed = 0.07f;
+	arrow.loop = false;
 
 	//-----------
 	
@@ -43,18 +43,19 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
-		player_angle -= 0.7;
+		//aqui va q giri la flecha
+		player_angle -= 1;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
-		player_angle += 0.7;
+		player_angle += 1;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 		App->particles->AddParticle(App->particles->red_bubble, App->particles->red_bubble.position.x, App->particles->red_bubble.position.y);
 	}
 	
-	App->render->BlitRotation(graphics, position.x, position.y, &arrow, 0.75f, player_angle - 90, &arrow_center, SDL_FLIP_NONE);
+	App->render->Blit(graphics, position.x, position.y, &(arrow.GetCurrentFrame()), 0.75f);
 
 	return UPDATE_CONTINUE;
 }
