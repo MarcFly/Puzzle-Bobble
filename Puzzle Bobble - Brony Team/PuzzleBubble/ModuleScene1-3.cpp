@@ -7,6 +7,8 @@
 #include "ModuleScene1-3.h"
 #include "../ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleParticles.h"
+#include "../ModuleCollision.h"
 
 
 ModuleScene1to3::ModuleScene1to3()
@@ -35,6 +37,14 @@ bool ModuleScene1to3::Start()
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
 
 	App->player->Enable();
+	App->particles->Enable();
+	App->collision->Enable();
+
+	App->collision->AddCollider({ 78, 15, 8, 215 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 78, 15, 145, 8}, COLLIDER_WALL);
+	App->collision->AddCollider({ 215, 15, 8, 215 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 78, 165, 145, 8 }, COLLIDER_PLAYER);
 
 	return true;
 }
@@ -43,7 +53,11 @@ bool ModuleScene1to3::Start()
 bool ModuleScene1to3::CleanUp()
 {
 	LOG("Unloading 1-3 scene");
+	App->textures->Unload(background_graphics);
+	App->textures->Unload(foreground_graphics);
 	App->player->Disable();
+	App->particles->Disable();
+	App->collision->Disable();
 
 	return true;
 }

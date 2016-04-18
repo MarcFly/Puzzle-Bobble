@@ -10,20 +10,23 @@
 #include "PuzzleBubble/ModuleParticles.h"
 #include "PuzzleBubble\ModuleFadeToBlack.h"
 #include "PuzzleBubble\ModuleAudio.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene_mainmenu = new ModuleSceneMainMenu();
-	modules[5] = scene_1to3 = new ModuleScene1to3();
-	modules[6] = scene_4to6 = new ModuleScene4to6();
-	modules[7] = particles = new ModuleParticles();
-	modules[8] = player = new ModulePlayer();
-	modules[9] = fade = new ModuleFadeToBlack();
-	modules[10] = audio = new ModuleAudio();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
+	modules[i++] = scene_1to3 = new ModuleScene1to3();
+	modules[i++] = scene_4to6 = new ModuleScene4to6();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = audio = new ModuleAudio();
 }	
 
 Application::~Application()
