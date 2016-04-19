@@ -22,7 +22,7 @@ public:
 	SDL_Texture* foreground_graphics = nullptr;
 	SDL_Rect foreground;
 	SDL_Rect background;
-
+	
 	int bubble_board[12][8] = {
 		{ R, R, Y, Y, B, B, G, G },
 		{ E, R, R, Y, Y, B, B, G },

@@ -69,17 +69,17 @@ ModulePlayer::ModulePlayer()
 
 	arrow[10].x = 355;
 	arrow[10].y = 516;
-	arrow[10].w = 14;
+	arrow[10].w = 21;
 	arrow[10].h = 53;
 
 	arrow[11].x = 389;
 	arrow[11].y = 516;
-	arrow[11].w = 14;
+	arrow[11].w = 22;
 	arrow[11].h = 53;
 
 	arrow[12].x = 423;
 	arrow[12].y = 516;
-	arrow[12].w = 14;
+	arrow[12].w = 22;
 	arrow[12].h = 53;
 
 	arrow[13].x = 456;
@@ -363,15 +363,17 @@ update_status ModulePlayer::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
+		if (player_angle <= 90) arrow_pos++;
+		else if (player_angle > 90) arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
-		if (player_angle < 90) arrow_pos++;
-		else if (player_angle >= 90) arrow_pos--;
+
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
-		player_angle += ANGLE_INCREMENT;
 		if (player_angle < 90) arrow_pos--;
 		else if (player_angle >= 90) arrow_pos++;
+		player_angle += ANGLE_INCREMENT;
+
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
@@ -379,7 +381,7 @@ update_status ModulePlayer::Update()
 	}
 	
 	if (player_angle >= 90)
-		App->render->Blit(graphics, position.x, position.y, &arrow[0], 0.75f);
+		App->render->Blit(graphics, position.x, position.y, &arrow[arrow_pos], 0.75f);
 
 	else if (player_angle < 90)
 		App->render->BlitRotation(graphics, position.x, position.y, &arrow[arrow_pos], 0, NULL, NULL, SDL_FLIP_HORIZONTAL);
