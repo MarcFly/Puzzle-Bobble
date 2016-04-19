@@ -19,6 +19,9 @@ enum update_status
 	UPDATE_ERROR
 };
 
+enum bubble_color {
+	E = 0, R, G, B, Y
+};
 
 typedef unsigned int uint;
 
