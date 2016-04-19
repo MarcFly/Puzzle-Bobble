@@ -22,8 +22,8 @@ Application::Application()
 	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
-	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = audio = new ModuleAudio();
