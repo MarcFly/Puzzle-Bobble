@@ -352,6 +352,8 @@ bool ModulePlayer::Start()
 	arrow_center.x = 50;
 	arrow_center.y = 130;
 
+	arrow_pos = 0;
+
 	player_angle = 90;
 
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
