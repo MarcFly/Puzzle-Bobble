@@ -6,7 +6,7 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble/ModuleParticles.h"
 
-#define ANGLE_INCREMENT 90.f/63.f
+#define ANGLE_INCREMENT 85.f/63.f
 
 
 ModulePlayer::ModulePlayer()
@@ -15,9 +15,12 @@ ModulePlayer::ModulePlayer()
 	position.y = 163;
 	
 	//all arrow animation frames
-	arrow.PushBack({ 14, 514, 24, 55 });
-	arrow.speed = 0.07f;
-	arrow.loop = false;
+
+	//Central
+	arrow[0].x = 14;
+	arrow[0].y = 514;
+	arrow[0].w = 24;
+	arrow[0].h = 55;
 
 	//-----------
 	
