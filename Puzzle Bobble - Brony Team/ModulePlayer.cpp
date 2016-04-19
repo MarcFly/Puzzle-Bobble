@@ -10,7 +10,7 @@
 ModulePlayer::ModulePlayer()
 {
 	position.x = 139;
-	position.y = 155;
+	position.y = 163;
 	
 	//all arrow animation frames
 	arrow.PushBack({ 14, 514, 24, 55 });

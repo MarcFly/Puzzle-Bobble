@@ -12,21 +12,26 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_WALL][COLLIDER_BOBBLE] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_SHOT] = true;
+	matrix[COLLIDER_WALL][COLLIDER_CEILING] = false;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_BOBBLE] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_PLAYER][COLLIDER_CEILING] = false;
 
 	matrix[COLLIDER_BOBBLE][COLLIDER_WALL] = true;
 	matrix[COLLIDER_BOBBLE][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_BOBBLE][COLLIDER_BOBBLE] = false;
 	matrix[COLLIDER_BOBBLE][COLLIDER_PLAYER_SHOT] = true;
+	matrix[COLLIDER_BOBBLE][COLLIDER_CEILING] = true;
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_BOBBLE] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_CEILING] = true;
+
 }
 
 // Destructor
@@ -117,6 +122,9 @@ void ModuleCollision::DebugDraw()
 			break;
 			case COLLIDER_PLAYER_SHOT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+			case COLLIDER_CEILING: // purple
+			App->render->DrawQuad(colliders[i]->rect, 148, 0, 201, alpha);
 			break;
 		}
 	}
