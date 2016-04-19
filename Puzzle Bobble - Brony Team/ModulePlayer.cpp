@@ -364,17 +364,25 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
 		player_angle -= ANGLE_INCREMENT;
+		if (player_angle < 90) arrow_pos++;
+		else if (player_angle >= 90) arrow_pos--;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
 		player_angle += ANGLE_INCREMENT;
+		if (player_angle < 90) arrow_pos--;
+		else if (player_angle >= 90) arrow_pos++;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 		App->particles->AddParticle(App->particles->red_bubble, App->particles->red_bubble.position.x, App->particles->red_bubble.position.y, COLLIDER_PLAYER_SHOT);
 	}
 	
-	App->render->Blit(graphics, position.x, position.y, &arrow[0], 0.75f);
+	if (player_angle >= 90)
+		App->render->Blit(graphics, position.x, position.y, &arrow[0], 0.75f);
+
+	else if (player_angle < 90)
+		App->render->BlitRotation(graphics, position.x, position.y, &arrow[arrow_pos], 0, NULL, NULL, SDL_FLIP_HORIZONTAL);
 
 	return UPDATE_CONTINUE;
 }

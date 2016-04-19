@@ -25,6 +25,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect arrow[64];
 	SDL_Point arrow_center;
+	int arrow_pos = 0;
 
 	iPoint position;
 
