@@ -25,7 +25,6 @@ enum bubble_color {
 
 typedef unsigned int uint;
 
-
 #define SCREEN_SIZE 4
 #define SCREEN_WIDTH 303
 #define SCREEN_HEIGHT 224

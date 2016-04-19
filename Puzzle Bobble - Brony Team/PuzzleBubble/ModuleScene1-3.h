@@ -17,11 +17,24 @@ public:
 	bool CleanUp();
 
 public:
-
 	SDL_Texture* background_graphics = nullptr;
 	SDL_Texture* foreground_graphics = nullptr;
 	SDL_Rect foreground;
 	SDL_Rect background;
+	const int bubble_board[12][8] = {
+			{ R, R, Y, Y, B, B, G, G },
+			{ E, R, R, Y, Y, B, B, G },
+			{ B, B, G, G, R, R, Y, Y },
+			{ E, B, G, G, R, R, Y, Y },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E }
+	};
 
 };
 

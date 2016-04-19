@@ -24,6 +24,21 @@ ModuleScene1to3::ModuleScene1to3()
 	background.w = 310;
 	background.h = 235;
 
+	int bubble_board[12][8] = {
+		{ R, R, Y, Y, B, B, G, G },
+		{ E, R, R, Y, Y, B, B, G },
+		{ B, B, G, G, R, R, Y, Y },
+		{ E, B, G, G, R, R, Y, Y },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E },
+		{ E, E, E, E, E, E, E, E }
+	};
+
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -71,6 +86,16 @@ update_status ModuleScene1to3::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
+	}
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			switch (bubble_board[y][x]) {
+			case R:
+				App->render->Blit(background_graphics, x, y, &background); // Blit(bubble_graphics, 'hexagon'.x, 'hexagon'.y, red_bubble_rect)
+				break;
+			}
+		}
 	}
 
 	return UPDATE_CONTINUE;
