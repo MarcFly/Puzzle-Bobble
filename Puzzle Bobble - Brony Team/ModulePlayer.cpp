@@ -6,6 +6,8 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble/ModuleParticles.h"
 
+#define ANGLE_INCREMENT 90.f/63.f
+
 
 ModulePlayer::ModulePlayer()
 {
@@ -44,11 +46,11 @@ update_status ModulePlayer::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
-		player_angle -= 1;
+		player_angle -= ANGLE_INCREMENT;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
-		player_angle += 1;
+		player_angle += ANGLE_INCREMENT;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {

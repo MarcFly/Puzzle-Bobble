@@ -14,7 +14,7 @@ struct Particle
 {
 	Animation anim;
 	uint fx = 0;
-	iPoint position;
+	fPoint position;
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;

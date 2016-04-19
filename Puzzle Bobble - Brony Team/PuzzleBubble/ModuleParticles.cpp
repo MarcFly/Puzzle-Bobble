@@ -6,6 +6,8 @@
 #include "ModuleParticles.h"
 #include "../ModulePlayer.h"
 
+#define BUBBLE_SPEED 3.f
+
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
@@ -57,8 +59,8 @@ bool ModuleParticles::CleanUp()
 update_status ModuleParticles::Update()
 {
 	
-	red_bubble.speed.x = - cos(((float)App->player->player_angle) * (M_PI / 180)) * 2;
-	red_bubble.speed.y = - sin(((float)App->player->player_angle) * (M_PI / 180)) * 2;
+	red_bubble.speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+	red_bubble.speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
