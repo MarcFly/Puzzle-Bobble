@@ -11,12 +11,80 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 120;
-	position.y = 163;
+	// tube sprite
+
+	tube.x = 556;
+	tube.y = 498;
+	tube.w = 13;
+	tube.h = 11;
 	
+	// 
+
+	b_machine[0].x = 66;
+	b_machine[0].y = 464;
+	b_machine[0].w = 56;
+	b_machine[0].h = 24;
+			 
+	b_machine[1].x = 123;
+	b_machine[1].y = 464;
+	b_machine[1].w = 56;
+	b_machine[1].h = 24;
+			 
+	b_machine[2].x = 180;
+	b_machine[2].y = 464;
+	b_machine[2].w = 56;
+	b_machine[2].h = 24;
+			 
+	b_machine[3].x = 237;
+	b_machine[3].y = 464;
+	b_machine[3].w = 56;
+	b_machine[3].h = 24;
+			 
+	b_machine[4].x = 294;
+	b_machine[4].y = 464;
+	b_machine[4].w = 56;
+	b_machine[4].h = 24;
+			 
+	b_machine[5].x = 351;
+	b_machine[5].y = 464;
+	b_machine[5].w = 56;
+	b_machine[5].h = 24;
+			 
+	b_machine[6].x = 408;
+	b_machine[6].y = 464;
+	b_machine[6].w = 56;
+	b_machine[6].h = 24;
+			 
+	b_machine[7].x = 465;
+	b_machine[7].y = 464;
+	b_machine[7].w = 56;
+	b_machine[7].h = 24;
+
+	b_machine[8].x = 66;
+	b_machine[8].y = 489;
+	b_machine[8].w = 56;
+	b_machine[8].h = 24;
+
+	b_machine[9].x = 123;
+	b_machine[9].y = 489;
+	b_machine[9].w = 56;
+	b_machine[9].h = 24;
+
+	b_machine[10].x = 180;
+	b_machine[10].y = 489;
+	b_machine[10].w = 56;
+	b_machine[10].h = 24;
+
+	b_machine[11].x = 237;
+	b_machine[11].y = 489;
+	b_machine[11].w = 56;
+	b_machine[11].h = 24;
+
 	//all arrow animation frames
 
-	//Central
+	position.x = 120;
+	position.y = 163;
+
 	arrow[0].x = 2;
 	arrow[0].y = 2;
 	arrow[0].w = 62;
@@ -354,6 +422,7 @@ bool ModulePlayer::Start()
 	arrow_center.y = 130;
 
 	arrow_pos = 0;
+	machine_pos = 0;
 
 	player_angle = 90;
 
@@ -364,11 +433,23 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+
+	// Machine blit
+
+	if (machine_pos / 12 >= 1)
+		for (int i = 1; machine_pos > 11; i++){
+			machine_pos -= 12;
+		};
+
+	App->render->Blit(graphics, 119, 195, &b_machine[machine_pos], 0.75f);
+
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
+		 
+		machine_pos++;
 
 	}
 
@@ -376,6 +457,8 @@ update_status ModulePlayer::Update()
 		if (player_angle >= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle += ANGLE_INCREMENT;
+
+		machine_pos--;
 
 	}
 
@@ -388,6 +471,8 @@ update_status ModulePlayer::Update()
 
 	else if (player_angle < 90)
 		App->render->BlitRotation(graphics, position.x, position.y, &arrow[arrow_pos], 0, NULL, NULL, SDL_FLIP_HORIZONTAL);
+
+	App->render->Blit(graphics, 143, 203, &tube, 0.75f);
 
 	return UPDATE_CONTINUE;
 }
