@@ -115,9 +115,9 @@ update_status ModuleScene1to3::Update()
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
 			if (y % 2)
-			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 16) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
+			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
 			else
-			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 16) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
+			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
 		}
 	}
 	
