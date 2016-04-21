@@ -11,7 +11,7 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 118;
+	position.x = 120;
 	position.y = 163;
 	
 	//all arrow animation frames
