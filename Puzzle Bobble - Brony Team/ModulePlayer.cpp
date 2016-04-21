@@ -357,7 +357,7 @@ bool ModulePlayer::Start()
 
 	player_angle = 90;
 
-	graphics = App->textures->Load("Sprites/Game Sprites.png");
+	graphics = App->textures->Load("Sprites/Good Arrow sprites.png");
 	return ret;
 }
 
