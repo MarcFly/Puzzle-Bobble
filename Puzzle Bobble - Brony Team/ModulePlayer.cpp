@@ -6,7 +6,7 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble/ModuleParticles.h"
 
-#define ANGLE_INCREMENT 85.f/63.f
+#define ANGLE_INCREMENT 85.f/62.f
 
 
 ModulePlayer::ModulePlayer()
