@@ -23,6 +23,10 @@ enum bubble_color {
 	E = 0, R, G, B, Y
 };
 
+#define BUBBLE_OFFSET_X_ODD 70
+#define BUBBLE_OFFSET_Y 6
+#define BUBBLE_OFFSET_X_PAIR 64
+
 typedef unsigned int uint;
 
 #define SCREEN_SIZE 4

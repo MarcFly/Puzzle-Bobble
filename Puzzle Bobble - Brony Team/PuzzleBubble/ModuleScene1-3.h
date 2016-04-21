@@ -4,6 +4,8 @@
 #include "../Module.h"
 #include "../Animation.h"
 
+#define NUM_BUBBLES_1 5
+
 struct SDL_Texture;
 
 class ModuleScene1to3 : public Module {
@@ -19,22 +21,11 @@ public:
 public:
 	SDL_Texture* background_graphics = nullptr;
 	SDL_Texture* foreground_graphics = nullptr;
+	SDL_Texture* game_sprites_graphics = nullptr;
+	SDL_Rect bubbles[NUM_BUBBLES_1];
 	SDL_Rect foreground;
 	SDL_Rect background;
-	const int bubble_board[12][8] = {
-			{ R, R, Y, Y, B, B, G, G },
-			{ E, R, R, Y, Y, B, B, G },
-			{ B, B, G, G, R, R, Y, Y },
-			{ E, B, G, G, R, R, Y, Y },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E }
-	};
+	int bubble_board[12][8];
 
 };
 

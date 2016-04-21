@@ -24,7 +24,37 @@ ModuleScene1to3::ModuleScene1to3()
 	background.w = 310;
 	background.h = 235;
 
-	int bubble_board[12][8] = {
+	bubbles[R].x = 12;
+	bubbles[R].y = 312;
+	bubbles[R].w = 16;
+	bubbles[R].h = 16;
+		  
+	bubbles[G].x = 318;
+	bubbles[G].y = 260;
+	bubbles[G].w = 16;
+	bubbles[G].h = 16;
+		  
+	bubbles[B].x = 12;
+	bubbles[B].y = 260;
+	bubbles[B].w = 16;
+	bubbles[B].h = 16;
+		  
+	bubbles[Y].x = 12;
+	bubbles[Y].y = 338;
+	bubbles[Y].w = 16;
+	bubbles[Y].h = 16;
+
+}
+
+ModuleScene1to3::~ModuleScene1to3()
+{}
+
+bool ModuleScene1to3::Start()
+{
+
+	LOG("Loading 1-3 scene");
+
+	int tmp[12][8] = {
 		{ R, R, Y, Y, B, B, G, G },
 		{ E, R, R, Y, Y, B, B, G },
 		{ B, B, G, G, R, R, Y, Y },
@@ -39,17 +69,16 @@ ModuleScene1to3::ModuleScene1to3()
 		{ E, E, E, E, E, E, E, E }
 	};
 
-}
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			bubble_board[y][x] = tmp[y][x];
+		}
+	}
 
-ModuleScene1to3::~ModuleScene1to3()
-{}
-
-bool ModuleScene1to3::Start()
-{
-	LOG("Loading 1-3 scene");
-
+	LOG("Loading textures");
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -70,6 +99,7 @@ bool ModuleScene1to3::CleanUp()
 	LOG("Unloading 1-3 scene");
 	App->textures->Unload(background_graphics);
 	App->textures->Unload(foreground_graphics);
+	App->textures->Unload(game_sprites_graphics);
 	App->player->Disable();
 	App->particles->Disable();
 	App->collision->Disable();
@@ -82,20 +112,19 @@ update_status ModuleScene1to3::Update()
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			if (y % 2)
+			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 16) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
+			else
+			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 16) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
+		}
+	}
+	
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
-	}
-
-	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 8; x++) {
-			switch (bubble_board[y][x]) {
-			case R:
-				App->render->Blit(background_graphics, x, y, &background); // Blit(bubble_graphics, 'hexagon'.x, 'hexagon'.y, red_bubble_rect)
-				break;
-			}
-		}
 	}
 
 	return UPDATE_CONTINUE;
