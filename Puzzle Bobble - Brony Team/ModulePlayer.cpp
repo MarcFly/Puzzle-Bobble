@@ -134,6 +134,48 @@ ModulePlayer::ModulePlayer()
 	crank[7].w = 16;
 	crank[7].h = 16;
 
+	// BUB wheel
+
+	bub_wheel[0].x = 66;
+	bub_wheel[0].y = 539;
+	bub_wheel[0].w = 26;
+	bub_wheel[0].h = 19;
+
+	bub_wheel[1].x = 93;
+	bub_wheel[1].y = 539;
+	bub_wheel[1].w = 26;
+	bub_wheel[1].h = 19;
+
+	bub_wheel[2].x = 120;
+	bub_wheel[2].y = 539;
+	bub_wheel[2].w = 26;
+	bub_wheel[2].h = 19;
+
+	bub_wheel[3].x = 147;
+	bub_wheel[3].y = 539;
+	bub_wheel[3].w = 26;
+	bub_wheel[3].h = 19;
+
+	bub_wheel[4].x = 174;
+	bub_wheel[4].y = 539;
+	bub_wheel[4].w = 26;
+	bub_wheel[4].h = 19;
+
+	bub_wheel[5].x = 201;
+	bub_wheel[5].y = 539;
+	bub_wheel[5].w = 26;
+	bub_wheel[5].h = 19;
+
+	bub_wheel[6].x = 228;
+	bub_wheel[6].y = 539;
+	bub_wheel[6].w = 26;
+	bub_wheel[6].h = 19;
+
+	bub_wheel[7].x = 255;
+	bub_wheel[7].y = 539;
+	bub_wheel[7].w = 26;
+	bub_wheel[7].h = 19;
+
 	//all arrow animation frames
 
 	position.x = 120;
@@ -479,6 +521,7 @@ bool ModulePlayer::Start()
 	bmachine_pos = 0;
 	smachine_pos = 0;
 	crank_pos = 0;
+	bubwheel_pos = 0;
 
 	player_angle = 90;
 
@@ -499,6 +542,7 @@ update_status ModulePlayer::Update()
 		bmachine_pos++;
 		smachine_pos++;
 		crank_pos--;
+		bubwheel_pos--;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
@@ -509,6 +553,7 @@ update_status ModulePlayer::Update()
 		bmachine_pos--;
 		smachine_pos--;
 		crank_pos++;
+		bubwheel_pos++;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
@@ -545,7 +590,14 @@ update_status ModulePlayer::Update()
 	if (crank_pos == 8) crank_pos = 0;
 	else if (crank_pos == -1) crank_pos = 7;
 
-	App->render->Blit(graphics, 168, 200, &crank[crank_pos], 0.75f);
+	App->render->Blit(graphics, 168, 202, &crank[crank_pos], 0.75f);
+
+	// Bub wheel blit
+
+	if (bubwheel_pos == 8) bubwheel_pos = 0;
+	else if (bubwheel_pos == -1) bubwheel_pos = 7;
+
+	App->render->Blit(graphics, 171, 200, &bub_wheel[bubwheel_pos], 0.75f);
 
 	// Tube blit
 
