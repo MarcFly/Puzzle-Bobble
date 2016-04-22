@@ -28,6 +28,7 @@ public:
 	SDL_Rect bubblun_rotate[8];
 	SDL_Rect tube;
 	SDL_Rect b_machine[12];
+<<<<<<< HEAD
 	SDL_Rect a_machine[2];
 	SDL_Rect arrow[64];
 	SDL_Point arrow_center;
@@ -36,6 +37,14 @@ public:
 	bool amach_blit_check = false;
 	uint bub_pos;
 	uint bub_repos_x[8];
+=======
+	SDL_Rect s_machine[2];
+	SDL_Rect arrow[64];
+	SDL_Point arrow_center;
+	int arrow_pos;
+	int bmachine_pos;
+	uint smachine_pos;
+>>>>>>> origin/master
 
 	iPoint position;
 
