@@ -25,10 +25,12 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect tube;
 	SDL_Rect b_machine[12];
+	SDL_Rect s_machine[2];
 	SDL_Rect arrow[64];
 	SDL_Point arrow_center;
 	int arrow_pos;
-	uint machine_pos;
+	int bmachine_pos;
+	uint smachine_pos;
 
 	iPoint position;
 
