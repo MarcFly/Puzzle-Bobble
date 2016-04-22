@@ -11,66 +11,62 @@
 
 ModulePlayer::ModulePlayer()
 {
-	// tube
+	// tube 
 
 	tube.x = 556;
 	tube.y = 498;
 	tube.w = 13;
 	tube.h = 11;
-	
-<<<<<<< HEAD
-	// over machine animation frames
 
-	a_machine[0].x = 522;
-	a_machine[0].y = 515;
-	a_machine[0].w = 33;
-	a_machine[0].h = 15;
+	// small machine
 
-	a_machine[1].x = 522;
-	a_machine[1].y = 532;
-	a_machine[1].w = 33;
-	a_machine[1].h = 15;
+	s_machine[0].x = 522;
+	s_machine[0].y = 515;
+	s_machine[0].w = 34;
+	s_machine[0].h = 16;
 
-	// machine animation frames
-=======
+	s_machine[1].x = 522;
+	s_machine[1].y = 532;
+	s_machine[1].w = 34;
+	s_machine[1].h = 16;
+
 	// big machine
->>>>>>> origin/master
 
 	b_machine[0].x = 66;
 	b_machine[0].y = 464;
 	b_machine[0].w = 56;
 	b_machine[0].h = 24;
-			 
+
 	b_machine[1].x = 123;
 	b_machine[1].y = 464;
 	b_machine[1].w = 56;
 	b_machine[1].h = 24;
-			 
+
 	b_machine[2].x = 180;
 	b_machine[2].y = 464;
 	b_machine[2].w = 56;
 	b_machine[2].h = 24;
-			 
+
 	b_machine[3].x = 237;
 	b_machine[3].y = 464;
 	b_machine[3].w = 56;
 	b_machine[3].h = 24;
-			 
+
 	b_machine[4].x = 294;
 	b_machine[4].y = 464;
 	b_machine[4].w = 56;
 	b_machine[4].h = 24;
-			 
+
 	b_machine[5].x = 351;
 	b_machine[5].y = 464;
 	b_machine[5].w = 56;
 	b_machine[5].h = 24;
-			 
+
 	b_machine[6].x = 408;
 	b_machine[6].y = 464;
 	b_machine[6].w = 56;
 	b_machine[6].h = 24;
-			 
+
 	b_machine[7].x = 465;
 	b_machine[7].y = 464;
 	b_machine[7].w = 56;
@@ -96,17 +92,47 @@ ModulePlayer::ModulePlayer()
 	b_machine[11].w = 56;
 	b_machine[11].h = 24;
 
-	//small machine
+	// crank
 
-	s_machine[0].x = 522;
-	s_machine[0].y = 515;
-	s_machine[0].w = 34;
-	s_machine[0].h = 16;
-	
-	s_machine[1].x = 522;
-	s_machine[1].y = 532;
-	s_machine[1].w = 34;
-	s_machine[1].h = 16;
+	crank[0].x = 522;
+	crank[0].y = 464;
+	crank[0].w = 16;
+	crank[0].h = 16;
+
+	crank[1].x = 539;
+	crank[1].y = 464;
+	crank[1].w = 16;
+	crank[1].h = 16;
+
+	crank[2].x = 556;
+	crank[2].y = 464;
+	crank[2].w = 16;
+	crank[2].h = 16;
+
+	crank[3].x = 522;
+	crank[3].y = 481;
+	crank[3].w = 16;
+	crank[3].h = 16;
+
+	crank[4].x = 539;
+	crank[4].y = 481;
+	crank[4].w = 16;
+	crank[4].h = 16;
+
+	crank[5].x = 556;
+	crank[5].y = 481;
+	crank[5].w = 16;
+	crank[5].h = 16;
+
+	crank[6].x = 522;
+	crank[6].y = 498;
+	crank[6].w = 16;
+	crank[6].h = 16;
+
+	crank[7].x = 539;
+	crank[7].y = 498;
+	crank[7].w = 16;
+	crank[7].h = 16;
 
 	//all arrow animation frames
 
@@ -267,7 +293,7 @@ ModulePlayer::ModulePlayer()
 	arrow[30].y = 200;
 	arrow[30].w = 62;
 	arrow[30].h = 64;
-	
+
 	arrow[31].x = 258;
 	arrow[31].y = 200;
 	arrow[31].w = 62;
@@ -322,7 +348,7 @@ ModulePlayer::ModulePlayer()
 	arrow[41].y = 266;
 	arrow[41].w = 62;
 	arrow[41].h = 64;
-	
+
 	arrow[42].x = 386;
 	arrow[42].y = 266;
 	arrow[42].w = 62;
@@ -435,100 +461,7 @@ ModulePlayer::ModulePlayer()
 
 	//-----------
 
-	// Bubblun's wheel Animation Frames
 
-	bub_wheel[0].x = 539;
-	bub_wheel[0].y = 498;
-	bub_wheel[0].w = 15;
-	bub_wheel[0].h = 15;
-
-	bub_wheel[1].x = 522;
-	bub_wheel[1].y = 498;
-	bub_wheel[1].w = 15;
-	bub_wheel[1].h = 15;
-
-	bub_wheel[2].x = 556;
-	bub_wheel[2].y = 481;
-	bub_wheel[2].w = 15;
-	bub_wheel[2].h = 15;
-
-	bub_wheel[3].x = 539;
-	bub_wheel[3].y = 481;
-	bub_wheel[3].w = 15;
-	bub_wheel[3].h = 15;
-
-	bub_wheel[4].x = 522;
-	bub_wheel[4].y = 481;
-	bub_wheel[4].w = 15;
-	bub_wheel[4].h = 15;
-
-	bub_wheel[5].x = 556;
-	bub_wheel[5].y = 464;
-	bub_wheel[5].w = 15;
-	bub_wheel[5].h = 15;
-
-	bub_wheel[6].x = 539;
-	bub_wheel[6].y = 464;
-	bub_wheel[6].w = 15;
-	bub_wheel[6].h = 15;
-
-	bub_wheel[7].x = 522;
-	bub_wheel[7].y = 464;
-	bub_wheel[7].w = 15;
-	bub_wheel[7].h = 15;
-
-	// Bubblun Rotation Animation Frames (dinosaur that moves wheel)
-	
-	bubblun_rotate[0].x = 79;
-	bubblun_rotate[0].y = 54;
-	bubblun_rotate[0].w = 22;
-	bubblun_rotate[0].h = 17;
-
-	bubblun_rotate[1].x = 45;
-	bubblun_rotate[1].y = 54;
-	bubblun_rotate[1].w = 22;
-	bubblun_rotate[1].h = 17;
-
-	bubblun_rotate[2].x = 13;
-	bubblun_rotate[2].y = 54;
-	bubblun_rotate[2].w = 22;
-	bubblun_rotate[2].h = 17;
-
-	bubblun_rotate[3].x = 556;
-	bubblun_rotate[3].y = 18;
-	bubblun_rotate[3].w = 19;
-	bubblun_rotate[3].h = 17;
-
-	bubblun_rotate[4].x = 523;
-	bubblun_rotate[4].y = 17;
-	bubblun_rotate[4].w = 20;
-	bubblun_rotate[4].h = 18;
-
-	bubblun_rotate[5].x = 490;
-	bubblun_rotate[5].y = 18;
-	bubblun_rotate[5].w = 20;
-	bubblun_rotate[5].h = 17;
-
-	bubblun_rotate[6].x = 455;
-	bubblun_rotate[6].y = 19;
-	bubblun_rotate[6].w = 19;
-	bubblun_rotate[6].h = 16;
-
-	bubblun_rotate[7].x = 419;
-	bubblun_rotate[7].y = 19;
-	bubblun_rotate[7].w = 20;
-	bubblun_rotate[7].h = 16;
-
-	// Bubblun position at each frame
-
-	bub_repos_x[0] = 170;
-	bub_repos_x[1] = 171;
-	bub_repos_x[2] = 172;
-	bub_repos_x[3] = 174;
-	bub_repos_x[4] = 174;
-	bub_repos_x[5] = 174;
-	bub_repos_x[6] = 173;
-	bub_repos_x[7] = 171;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -543,17 +476,13 @@ bool ModulePlayer::Start()
 	arrow_center.y = 130;
 
 	arrow_pos = 0;
-<<<<<<< HEAD
-	machine_pos = 0;
-	bub_pos = 0;
-=======
 	bmachine_pos = 0;
->>>>>>> origin/master
+	smachine_pos = 0;
+	crank_pos = 0;
 
 	player_angle = 90;
 
 	graphics = App->textures->Load("Sprites/Player sprites.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 	return ret;
 }
 
@@ -561,55 +490,15 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 
-<<<<<<< HEAD
-	// Machine blit
-	
-	
-
-	
-
-	/*if (machine_pos / 12 >= 1)
-		for (int i = 1; machine_pos > 11; i++){
-			machine_pos -= 12;
-		};*/
-
-	App->render->Blit(graphics, 119, 195, &b_machine[machine_pos], 0.75f);
-
-	if (amach_blit_check == true) {
-		App->render->Blit(graphics, 134, 180, &a_machine[1], 0.75f);
-	}
-	else {
-		App->render->Blit(graphics, 134, 180, &a_machine[0], 0.75f);
-	}
-
-	App->render->Blit(graphics, 166, 202, &bub_wheel[bub_pos], 0.75f);
-
-	App->render->Blit(game_sprites_graphics, bub_repos_x[bub_pos], 199, &bubblun_rotate[bub_pos], 0.75f);
-
-	
-
-=======
->>>>>>> origin/master
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
-		 
-<<<<<<< HEAD
-		machine_pos++;
-		bub_pos++;
 
-		if (machine_pos > 11) machine_pos = 0;
-		if (bub_pos > 7) bub_pos = 0;
-		
-=======
 		bmachine_pos++;
 		smachine_pos++;
->>>>>>> origin/master
-
-		if (amach_blit_check == true) amach_blit_check = false;
-		else amach_blit_check = true;
+		crank_pos--;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
@@ -617,43 +506,31 @@ update_status ModulePlayer::Update()
 		else arrow_pos--;
 		player_angle += ANGLE_INCREMENT;
 
-<<<<<<< HEAD
-		machine_pos--;
-		bub_pos--;
-
-		if (machine_pos > 11) machine_pos = 11;
-		if (bub_pos > 7) bub_pos = 7;
-
-		if (machine_pos < 0) machine_pos = 10;
-		if (bub_pos < 0) bub_pos = 6;
-=======
 		bmachine_pos--;
 		smachine_pos--;
->>>>>>> origin/master
-
-		if (amach_blit_check == true) amach_blit_check = false;
-		else amach_blit_check = true;
+		crank_pos++;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 		App->particles->AddParticle(App->particles->red_bubble, App->particles->red_bubble.position.x, App->particles->red_bubble.position.y, COLLIDER_PLAYER_SHOT);
 	}
 
-	//BLITS
+	// BLITS
 
-
-	// Big Machine blit
-	if (bmachine_pos == 12) bmachine_pos = 0;
-	else if (bmachine_pos == -1) bmachine_pos = 11;
-
-	App->render->Blit(graphics, 119, 195, &b_machine[bmachine_pos], 0.75f);
 
 	// Small Machine blit
 
 	if (smachine_pos == 2) smachine_pos = 0;
 	else if (smachine_pos == -1) smachine_pos = 1;
 
-	App->render->Blit(graphics, 134, 180, &s_machine[smachine_pos], 0.75f);
+	App->render->Blit(graphics, 134, 179, &s_machine[smachine_pos], 0.75f);
+
+	// Big Machine blit
+
+	if (bmachine_pos == 12) bmachine_pos = 0;
+	else if (bmachine_pos == -1) bmachine_pos = 11;
+
+	App->render->Blit(graphics, 119, 195, &b_machine[bmachine_pos], 0.75f);
 
 	// Arrow blit
 
@@ -663,9 +540,16 @@ update_status ModulePlayer::Update()
 	else if (player_angle < 90)
 		App->render->BlitRotation(graphics, position.x, position.y, &arrow[arrow_pos], 0, NULL, NULL, SDL_FLIP_HORIZONTAL);
 
+	// Crank blit
+
+	if (crank_pos == 8) crank_pos = 0;
+	else if (crank_pos == -1) crank_pos = 7;
+
+	App->render->Blit(graphics, 168, 200, &crank[crank_pos], 0.75f);
+
 	// Tube blit
 
-	App->render->Blit(graphics, 143, 202, &tube, 0.75f);
+	App->render->Blit(graphics, 143, 203, &tube, 0.75f);
 
 	return UPDATE_CONTINUE;
 }
