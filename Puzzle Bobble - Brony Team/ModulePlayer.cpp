@@ -435,11 +435,11 @@ update_status ModulePlayer::Update()
 {
 
 	// Machine blit
-	if (machine_pos == 11) machine_pos = 1;
-	else if (machine_pos == 0) machine_pos = 10;
+	if (machine_pos == 12) machine_pos = 0;
+	else if (machine_pos == 0) machine_pos = 11;
 
 	/*if (machine_pos / 12 >= 1)
-		for (int i = 1; machine_pos > 11; i++){
+		for (int i = 1; machine_pos > 12; i++){
 			machine_pos -= 12;
 		};*/
 
