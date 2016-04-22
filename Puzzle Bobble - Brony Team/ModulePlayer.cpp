@@ -176,6 +176,11 @@ ModulePlayer::ModulePlayer()
 	bub_wheel[7].w = 26;
 	bub_wheel[7].h = 19;
 
+	bub_wheel[8].x = 282;
+	bub_wheel[8].y = 539;
+	bub_wheel[8].w = 26;
+	bub_wheel[8].h = 19;
+
 	//all arrow animation frames
 
 	position.x = 120;
@@ -594,10 +599,15 @@ update_status ModulePlayer::Update()
 
 	// Bub wheel blit
 
-	if (bubwheel_pos == 8) bubwheel_pos = 0;
-	else if (bubwheel_pos == -1) bubwheel_pos = 7;
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
 
-	App->render->Blit(graphics, 171, 200, &bub_wheel[bubwheel_pos], 0.75f);
+		if (bubwheel_pos == 8) bubwheel_pos = 0;
+		else if (bubwheel_pos == -1) bubwheel_pos = 7;
+
+		App->render->Blit(graphics, 171, 200, &bub_wheel[bubwheel_pos], 0.75f);
+	}
+
+	else App->render->Blit(graphics, 171, 200, &bub_wheel[8], 0.75f);
 
 	// Tube blit
 

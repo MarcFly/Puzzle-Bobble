@@ -28,7 +28,7 @@ public:
 	SDL_Rect s_machine[2];
 	SDL_Rect arrow[64];
 	SDL_Rect crank[8];
-	SDL_Rect bub_wheel[8];
+	SDL_Rect bub_wheel[9];
 	SDL_Point arrow_center;
 	int arrow_pos;
 	int bmachine_pos;
