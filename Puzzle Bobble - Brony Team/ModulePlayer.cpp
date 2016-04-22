@@ -435,11 +435,13 @@ update_status ModulePlayer::Update()
 {
 
 	// Machine blit
+	if (machine_pos == 11) machine_pos = 1;
+	else if (machine_pos == 0) machine_pos = 10;
 
-	if (machine_pos / 12 >= 1)
+	/*if (machine_pos / 12 >= 1)
 		for (int i = 1; machine_pos > 11; i++){
 			machine_pos -= 12;
-		};
+		};*/
 
 	App->render->Blit(graphics, 119, 195, &b_machine[machine_pos], 0.75f);
 
