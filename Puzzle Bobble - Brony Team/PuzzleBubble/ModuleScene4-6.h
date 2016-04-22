@@ -19,8 +19,13 @@ public:
 
 	SDL_Texture* background_graphics = nullptr;
 	SDL_Texture* foreground_graphics = nullptr;
+	SDL_Texture* game_sprites_graphics = nullptr;
 	SDL_Rect foreground;
 	SDL_Rect background;
+	SDL_Rect limit_line;
+	SDL_Rect level_info;
+
+	int lvl_check = 3;
 };
 
 #endif 

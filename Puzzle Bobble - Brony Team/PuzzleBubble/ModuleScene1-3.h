@@ -25,8 +25,12 @@ public:
 	SDL_Rect bubbles[NUM_BUBBLES_1];
 	SDL_Rect foreground;
 	SDL_Rect background;
+	SDL_Rect limit_line;
+	SDL_Rect level_info;
 	int bubble_board[12][8];
 
+
+	int lvl_check = 3;
 };
 
 #endif 

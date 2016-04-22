@@ -35,6 +35,7 @@ bool ModuleScene4to6::Start()
 
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 4-6.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 4-6.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -44,7 +45,7 @@ bool ModuleScene4to6::Start()
 	App->collision->AddCollider({ 78, 15, 145, 8 }, COLLIDER_CEILING);
 	App->collision->AddCollider({ 215, 15, 8, 215 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 78, 165, 145, 8 }, COLLIDER_PLAYER);
+	App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
 
 	return true;
 }
@@ -67,10 +68,12 @@ update_status ModuleScene4to6::Update()
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
+	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1);
+
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
+		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
 	}
 
 	return UPDATE_CONTINUE;

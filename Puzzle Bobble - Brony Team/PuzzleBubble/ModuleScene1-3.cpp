@@ -44,6 +44,15 @@ ModuleScene1to3::ModuleScene1to3()
 	bubbles[Y].w = 16;
 	bubbles[Y].h = 16;
 
+	level_info.x = 35;
+	level_info.y = 1710;
+	level_info.w = 275;
+	level_info.h = 7;
+
+	limit_line.x = 34;
+	limit_line.y = 1688;
+	limit_line.w = 127;
+	limit_line.h = 4;
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -80,6 +89,7 @@ bool ModuleScene1to3::Start()
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
 	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
+
 	App->player->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
@@ -88,7 +98,7 @@ bool ModuleScene1to3::Start()
 	App->collision->AddCollider({ 78, 15, 145, 8}, COLLIDER_CEILING);
 	App->collision->AddCollider({ 215, 15, 8, 215 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 78, 184, 145, 4 }, COLLIDER_PLAYER);
+	App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
 
 	return true;
 }
@@ -120,12 +130,18 @@ update_status ModuleScene1to3::Update()
 			App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
 		}
 	}
+
+	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1);
 	
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
+	App->render->Blit(game_sprites_graphics, 0, 0, &level_info, 1);
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
+
+		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
+
 	}
 
-	return UPDATE_CONTINUE;
+ 	return UPDATE_CONTINUE;
 }
