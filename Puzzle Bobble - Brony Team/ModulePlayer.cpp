@@ -527,6 +527,7 @@ bool ModulePlayer::Start()
 	smachine_pos = 0;
 	crank_pos = 0;
 	bubwheel_pos = 0;
+	change_sprite = 0;
 
 	player_angle = 90;
 
@@ -546,8 +547,14 @@ update_status ModulePlayer::Update()
 
 		bmachine_pos++;
 		smachine_pos++;
+
+		if (change_sprite == 5){
 		crank_pos--;
 		bubwheel_pos--;
+		change_sprite = 0;
+		}
+
+		change_sprite++;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
@@ -557,8 +564,14 @@ update_status ModulePlayer::Update()
 
 		bmachine_pos--;
 		smachine_pos--;
-		crank_pos++;
-		bubwheel_pos++;
+
+		if (change_sprite == 5){
+			crank_pos++;
+			bubwheel_pos++;
+			change_sprite = 0;
+		}
+
+		change_sprite++;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {

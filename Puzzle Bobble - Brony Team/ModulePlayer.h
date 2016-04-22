@@ -35,6 +35,7 @@ public:
 	int smachine_pos;
 	int crank_pos;
 	int bubwheel_pos;
+	int change_sprite;
 
 	iPoint position;
 
