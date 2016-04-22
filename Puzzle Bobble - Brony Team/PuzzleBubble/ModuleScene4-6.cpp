@@ -68,7 +68,7 @@ update_status ModuleScene4to6::Update()
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
-	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1);
+	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 

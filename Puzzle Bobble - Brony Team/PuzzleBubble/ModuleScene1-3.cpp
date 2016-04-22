@@ -131,11 +131,11 @@ update_status ModuleScene1to3::Update()
 		}
 	}
 
-	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1);
+	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 	
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
-	App->render->Blit(game_sprites_graphics, 0, 0, &level_info, 1);
+	App->render->Blit(game_sprites_graphics, 0, 233, &level_info, 1.f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 

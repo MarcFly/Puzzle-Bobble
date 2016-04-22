@@ -18,7 +18,19 @@ ModulePlayer::ModulePlayer()
 	tube.w = 13;
 	tube.h = 11;
 	
-	// 
+	// over machine animation frames
+
+	a_machine[0].x = 522;
+	a_machine[0].y = 515;
+	a_machine[0].w = 33;
+	a_machine[0].h = 15;
+
+	a_machine[1].x = 522;
+	a_machine[1].y = 532;
+	a_machine[1].w = 33;
+	a_machine[1].h = 15;
+
+	// machine animation frames
 
 	b_machine[0].x = 66;
 	b_machine[0].y = 464;
@@ -406,8 +418,101 @@ ModulePlayer::ModulePlayer()
 	arrow[63].h = 64;
 
 	//-----------
-	
 
+	// Bubblun's wheel Animation Frames
+
+	bub_wheel[0].x = 539;
+	bub_wheel[0].y = 498;
+	bub_wheel[0].w = 15;
+	bub_wheel[0].h = 15;
+
+	bub_wheel[1].x = 522;
+	bub_wheel[1].y = 498;
+	bub_wheel[1].w = 15;
+	bub_wheel[1].h = 15;
+
+	bub_wheel[2].x = 556;
+	bub_wheel[2].y = 481;
+	bub_wheel[2].w = 15;
+	bub_wheel[2].h = 15;
+
+	bub_wheel[3].x = 539;
+	bub_wheel[3].y = 481;
+	bub_wheel[3].w = 15;
+	bub_wheel[3].h = 15;
+
+	bub_wheel[4].x = 522;
+	bub_wheel[4].y = 481;
+	bub_wheel[4].w = 15;
+	bub_wheel[4].h = 15;
+
+	bub_wheel[5].x = 556;
+	bub_wheel[5].y = 464;
+	bub_wheel[5].w = 15;
+	bub_wheel[5].h = 15;
+
+	bub_wheel[6].x = 539;
+	bub_wheel[6].y = 464;
+	bub_wheel[6].w = 15;
+	bub_wheel[6].h = 15;
+
+	bub_wheel[7].x = 522;
+	bub_wheel[7].y = 464;
+	bub_wheel[7].w = 15;
+	bub_wheel[7].h = 15;
+
+	// Bubblun Rotation Animation Frames (dinosaur that moves wheel)
+	
+	bubblun_rotate[0].x = 79;
+	bubblun_rotate[0].y = 54;
+	bubblun_rotate[0].w = 22;
+	bubblun_rotate[0].h = 17;
+
+	bubblun_rotate[1].x = 45;
+	bubblun_rotate[1].y = 54;
+	bubblun_rotate[1].w = 22;
+	bubblun_rotate[1].h = 17;
+
+	bubblun_rotate[2].x = 13;
+	bubblun_rotate[2].y = 54;
+	bubblun_rotate[2].w = 22;
+	bubblun_rotate[2].h = 17;
+
+	bubblun_rotate[3].x = 556;
+	bubblun_rotate[3].y = 18;
+	bubblun_rotate[3].w = 19;
+	bubblun_rotate[3].h = 17;
+
+	bubblun_rotate[4].x = 523;
+	bubblun_rotate[4].y = 17;
+	bubblun_rotate[4].w = 20;
+	bubblun_rotate[4].h = 18;
+
+	bubblun_rotate[5].x = 490;
+	bubblun_rotate[5].y = 18;
+	bubblun_rotate[5].w = 20;
+	bubblun_rotate[5].h = 17;
+
+	bubblun_rotate[6].x = 455;
+	bubblun_rotate[6].y = 19;
+	bubblun_rotate[6].w = 19;
+	bubblun_rotate[6].h = 16;
+
+	bubblun_rotate[7].x = 419;
+	bubblun_rotate[7].y = 19;
+	bubblun_rotate[7].w = 20;
+	bubblun_rotate[7].h = 16;
+
+	// Bubblun position at each frame
+
+	bub_repos_x[0] = 170;
+	bub_repos_x[1] = 171;
+	bub_repos_x[2] = 172;
+	bub_repos_x[3] = 174;
+	bub_repos_x[4] = 174;
+	bub_repos_x[5] = 174;
+	bub_repos_x[6] = 173;
+	bub_repos_x[7] = 171;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -423,10 +528,12 @@ bool ModulePlayer::Start()
 
 	arrow_pos = 0;
 	machine_pos = 0;
+	bub_pos = 0;
 
 	player_angle = 90;
 
 	graphics = App->textures->Load("Sprites/Player sprites.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 	return ret;
 }
 
@@ -435,8 +542,10 @@ update_status ModulePlayer::Update()
 {
 
 	// Machine blit
-	if (machine_pos == 11) machine_pos = 1;
-	else if (machine_pos == 0) machine_pos = 10;
+	
+	
+
+	
 
 	/*if (machine_pos / 12 >= 1)
 		for (int i = 1; machine_pos > 11; i++){
@@ -445,6 +554,19 @@ update_status ModulePlayer::Update()
 
 	App->render->Blit(graphics, 119, 195, &b_machine[machine_pos], 0.75f);
 
+	if (amach_blit_check == true) {
+		App->render->Blit(graphics, 134, 180, &a_machine[1], 0.75f);
+	}
+	else {
+		App->render->Blit(graphics, 134, 180, &a_machine[0], 0.75f);
+	}
+
+	App->render->Blit(graphics, 166, 202, &bub_wheel[bub_pos], 0.75f);
+
+	App->render->Blit(game_sprites_graphics, bub_repos_x[bub_pos], 199, &bubblun_rotate[bub_pos], 0.75f);
+
+	
+
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
 		//aqui va q giri la flecha
 		if (player_angle <= 90) arrow_pos++;
@@ -452,7 +574,14 @@ update_status ModulePlayer::Update()
 		player_angle -= ANGLE_INCREMENT;
 		 
 		machine_pos++;
+		bub_pos++;
 
+		if (machine_pos > 11) machine_pos = 0;
+		if (bub_pos > 7) bub_pos = 0;
+		
+
+		if (amach_blit_check == true) amach_blit_check = false;
+		else amach_blit_check = true;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
@@ -461,7 +590,16 @@ update_status ModulePlayer::Update()
 		player_angle += ANGLE_INCREMENT;
 
 		machine_pos--;
+		bub_pos--;
 
+		if (machine_pos > 11) machine_pos = 11;
+		if (bub_pos > 7) bub_pos = 7;
+
+		if (machine_pos < 0) machine_pos = 10;
+		if (bub_pos < 0) bub_pos = 6;
+
+		if (amach_blit_check == true) amach_blit_check = false;
+		else amach_blit_check = true;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
