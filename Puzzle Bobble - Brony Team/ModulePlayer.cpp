@@ -539,18 +539,19 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5) {
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		//aqui va q giri la flecha
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
 
 		bmachine_pos++;
-		smachine_pos++;
 
-		if (change_sprite == 5){
+
+		if (change_sprite == 2){
 		crank_pos--;
 		bubwheel_pos--;
+		smachine_pos++;
 		change_sprite = 0;
 		}
 
@@ -563,11 +564,12 @@ update_status ModulePlayer::Update()
 		player_angle += ANGLE_INCREMENT;
 
 		bmachine_pos--;
-		smachine_pos--;
 
-		if (change_sprite == 5){
+
+		if (change_sprite == 2){
 			crank_pos++;
 			bubwheel_pos++;
+			smachine_pos--;
 			change_sprite = 0;
 		}
 
