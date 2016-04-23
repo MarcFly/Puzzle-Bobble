@@ -25,6 +25,8 @@ bool ModuleAudio::Start()
 	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, AUDIO_U8, 2, 1024);
 	music02 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_02.ogg");
 	music03 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_03.ogg");
+
+	sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");
 	Mix_PlayMusic(music02, 1);
 
 	return true;
@@ -36,6 +38,7 @@ bool ModuleAudio::CleanUp()
 
 	Mix_FreeMusic(music02);
 	Mix_FreeMusic(music03);
+	Mix_FreeChunk(sfx01);
 
 	Mix_CloseAudio();
 	Mix_Quit();
@@ -47,6 +50,10 @@ update_status ModuleAudio::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
 		Mix_PlayMusic(music03, -1);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+		Mix_PlayChannel(-1, sfx01, 0);
 	}
 	return UPDATE_CONTINUE;
 }
