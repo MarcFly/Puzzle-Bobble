@@ -88,7 +88,7 @@ bool ModuleScene1to3::Start()
 	LOG("Loading textures");
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game sprites.png");
 
 
 	App->player->Enable();
@@ -138,6 +138,7 @@ bool ModuleScene1to3::CleanUp()
 
 update_status ModuleScene1to3::Update()
 {
+	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 	

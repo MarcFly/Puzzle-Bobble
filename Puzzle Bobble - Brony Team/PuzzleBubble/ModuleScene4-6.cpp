@@ -24,6 +24,10 @@ ModuleScene4to6::ModuleScene4to6()
 	background.w = 310;
 	background.h = 235;
 
+	limit_line.x = 34;
+	limit_line.y = 1688;
+	limit_line.w = 127;
+	limit_line.h = 4;
 }
 
 ModuleScene4to6::~ModuleScene4to6()
@@ -35,7 +39,7 @@ bool ModuleScene4to6::Start()
 
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 4-6.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 4-6.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game sprites.png");
 
 	App->player->Enable();
 	App->particles->Enable();
