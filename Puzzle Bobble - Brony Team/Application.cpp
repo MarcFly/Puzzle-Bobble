@@ -11,6 +11,7 @@
 #include "PuzzleBubble\ModuleFadeToBlack.h"
 #include "PuzzleBubble\ModuleAudio.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
@@ -22,6 +23,7 @@ Application::Application()
 	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fade = new ModuleFadeToBlack();

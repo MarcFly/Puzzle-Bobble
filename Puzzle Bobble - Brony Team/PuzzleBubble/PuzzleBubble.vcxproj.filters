@@ -15,6 +15,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{eaaebed7-92ba-41e9-af8b-253ffad0d52a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bobbles">
+      <UniqueIdentifier>{7d8a15ec-14bd-4ff1-953d-9ee47e7b9130}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ModuleWindow.h">
@@ -71,6 +74,15 @@
     <ClInclude Include="..\ModuleCollision.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="..\ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Enemy.h">
+      <Filter>Bobbles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bobble.h">
+      <Filter>Bobbles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ModuleInput.cpp">
@@ -117,6 +129,15 @@
     </ClCompile>
     <ClCompile Include="..\ModuleCollision.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Enemy.cpp">
+      <Filter>Bobbles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Bobble.cpp">
+      <Filter>Bobbles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
