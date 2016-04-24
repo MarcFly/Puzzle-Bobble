@@ -88,7 +88,7 @@ bool ModuleScene1to3::Start()
 	LOG("Loading textures");
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game sprites.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
 
 	App->player->Enable();
@@ -151,6 +151,8 @@ update_status ModuleScene1to3::Update()
 		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
 	}
+
+	App->render->Blit(game_sprites_graphics, 23, 150, &level_info, 1.f);
 
  	return UPDATE_CONTINUE;
 }

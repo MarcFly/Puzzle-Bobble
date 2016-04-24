@@ -39,7 +39,7 @@ bool ModuleScene4to6::Start()
 
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 4-6.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 4-6.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game sprites.png");
+	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
 	App->player->Enable();
 	App->particles->Enable();
