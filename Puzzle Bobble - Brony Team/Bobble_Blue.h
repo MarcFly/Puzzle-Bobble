@@ -3,7 +3,7 @@
 
 #include "Enemy.h"
 
-class Bobble: public Enemy
+class Bobble_Blue: public Enemy
 {
 private:
 	int original_y = 0;
@@ -11,9 +11,7 @@ private:
 
 public:
 
-	Bobble(int x, int y);
-
-	void Move(){}
+	Bobble_Blue(int x, int y);
 };
 
 #endif // __BOBBLE_H__

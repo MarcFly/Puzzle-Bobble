@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "../ModuleCollision.h"
+#include "../ModuleEnemies.h"
 
 
 ModuleScene1to3::ModuleScene1to3()
@@ -100,6 +101,24 @@ bool ModuleScene1to3::Start()
 
 	App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
 
+	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			if (y % 2) {
+				if (bubble_board[y][x]) {
+					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				}
+			}
+			else {
+				if (bubble_board[y][x]) {
+					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				}
+			}
+		}
+	}
+
+
 	return true;
 }
 
@@ -119,19 +138,6 @@ bool ModuleScene1to3::CleanUp()
 
 update_status ModuleScene1to3::Update()
 {
-
-	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
-
-	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 8; x++) {
-			if (y % 2) {
-				App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
-			}
-			else {
-				App->render->Blit(game_sprites_graphics, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y, &bubbles[bubble_board[y][x]]);
-			}
-		}
-	}
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 	

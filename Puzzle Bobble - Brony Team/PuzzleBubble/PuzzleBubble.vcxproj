@@ -69,7 +69,7 @@
     <ClInclude Include="..\Animation.h" />
     <ClInclude Include="..\Application.h" />
     <ClInclude Include="..\Enemy.h" />
-    <ClInclude Include="..\Bobble.h" />
+    <ClInclude Include="..\Bobble_Blue.h" />
     <ClInclude Include="..\Globals.h" />
     <ClInclude Include="..\MemLeaks.h" />
     <ClInclude Include="..\Module.h" />
@@ -91,7 +91,7 @@
   <ItemGroup>
     <ClCompile Include="..\Application.cpp" />
     <ClCompile Include="..\Enemy.cpp" />
-    <ClCompile Include="..\Bobble.cpp" />
+    <ClCompile Include="..\Bobble_Blue.cpp" />
     <ClCompile Include="..\Globals.cpp" />
     <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\ModuleCollision.cpp" />

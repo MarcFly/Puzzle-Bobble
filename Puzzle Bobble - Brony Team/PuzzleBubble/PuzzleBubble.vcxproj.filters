@@ -80,7 +80,7 @@
     <ClInclude Include="..\Enemy.h">
       <Filter>Bobbles</Filter>
     </ClInclude>
-    <ClInclude Include="..\Bobble.h">
+    <ClInclude Include="..\Bobble_Blue.h">
       <Filter>Bobbles</Filter>
     </ClInclude>
   </ItemGroup>
@@ -136,7 +136,7 @@
     <ClCompile Include="..\Enemy.cpp">
       <Filter>Bobbles</Filter>
     </ClCompile>
-    <ClCompile Include="..\Bobble.cpp">
+    <ClCompile Include="..\Bobble_Blue.cpp">
       <Filter>Bobbles</Filter>
     </ClCompile>
   </ItemGroup>
