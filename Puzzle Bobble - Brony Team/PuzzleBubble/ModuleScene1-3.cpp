@@ -47,7 +47,7 @@ ModuleScene1to3::ModuleScene1to3()
 
 	level_info.x = 35;
 	level_info.y = 1710;
-	level_info.w = 275;
+	level_info.w = 310;
 	level_info.h = 7;
 
 	limit_line.x = 34;
@@ -144,15 +144,13 @@ update_status ModuleScene1to3::Update()
 	
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
-	App->render->Blit(game_sprites_graphics, 0, 233, &level_info, 1.f);
+	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 
 		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
 	}
-
-	App->render->Blit(game_sprites_graphics, 23, 150, &level_info, 1.f);
 
  	return UPDATE_CONTINUE;
 }
