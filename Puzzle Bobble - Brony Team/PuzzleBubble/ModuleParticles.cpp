@@ -7,6 +7,7 @@
 #include "../ModulePlayer.h"
 #include "../ModuleCollision.h"
 #include "ModuleScene1-3.h"
+#include "ModuleAudio.h"
 
 #define BUBBLE_SPEED 3.3f
 
@@ -258,8 +259,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL)
+			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL){
 				active[i]->speed.x *= -1;
+			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
 				if ((int)active[i]->position.y % 2)

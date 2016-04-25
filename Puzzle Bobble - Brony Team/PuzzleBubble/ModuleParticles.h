@@ -6,6 +6,7 @@
 #include "../Globals.h"
 #include "../p2Point.h"
 #include "../ModuleCollision.h"
+#include "ModuleAudio.h"
 
 #define MAX_ACTIVE_PARTICLES 1
 
@@ -51,6 +52,8 @@ public:
 
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
+
+	Mix_Chunk* sfx03 = nullptr;
 
 };
 
