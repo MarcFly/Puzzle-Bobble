@@ -6,6 +6,8 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble/ModuleParticles.h"
 #include "PuzzleBubble/ModuleAudio.h"
+#include "PuzzleBubble/ModuleScene1-3.h"
+#include "PuzzleBubble/ModuleScene4-6.h"
 
 
 #define ANGLE_INCREMENT 85.f/62.f
@@ -582,24 +584,16 @@ update_status ModulePlayer::Update()
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 		
 		int rand = 0;
-		//int Bubble_count[9];
+		int Bubble_count[9];
 
-		/*
-
-		while (true){
-			for (int y = 0; y < 12; y++)
-				for (int x = 0; x < 8; x++){
-					ModuleScene;
-					if (Bubble_count[0] == 8) break;
-				}
-
-			if (Bubble_count[0] == 8) break;
-			else Bubble_count[0] = 0;
-
-			rand = 
+		if (lvl <= 3){
+			board_copy = &App->scene_1to3->bubble_board[0][0];
 		}
 
-		*/
+		else if (lvl <= 6){
+
+		}
+
 
 		//for now I put rand to 2 so it i s Red = 2
 		rand = 2;

@@ -38,7 +38,9 @@ public:
 	int crank_pos;
 	int bubwheel_pos;
 	int change_sprite;
-	int board_copy[12][8];
+	int* board_copy;
+
+	int lvl = 0;
 
 	//audio
 	Mix_Chunk* sfx01 = nullptr;

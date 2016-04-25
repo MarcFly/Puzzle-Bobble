@@ -25,7 +25,6 @@ public:
 	SDL_Rect limit_line;
 	SDL_Rect level_info;
 
-	int lvl_check = 3;
 };
 
 #endif 

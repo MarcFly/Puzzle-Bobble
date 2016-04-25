@@ -52,6 +52,7 @@ update_status ModuleSceneMainMenu::Update()
 	App->render->Blit(UI_graphics, 60, 150, &(UI.GetCurrentFrame()), 0.75f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+		App->player->lvl++;
 		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
 	}
 

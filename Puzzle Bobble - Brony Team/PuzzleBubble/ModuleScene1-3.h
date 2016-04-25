@@ -31,6 +31,7 @@ public:
 	SDL_Rect level_info;
 	int bubble_board[12][8];
 	int prev_bb[12][8];
+
 };
 
 #endif 

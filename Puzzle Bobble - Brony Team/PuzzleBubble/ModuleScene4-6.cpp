@@ -77,7 +77,7 @@ update_status ModuleScene4to6::Update()
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
+		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
 	}
 
 	return UPDATE_CONTINUE;

@@ -121,7 +121,6 @@ bool ModuleScene1to3::Start()
 		for (int x = 0; x < 8; x++) {
 			bubble_board[y][x] = tmp[0][y][x];
 			prev_bb[y][x] = tmp[0][y][x];
-			//ModulePlayer::board_copy[y][x] = tmp[y][x];
 		}
 	}
 
@@ -210,8 +209,8 @@ update_status ModuleScene1to3::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-		/*lvl_check++;
-		if (lvl_check == 3)*/ App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
+		App->player->lvl++;
+		if (App->player->lvl == 4) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
 	}
 
