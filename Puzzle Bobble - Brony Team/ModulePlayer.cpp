@@ -5,8 +5,6 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "PuzzleBubble/ModuleParticles.h"
-#include "PuzzleBubble/ModuleAudio.h"
-#include "SDL_mixer/include/SDL_mixer.h"
 
 #define ANGLE_INCREMENT 85.f/62.f
 
@@ -604,8 +602,6 @@ update_status ModulePlayer::Update()
 		//for now I put rand to 2 so it i s Red = 2
 		rand = 2;
 		App->particles->AddParticle(App->particles->Bubble[rand], App->particles->Bubble[rand].position.x, App->particles->Bubble[rand].position.y, COLLIDER_PLAYER_SHOT);
-		Mix_Chunk* sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");
-		Mix_PlayChannel(-1, sfx01, 0);
 	}
 
 	// BLITS

@@ -52,9 +52,9 @@ update_status ModuleAudio::Update()
 		Mix_PlayMusic(music03, -1);
 	}
 
-	//if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
-	//	Mix_PlayChannel(-1, sfx01, 0);
-	//}
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+		Mix_PlayChannel(-1, sfx01, 0);
+	}
 	return UPDATE_CONTINUE;
 }
 
