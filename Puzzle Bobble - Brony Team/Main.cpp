@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "Application.h"
 #include "Globals.h"
 #include "MemLeaks.h"
@@ -20,6 +21,7 @@ Application* App = nullptr;
 
 int main(int argc, char* argv[])
 {
+
 	ReportMemoryLeaks();
 
 	int main_return = EXIT_FAILURE;

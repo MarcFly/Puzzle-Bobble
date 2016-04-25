@@ -1,3 +1,6 @@
+#include <math.h>
+#include <time.h>
+#include <stdlib.h>
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -13,8 +16,11 @@
 #define ANGLE_INCREMENT 85.f/62.f
 
 
+
 ModulePlayer::ModulePlayer()
 {
+	srand(time(NULL));
+
 	// tube 
 
 	tube.x = 556;
@@ -538,12 +544,14 @@ bool ModulePlayer::Start()
 	player_angle = 90;
 
 	graphics = App->textures->Load("Sprites/Player sprites.png");
+
 	return ret;
 }
 
 
 update_status ModulePlayer::Update()
 {
+
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
@@ -583,24 +591,68 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 
+		//Making the Board pointer look at actual level
+		board_copy = new int[96];
+
+		if (lvl <= 3) board_copy = &App->scene_1to3->bubble_board[0][0];
+
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 		
-		int rand = 0;
+		int rnd = 0;
 		int Bubble_count[9];
-
-		if (lvl <= 3){
-			board_copy = &App->scene_1to3->bubble_board[0][0];
-		}
-
-		else if (lvl <= 6){
-
-		}
-
-
-		//for now I put rand to 2 so it i s Red = 2
-		rand = 2;
-		App->particles->AddParticle(App->particles->Bubble[rand], App->particles->Bubble[rand].position.x, App->particles->Bubble[rand].position.y, COLLIDER_PLAYER_SHOT);
 		
+		for (int i = 0; i < 9; i++)
+			Bubble_count[i] = 0;
+
+		for(int i = 0; i < 96; i++){													//I use rnd to check the columns we have passed for each row, so I can track how many empty spaces are in a row to a max of 8
+
+			if (Bubble_count[0] == 8) i = 96;
+			
+  			Bubble_count[*board_copy]++;
+
+			board_copy++;
+			rnd++;
+
+			if (rnd == 8 && Bubble_count[0] != 8){
+				rnd = 0;
+				Bubble_count[0] = 0;
+			}
+
+		}
+
+		Bubble_count[0] = 0;
+
+		for (int i = 1; i < 9; i++)
+			Bubble_count[0] += Bubble_count[i];
+
+		rnd = rand() % Bubble_count[0] + 1;
+
+		Bubble_count[0] = 1;
+
+		while (true){        //Bubble_count[0] is now used to check the amount of operations made and as a changing variable to make the operation
+
+			if (rnd -= Bubble_count[Bubble_count[0]] <= 0){
+
+				rnd = Bubble_count[0];
+				break;
+			}
+
+			rnd -= Bubble_count[0];
+			
+			Bubble_count[0]++;
+		}
+
+		//for now I put rand to 2 so it is Red = 2
+		//rnd = 2;
+		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
+		
+		//delete the pointer
+		if (board_copy != nullptr)
+			delete[96] board_copy;
+
+
+
+
 		//Shoot audio
 		sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");
 		Mix_PlayChannel(-1, sfx01, 0);

@@ -38,7 +38,7 @@ public:
 	int crank_pos;
 	int bubwheel_pos;
 	int change_sprite;
-	int* board_copy;
+	int* board_copy = nullptr;
 
 	int lvl = 0;
 
