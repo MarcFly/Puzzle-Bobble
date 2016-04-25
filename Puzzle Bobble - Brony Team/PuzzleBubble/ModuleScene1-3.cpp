@@ -124,6 +124,38 @@ bool ModuleScene1to3::Start()
 		}
 	}
 
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			switch (bubble_board[y][x]) {
+			case R:
+				if (y % 2)
+					App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				else
+					App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				break;
+			case G:
+				if (y % 2)
+					App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				else
+					App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				break;
+			case B:
+				if (y % 2)
+					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				else
+					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				break;
+			case Y:
+				if (y % 2)
+					App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				else
+					App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+				break;
+			}
+		}
+	}
+
 	LOG("Loading textures");
 	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
 	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
@@ -178,37 +210,6 @@ update_status ModuleScene1to3::Update()
 		/*lvl_check++;
 		if (lvl_check == 3)*/ App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
-	}
-
-	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 8; x++) {
-			switch (bubble_board[y][x]) {
-			case R:
-				if (y % 2)
-					App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				else
-					App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				break;
-			case G:
-				if (y % 2)
-					App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				else
-					App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				break;
-			case B:
-				if (y % 2)
-					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				else
-					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				break;
-			case Y:
-				if (y % 2)
-					App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				else
-					App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
-				break;
-			}
-		}
 	}
 
  	return UPDATE_CONTINUE;
