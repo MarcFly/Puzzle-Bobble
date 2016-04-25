@@ -648,7 +648,7 @@ update_status ModulePlayer::Update()
 		
 		//delete the pointer
 		if (board_copy != nullptr)
-			delete[96] board_copy;
+			delete[] board_copy;
 
 
 
