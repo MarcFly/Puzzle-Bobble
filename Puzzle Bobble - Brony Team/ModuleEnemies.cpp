@@ -5,7 +5,7 @@
 #include "PuzzleBubble/ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
-#include "Bobble_Blue.h"
+#include "Bobbles.h"
 
 #define SPAWN_MARGIN 50
 
@@ -128,6 +128,34 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::BOBBLE_BLUE:
 			enemies[i] = new Bobble_Blue(info.x,info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_RED:
+			enemies[i] = new Bobble_Red(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_GREEN:
+			enemies[i] = new Bobble_Green(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_YELLOW:
+			enemies[i] = new Bobble_Yellow(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_BLACK:
+			enemies[i] = new Bobble_Black(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_ORANGE:
+			enemies[i] = new Bobble_Orange(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_GREY:
+			enemies[i] = new Bobble_Grey(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BOBBLE_PURPLE:
+			enemies[i] = new Bobble_Purple(info.x, info.y);
 			break;
 		}
 	}

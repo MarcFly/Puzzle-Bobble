@@ -2,7 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
-#include "Bobble_Blue.h"
+#include "Bobbles.h"
 
 #define MAX_ENEMIES 100
 
