@@ -120,6 +120,7 @@ bool ModuleScene1to3::Start()
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
 			bubble_board[y][x] = tmp[0][y][x];
+			prev_bb[y][x] = tmp[0][y][x];
 			//ModulePlayer::board_copy[y][x] = tmp[y][x];
 		}
 	}
@@ -204,7 +205,9 @@ update_status ModuleScene1to3::Update()
 
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 
-	
+	if (App->input->keyboard[SDL_SCANCODE_G] == 1) {
+		bubble_board[0][0] = G;
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		/*lvl_check++;
@@ -213,4 +216,56 @@ update_status ModuleScene1to3::Update()
 	}
 
  	return UPDATE_CONTINUE;
+}
+
+update_status ModuleScene1to3::PostUpdate(){
+	
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			if (prev_bb[y][x] != bubble_board[y][x]) {
+
+				App->enemies->EraseAll();
+
+				for (int y = 0; y < 12; y++) {
+					for (int x = 0; x < 8; x++) {
+						switch (bubble_board[y][x]) {
+						case R:
+							if (y % 2)
+								App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							else
+								App->enemies->AddEnemy(BOBBLE_RED, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							break;
+						case G:
+							if (y % 2)
+								App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							else
+								App->enemies->AddEnemy(BOBBLE_GREEN, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							break;
+						case B:
+							if (y % 2)
+								App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							else
+								App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							break;
+						case Y:
+							if (y % 2)
+								App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							else
+								App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+			prev_bb[y][x] = bubble_board[y][x];
+		}
+	}
+
+	return UPDATE_CONTINUE;
 }

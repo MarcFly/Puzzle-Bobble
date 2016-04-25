@@ -17,6 +17,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	update_status PostUpdate();
 	bool CleanUp();
 
 public:
@@ -29,7 +30,7 @@ public:
 	SDL_Rect limit_line;
 	SDL_Rect level_info;
 	int bubble_board[12][8];
-
+	int prev_bb[12][8];
 };
 
 #endif 
