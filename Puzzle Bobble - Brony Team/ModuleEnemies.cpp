@@ -75,6 +75,15 @@ update_status ModuleEnemies::PostUpdate()
 		}
 	}
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 
