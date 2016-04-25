@@ -53,6 +53,7 @@ public:
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
 
+	//sound fx
 	Mix_Chunk* sfx03 = nullptr;
 
 };
