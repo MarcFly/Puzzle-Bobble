@@ -64,25 +64,63 @@ bool ModuleScene1to3::Start()
 
 	LOG("Loading 1-3 scene");
 
-	int tmp[12][8] = {
-		{ R, R, Y, Y, B, B, G, G },
-		{ E, R, R, Y, Y, B, B, G },
-		{ B, B, G, G, R, R, Y, Y },
-		{ E, B, G, G, R, R, Y, Y },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E },
-		{ E, E, E, E, E, E, E, E }
+	int tmp[3][12][8] = {
+
+		//LEVEL 1
+		{
+
+			{ R, R, Y, Y, B, B, G, G },
+			{ E, R, R, Y, Y, B, B, G },
+			{ B, B, G, G, R, R, Y, Y },
+			{ E, B, G, G, R, R, Y, Y },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E }
+
+		},
+
+		//LEVEL 2
+		{
+			{ R, R, Y, Y, B, B, G, G },
+			{ E, R, R, Y, Y, B, B, G },
+			{ B, B, G, G, R, R, Y, Y },
+			{ E, B, G, G, R, R, Y, Y },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E }
+		},
+
+		//LEVEL 3
+		{
+			{ R, R, Y, Y, B, B, G, G },
+			{ E, R, R, Y, Y, B, B, G },
+			{ B, B, G, G, R, R, Y, Y },
+			{ E, B, G, G, R, R, Y, Y },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E },
+			{ E, E, E, E, E, E, E, E }
+		},
 	};
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
-			bubble_board[y][x] = tmp[y][x];
-			ModulePlayer::board_copy[y][x] = tmp[y][x];
+			bubble_board[y][x] = tmp[0][y][x];
+			//ModulePlayer::board_copy[y][x] = tmp[y][x];
 		}
 	}
 
@@ -166,8 +204,8 @@ update_status ModuleScene1to3::Update()
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-
-		if (lvl_check = 3) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
+		/*lvl_check++;
+		if (lvl_check == 3)*/ App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
 	}
 

@@ -4,6 +4,7 @@
 #include "../Module.h"
 #include "../Animation.h"
 
+
 #define NUM_BUBBLES_1 5
 
 struct SDL_Texture;
@@ -29,8 +30,6 @@ public:
 	SDL_Rect level_info;
 	int bubble_board[12][8];
 
-
-	int lvl_check = 3;
 };
 
 #endif 

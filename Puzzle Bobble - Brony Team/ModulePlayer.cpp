@@ -581,7 +581,7 @@ update_status ModulePlayer::Update()
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 		
 		int rand = 0;
-		int Bubble_count[9];
+		//int Bubble_count[9];
 
 		/*
 
