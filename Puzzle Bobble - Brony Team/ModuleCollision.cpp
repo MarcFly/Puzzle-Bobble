@@ -81,7 +81,7 @@ update_status ModuleCollision::Update()
 				if(matrix[c1->type][c2->type] && c1->callback) 
 					c1->callback->OnCollision(c1, c2);
 				
-				if(matrix[c2->type][c1->type] && c2->callback) 
+ 				if(matrix[c2->type][c1->type] && c2->callback) 
 					c2->callback->OnCollision(c2, c1);
 			}
 		}

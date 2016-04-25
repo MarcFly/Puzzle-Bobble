@@ -49,7 +49,9 @@ private:
 
 public:
 
-	Particle red_bubble;
+	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
+	Particle Bubble[9];
+
 };
 
 #endif // __MODULEPARTICLES_H__

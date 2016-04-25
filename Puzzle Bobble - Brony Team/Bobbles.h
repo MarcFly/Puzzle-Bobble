@@ -8,6 +8,7 @@ class Bobble_Blue: public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -21,6 +22,7 @@ class Bobble_Red : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -34,6 +36,7 @@ class Bobble_Green : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -47,6 +50,7 @@ class Bobble_Yellow : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -60,6 +64,7 @@ class Bobble_Black : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -73,6 +78,7 @@ class Bobble_Orange : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -86,6 +92,7 @@ class Bobble_Grey : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 
@@ -99,6 +106,7 @@ class Bobble_Purple : public Enemy
 private:
 	int original_y = 0;
 	Animation idle;
+	Animation explode;
 
 public:
 

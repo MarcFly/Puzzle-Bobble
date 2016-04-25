@@ -577,7 +577,32 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->red_bubble, App->particles->red_bubble.position.x, App->particles->red_bubble.position.y, COLLIDER_PLAYER_SHOT);
+
+		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
+		
+		int rand = 0;
+		int Bubble_count[9];
+
+		/*
+
+		while (true){
+			for (int y = 0; y < 12; y++)
+				for (int x = 0; x < 8; x++){
+					ModuleScene;
+					if (Bubble_count[0] == 8) break;
+				}
+
+			if (Bubble_count[0] == 8) break;
+			else Bubble_count[0] = 0;
+
+			rand = 
+		}
+
+		*/
+
+		//for now I put rand to 2 so it i s Red = 2
+		rand = 2;
+		App->particles->AddParticle(App->particles->Bubble[rand], App->particles->Bubble[rand].position.x, App->particles->Bubble[rand].position.y, COLLIDER_PLAYER_SHOT);
 	}
 
 	// BLITS
