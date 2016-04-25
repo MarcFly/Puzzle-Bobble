@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModuleEnemies.h"
 
 #define NUM_ARROW_SPRITES 130
 
@@ -36,6 +37,7 @@ public:
 	int crank_pos;
 	int bubwheel_pos;
 	int change_sprite;
+	int board_copy[12][8];
 
 	iPoint position;
 

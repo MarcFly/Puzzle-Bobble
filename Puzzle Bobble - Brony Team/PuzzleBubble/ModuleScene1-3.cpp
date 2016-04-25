@@ -82,6 +82,7 @@ bool ModuleScene1to3::Start()
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
 			bubble_board[y][x] = tmp[y][x];
+			ModulePlayer::board_copy[y][x] = tmp[y][x];
 		}
 	}
 

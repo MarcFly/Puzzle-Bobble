@@ -20,7 +20,7 @@ enum update_status
 };
 
 enum bubble_color {
-	E = 0, R, G, B, Y
+	E = 0, B, R, G, Y, V, O, g, P
 };
 
 #define BUBBLE_OFFSET_X_ODD 71
