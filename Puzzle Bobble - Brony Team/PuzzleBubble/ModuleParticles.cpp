@@ -168,6 +168,8 @@ bool ModuleParticles::CleanUp()
 		}
 	}
 
+	Mix_FreeChunk(sfx03);
+
 	return true;
 }
 
