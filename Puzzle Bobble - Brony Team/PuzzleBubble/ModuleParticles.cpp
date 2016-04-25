@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "../ModulePlayer.h"
 #include "../ModuleCollision.h"
+#include "ModuleScene1-3.h"
 
 #define BUBBLE_SPEED 3.3f
 
@@ -259,9 +260,17 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 		{
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL)
 				active[i]->speed.x *= -1;
+
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
-				active[i]->speed.x = 0;
-				active[i]->speed.y = 0;
+				if ((int)active[i]->position.y % 2)
+					App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1] = R;
+				else
+					App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1] = R;
+				
+				App->collision->EraseCollider(active[i]->collider);
+
+				delete active[i];
+				active[i] = nullptr;
 			}
 		}
 	}
