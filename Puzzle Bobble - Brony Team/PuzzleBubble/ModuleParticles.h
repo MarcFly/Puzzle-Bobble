@@ -13,6 +13,7 @@ struct SDL_Texture;
 
 struct Particle
 {
+	bubble_color color;
 	Collider* collider;
 	Animation anim;
 	uint fx = 0;

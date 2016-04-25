@@ -100,7 +100,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->position.x = x;
 			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				p->collider = App->collision->AddCollider({ p->position.x, p->position.y, 16, 16 }, collider_type, this);
 			active[i] = p;
 			break;
 		}
@@ -133,6 +133,8 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+
+	collider->SetPos(position.x, position.y);
 
 	return ret;
 }
