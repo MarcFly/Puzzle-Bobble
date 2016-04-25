@@ -23,9 +23,9 @@ enum bubble_color {
 	E = 0, R, G, B, Y
 };
 
-#define BUBBLE_OFFSET_X_ODD 62
+#define BUBBLE_OFFSET_X_ODD 71
 #define BUBBLE_OFFSET_Y 8
-#define BUBBLE_OFFSET_X_PAIR 55
+#define BUBBLE_OFFSET_X_PAIR 64
 
 typedef unsigned int uint;
 
