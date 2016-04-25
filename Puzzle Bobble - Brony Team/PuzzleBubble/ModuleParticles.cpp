@@ -7,7 +7,7 @@
 #include "../ModulePlayer.h"
 #include "../ModuleCollision.h"
 
-#define BUBBLE_SPEED 3.f
+#define BUBBLE_SPEED 3.3f
 
 #include "SDL/include/SDL_timer.h"
 
@@ -37,7 +37,7 @@ bool ModuleParticles::Start()
 	Bubble[1].anim.PushBack({ 12, 260, 18, 16 });
 	Bubble[1].anim.loop = false;
 	Bubble[1].anim.speed = 0.11111f;
-	Bubble[1].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[1].life = -1;
 	Bubble[1].position.x = 143;
 	Bubble[1].position.y = 190;
 
@@ -49,7 +49,7 @@ bool ModuleParticles::Start()
 	Bubble[2].anim.PushBack({ 12, 312, 18, 16 });
 	Bubble[2].anim.loop = false;
 	Bubble[2].anim.speed = 0.2f;
-	Bubble[2].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[2].life = -1;
 	Bubble[2].position.x = 143;
 	Bubble[2].position.y = 190;
 
@@ -65,7 +65,7 @@ bool ModuleParticles::Start()
 	Bubble[3].anim.PushBack({ 318, 260, 18, 16 });
 	Bubble[3].anim.loop = false;
 	Bubble[3].anim.speed = 0.11111f;
-	Bubble[3].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[3].life = -1;
 	Bubble[3].position.x = 143;
 	Bubble[3].position.y = 190;
 
@@ -81,7 +81,7 @@ bool ModuleParticles::Start()
 	Bubble[4].anim.PushBack({ 12, 338, 18, 16 });
 	Bubble[4].anim.loop = false;
 	Bubble[4].anim.speed = 0.11111f;
-	Bubble[4].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[4].life = -1;
 	Bubble[4].position.x = 143;
 	Bubble[4].position.y = 190;
 
@@ -97,7 +97,7 @@ bool ModuleParticles::Start()
 	Bubble[5].anim.PushBack({ 318, 286, 18, 16 });
 	Bubble[5].anim.loop = false;
 	Bubble[5].anim.speed = 0.11111f;
-	Bubble[5].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[5].life = -1;
 	Bubble[5].position.x = 143;
 	Bubble[5].position.y = 190;
 
@@ -113,7 +113,7 @@ bool ModuleParticles::Start()
 	Bubble[6].anim.PushBack({ 318, 312, 18, 16 });
 	Bubble[6].anim.loop = false;
 	Bubble[6].anim.speed = 0.11111f;
-	Bubble[6].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[6].life = -1;
 	Bubble[6].position.x = 143;
 	Bubble[6].position.y = 190;
 
@@ -129,7 +129,7 @@ bool ModuleParticles::Start()
 	Bubble[7].anim.PushBack({ 12, 286, 18, 16 });
 	Bubble[7].anim.loop = false;
 	Bubble[7].anim.speed = 0.11111f;
-	Bubble[7].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[7].life = -1;
 	Bubble[7].position.x = 143;
 	Bubble[7].position.y = 190;
 	
@@ -145,7 +145,7 @@ bool ModuleParticles::Start()
 	Bubble[8].anim.PushBack({ 318, 338, 18, 16 });
 	Bubble[8].anim.loop = false;
 	Bubble[8].anim.speed = 0.11111f;
-	Bubble[8].life = 1000; //it should be infinte but since it has no collisions we dont want to get a memory overflow
+	Bubble[8].life = -1;
 	Bubble[8].position.x = 143;
 	Bubble[8].position.y = 190;
 
@@ -234,7 +234,7 @@ bool Particle::Update()
 {
 	bool ret = true;
 
-	if(life > 0)
+	if(life > 0 || life == -1)
 	{
 		if((SDL_GetTicks() - born) > life)
 			ret = false;
@@ -259,6 +259,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 		{
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL)
 				active[i]->speed.x *= -1;
+			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
+				active[i]->speed.x = 0;
+				active[i]->speed.y = 0;
+			}
 		}
 	}
 }

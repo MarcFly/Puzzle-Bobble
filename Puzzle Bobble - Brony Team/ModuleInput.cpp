@@ -51,7 +51,7 @@ update_status ModuleInput::PreUpdate()
 			if (keyboard[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
 				keyboard[i] = KEY_UP;
 			else
-				keyboard[i] = KEY_IDLE;
+		keyboard[i] = KEY_IDLE;
 		}
 	}
 

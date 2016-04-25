@@ -32,6 +32,12 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_CEILING] = true;
 
+	matrix[COLLIDER_CEILING][COLLIDER_WALL] = false;
+	matrix[COLLIDER_CEILING][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_CEILING][COLLIDER_BOBBLE] = false;
+	matrix[COLLIDER_CEILING][COLLIDER_PLAYER_SHOT] = true;
+	matrix[COLLIDER_CEILING][COLLIDER_CEILING] = false;
+
 }
 
 // Destructor
@@ -78,11 +84,11 @@ update_status ModuleCollision::Update()
 
 			if(c1->CheckCollision(c2->rect) == true)
 			{
-				if(matrix[c1->type][c2->type] && c1->callback) 
+			if(matrix[c1->type][c2->type] && c1->callback) 
 					c1->callback->OnCollision(c1, c2);
-				
- 				if(matrix[c2->type][c1->type] && c2->callback) 
+			if(matrix[c2->type][c1->type] && c2->callback) 
 					c2->callback->OnCollision(c2, c1);
+					
 			}
 		}
 	}

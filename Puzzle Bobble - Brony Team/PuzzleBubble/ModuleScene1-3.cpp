@@ -10,7 +10,7 @@
 #include "ModuleParticles.h"
 #include "../ModuleCollision.h"
 #include "../ModuleEnemies.h"
-
+#include "ModuleAudio.h"
 
 ModuleScene1to3::ModuleScene1to3()
 {
@@ -195,6 +195,7 @@ bool ModuleScene1to3::CleanUp()
 
 update_status ModuleScene1to3::Update()
 {
+
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);

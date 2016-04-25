@@ -540,7 +540,6 @@ update_status ModulePlayer::Update()
 {
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
-		//aqui va q giri la flecha
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
