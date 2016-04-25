@@ -94,6 +94,7 @@ bool ModuleScene1to3::Start()
 	App->player->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
+	App->enemies->Enable();
 
 	App->collision->AddCollider({ 78, 15, 9, 215 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 78, 15, 145, 8}, COLLIDER_CEILING);
@@ -148,6 +149,7 @@ bool ModuleScene1to3::CleanUp()
 	App->player->Disable();
 	App->particles->Disable();
 	App->collision->Disable();
+	App->enemies->Disable();
 
 	return true;
 }
