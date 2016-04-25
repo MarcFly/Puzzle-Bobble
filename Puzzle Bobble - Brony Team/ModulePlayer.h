@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleEnemies.h"
+#include "PuzzleBubble/ModuleAudio.h"
 
 #define NUM_ARROW_SPRITES 130
 
@@ -38,6 +39,9 @@ public:
 	int bubwheel_pos;
 	int change_sprite;
 	int board_copy[12][8];
+
+	//audio
+	Mix_Chunk* sfx01 = nullptr;
 
 	iPoint position;
 
