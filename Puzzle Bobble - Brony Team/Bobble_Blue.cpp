@@ -5,7 +5,6 @@
 Bobble_Blue::Bobble_Blue(int x, int y) : Enemy(x, y)
 {
 	idle.PushBack({ 12, 260, 16, 16 });
-	idle.PushBack({ 32, 260, 16, 16 });
 	idle.speed = 0.05;
 
 	animation = &idle;

@@ -105,13 +105,11 @@ bool ModuleScene1to3::Start()
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
-			if (y % 2) {
-				if (bubble_board[y][x]) {
+			if (bubble_board[y][x]) {
+				if (y % 2) {
 					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
 				}
-			}
-			else {
-				if (bubble_board[y][x]) {
+				else {
 					App->enemies->AddEnemy(BOBBLE_BLUE, ((x + 1) * 16) + BUBBLE_OFFSET_X_PAIR, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
 				}
 			}
