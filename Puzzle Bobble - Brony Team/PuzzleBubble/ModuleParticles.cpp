@@ -261,6 +261,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 		{
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL){
 				active[i]->speed.x *= -1;
+
+				//sfx 03 is played when a bubble collides with a wall
 				sfx03 = Mix_LoadWAV("../../Audio/SFX/SFX 03.wav");
 				Mix_PlayChannel(-1, sfx03, 0);
 			}
