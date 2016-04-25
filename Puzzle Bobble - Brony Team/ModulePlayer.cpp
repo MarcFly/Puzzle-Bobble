@@ -516,7 +516,9 @@ ModulePlayer::ModulePlayer()
 }
 
 ModulePlayer::~ModulePlayer()
-{}
+{
+	Mix_FreeChunk(sfx01);
+}
 
 bool ModulePlayer::Start()
 {
