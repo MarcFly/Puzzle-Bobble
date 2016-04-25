@@ -257,9 +257,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			delete active[i];
-			active[i] = nullptr;
-			break;
+			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL)
+				active[i]->speed.x *= -1;
 		}
 	}
 }
