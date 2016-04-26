@@ -11,6 +11,7 @@ class Enemy
 {
 protected:
 	Animation* animation;
+public:
 	Collider* collider;
 
 public:

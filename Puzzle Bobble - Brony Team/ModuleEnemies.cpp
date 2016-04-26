@@ -99,6 +99,7 @@ bool ModuleEnemies::EraseAll() {
 	{
 		if (enemies[i] != nullptr)
 		{
+			App->collision->EraseCollider(enemies[i]->collider);
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
