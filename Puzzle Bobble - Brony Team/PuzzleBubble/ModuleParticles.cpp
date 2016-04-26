@@ -282,7 +282,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
-				App->scene_1to3->bubble_board[2][2] = App->player->rnd;
+				App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16)- 1)] = App->player->rnd;
 				active[i]->collider->to_delete = true;
 
 				App->player->rnd = 0;
