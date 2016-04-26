@@ -645,7 +645,7 @@ update_status ModulePlayer::Update()
 			total_bubs += Bubble_count[i];
 
 
-		rnd = rand() % total_bubs + 1; 
+		rnd = rand() % (total_bubs-1) + 1; 
 
 
 		for(int i = 1; i < 9; i++){  
@@ -663,7 +663,7 @@ update_status ModulePlayer::Update()
 
 		//for now I put rand to 2 so it is Red = 2
 		
-		//rnd = 2;
+		//rnd = 3;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 
 		//Shoot audio

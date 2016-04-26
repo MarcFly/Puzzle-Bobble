@@ -157,6 +157,9 @@ bool ModuleParticles::Start()
 	Bubble[8].position.x = 143;
 	Bubble[8].position.y = 190;
 
+
+	point_rnd = App->player->rnd;
+
 	return true;
 }
 
@@ -183,13 +186,6 @@ LOG("Unloading particles");
 
 update_status ModuleParticles::Update()
 {
-	switch (App->player->rnd)
-	case 1:
-		Bubble[1].speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
-		Bubble[1].speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
-	
-	
-	LOG("%f", App->player->player_angle);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -230,6 +226,10 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider({ p->position.x, p->position.y, 16, 16 }, collider_type, this);
 			active[i] = p;
+
+			p->speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;;
+			p->speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;;
+
 			break;
 		}
 	}
