@@ -524,6 +524,8 @@ ModulePlayer::ModulePlayer()
 ModulePlayer::~ModulePlayer()
 {
 	Mix_FreeChunk(sfx01);
+	if (board_copy != nullptr)
+		delete[] board_copy;
 }
 
 bool ModulePlayer::Start()
@@ -545,13 +547,15 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Sprites/Player sprites.png");
 
+	board_copy = new int[96];
+
 	return ret;
 }
 
 
 update_status ModulePlayer::Update()
 {
-
+	srand(time(NULL));
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
@@ -592,19 +596,20 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 
 		//Making the Board pointer look at actual level
-		board_copy = new int[96];
+		
 
 		if (lvl <= 3) board_copy = &App->scene_1to3->bubble_board[0][0];
 
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 		
 		int rnd = 0;
+		
 		int Bubble_count[9];
 		
 		for (int i = 0; i < 9; i++)
 			Bubble_count[i] = 0;
 
-		for(int i = 0; i < 96; i++){													//I use rnd to check the columns we have passed for each row, so I can track how many empty spaces are in a row to a max of 8
+		for(int i = 0; i < 96; i++){		//I use rnd to check the columns we have passed for each row, so I can track how many empty spaces are in a row to a max of 8
 
 			if (Bubble_count[0] == 8) i = 96;
 			
@@ -643,15 +648,9 @@ update_status ModulePlayer::Update()
 		}
 
 		//for now I put rand to 2 so it is Red = 2
+		
 		//rnd = 2;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
-		
-		//delete the pointer
-		if (board_copy != nullptr)
-			delete[] board_copy;
-
-
-
 
 		//Shoot audio
 		sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");

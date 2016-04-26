@@ -120,7 +120,7 @@ bool ModuleScene1to3::Start()
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
 			bubble_board[y][x] = tmp[App->player->lvl][y][x];
-			prev_bb[y][x] = tmp[0][App->player->lvl][x];
+			prev_bb[y][x] = tmp[App->player->lvl][y][x];
 		}
 	}
 
