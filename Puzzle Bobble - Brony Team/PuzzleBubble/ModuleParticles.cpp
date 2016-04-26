@@ -31,6 +31,8 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
 
+	Bubble[0].life = 0;
+
 	// Blue Bubble particle
 	Bubble[1].anim.PushBack({ 12, 260, 18, 16 });
 	Bubble[1].anim.PushBack({ 32, 260, 18, 16 });
@@ -182,8 +184,8 @@ LOG("Unloading particles");
 update_status ModuleParticles::Update()
 {
 	
-	Bubble[2].speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
-	Bubble[2].speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+	Bubble[App->player->rnd].speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+	Bubble[App->player->rnd].speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -279,7 +281,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				App->scene_1to3->bubble_board[2][2] = App->player->rnd;
 				active[i]->collider->to_delete = true;
 
+<<<<<<< HEAD
 				//delete active[i];
+=======
+				App->player->rnd = 0;
+
+				delete active[i];
+>>>>>>> origin/master
 				active[i] = nullptr;
 			}
 		}
