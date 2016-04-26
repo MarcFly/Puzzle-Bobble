@@ -7,6 +7,7 @@
 #include "../p2Point.h"
 #include "../ModuleCollision.h"
 #include "ModuleAudio.h"
+#include "../ModulePlayer.h"
 
 #define MAX_ACTIVE_PARTICLES 1
 
@@ -52,6 +53,7 @@ public:
 
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
+	//int& rnd_here = App->player->rnd;
 
 	//sound fx
 	Mix_Chunk* sfx03 = nullptr;

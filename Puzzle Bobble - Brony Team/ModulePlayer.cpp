@@ -530,6 +530,8 @@ ModulePlayer::~ModulePlayer()
 
 bool ModulePlayer::Start()
 {
+	srand(time(NULL));
+
 	LOG("Loading player textures");
 	bool ret = true;
 
@@ -548,14 +550,14 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Sprites/Player sprites.png");
 
 	board_copy = new int[96];
-
+	rnd = 0;
 	return ret;
 }
 
 
 update_status ModulePlayer::Update()
 {
-	srand(time(NULL));
+
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
@@ -593,7 +595,7 @@ update_status ModulePlayer::Update()
 		change_sprite++;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->Bubble[rnd].life == 0) {
 
 		//Making the Board pointer look at actual level
 		
@@ -601,8 +603,7 @@ update_status ModulePlayer::Update()
 		if (lvl <= 3) board_copy = &App->scene_1to3->bubble_board[0][0];
 
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
-		
-		rnd = 0;
+	
 		
 		int Bubble_count[9];
 		
@@ -649,7 +650,7 @@ update_status ModulePlayer::Update()
 
 		//for now I put rand to 2 so it is Red = 2
 		
-		rnd = 2;
+		//rnd = 2;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 
 		//Shoot audio
