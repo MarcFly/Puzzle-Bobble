@@ -270,12 +270,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
-				if ((int)active[i]->position.y % 2)
-					App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1] = R;
-				else
-					App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1] = R;
+				//if ((int)active[i]->position.y % 2)
+				//	App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1] = R;
+				//else
+				//	App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1] = R;
 				
-				App->collision->EraseCollider(active[i]->collider);
+				active[i]->collider->to_delete = true;
 
 				delete active[i];
 				active[i] = nullptr;
