@@ -53,7 +53,7 @@ public:
 
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
-	//int& rnd_here = App->player->rnd;
+	int point_rnd;
 
 	//sound fx
 	Mix_Chunk* sfx03 = nullptr;
