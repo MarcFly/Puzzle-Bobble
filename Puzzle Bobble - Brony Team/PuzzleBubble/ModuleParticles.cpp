@@ -224,7 +224,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->position.x = x;
 			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)
-				p->collider = App->collision->AddCollider({ p->position.x, p->position.y, 16, 16 }, collider_type, this);
+				p->collider = App->collision->AddCollider({ p->position.x, p->position.y, 14, 14 }, collider_type, this);
 			active[i] = p;
 
 			p->speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;;
@@ -262,7 +262,7 @@ bool Particle::Update()
 	position.x += speed.x;
 	position.y += speed.y;
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x + 1, position.y + 1);
 
 	return ret;
 }
