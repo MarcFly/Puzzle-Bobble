@@ -526,12 +526,9 @@ ModulePlayer::~ModulePlayer()
 }
 
 bool ModulePlayer::CleanUp() {
+	LOG("\nFreeing sfx01");
 	Mix_FreeChunk(sfx01);
-	if (board_copy != nullptr) {
-		delete[] board_copy;
-		board_copy = nullptr;
-	}
-
+	LOG("\nPlayer CleanUp exited successfully");
 	return true;
 }
 
@@ -556,7 +553,6 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Sprites/Player sprites.png");
 
-	board_copy = new int[96];
 	rnd = 0;
 	return ret;
 }
@@ -605,13 +601,21 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->Bubble[rnd].life == 0) {
 
 		//Making the Board pointer look at actual level
-		
 
-		if (lvl <= 3) board_copy = &App->scene_1to3->bubble_board[0][0];
 
+		int board_it = 0;
+
+		if (lvl <= 3) {
+			for (int y = 0; y < 12; y++) {
+				for (int x = 0; x < 8; x++) {
+					board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
+					board_it++;
+				}
+			}
+		}
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 	
-		
+		board_it = 0;
 		int Bubble_count[9];
 		
 		for (int i = 0; i < 9; i++)
@@ -621,9 +625,9 @@ update_status ModulePlayer::Update()
 
 			if (Bubble_count[0] == 8) i = 96;
 			
-  			Bubble_count[*board_copy]++;
+  			Bubble_count[board_copy[board_it]]++;
 
-			board_copy++;
+			board_it++;
 			rnd++;
 
 			if (rnd == 8 && Bubble_count[0] != 8){
