@@ -17,6 +17,7 @@ public:
 	iPoint position;
 
 public:
+	Enemy(){};
 	Enemy(int x, int y);
 	virtual ~Enemy();
 

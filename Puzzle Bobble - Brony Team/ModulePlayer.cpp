@@ -523,9 +523,16 @@ ModulePlayer::ModulePlayer()
 
 ModulePlayer::~ModulePlayer()
 {
+}
+
+bool ModulePlayer::CleanUp() {
 	Mix_FreeChunk(sfx01);
-	if (board_copy != nullptr)
+	if (board_copy != nullptr) {
 		delete[] board_copy;
+		board_copy = nullptr;
+	}
+
+	return true;
 }
 
 bool ModulePlayer::Start()

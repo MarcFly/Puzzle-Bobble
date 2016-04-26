@@ -222,11 +222,17 @@ update_status ModuleScene1to3::Update()
 
 update_status ModuleScene1to3::PostUpdate(){
 	
+	to_erase = false;
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
 			if (prev_bb[y][x] != bubble_board[y][x]) {
+				to_erase = true;
+			}
+		}
+	}
 
+			if (to_erase) {
 				App->enemies->EraseAll();
 
 				for (int y = 0; y < 12; y++) {
@@ -256,12 +262,11 @@ update_status ModuleScene1to3::PostUpdate(){
 							else
 								App->enemies->AddEnemy(BOBBLE_YELLOW, ((x + 1) * 16) + BUBBLE_OFFSET_X_ODD, ((y + 1) * 15) + BUBBLE_OFFSET_Y);
 							break;
-						}
+						
 					}
 				}
 			}
 		}
-	}
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {

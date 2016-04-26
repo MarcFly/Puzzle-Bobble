@@ -20,6 +20,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 
 public:
 		double player_angle;
@@ -38,7 +39,7 @@ public:
 	int crank_pos;
 	int bubwheel_pos;
 	int change_sprite;
-	int* board_copy = nullptr;
+	int* board_copy;
 	int rnd;
 
 	int lvl = 0;

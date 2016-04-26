@@ -15,8 +15,10 @@
 
 ModuleParticles::ModuleParticles()
 {
-	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-		active[i] = nullptr;
+//for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+//	active[i] = nullptr;
+for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+		active[i] = new Particle;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -24,6 +26,8 @@ ModuleParticles::~ModuleParticles()
 
 bool ModuleParticles::Start()
 {
+	
+
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
 
@@ -157,7 +161,7 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(graphics);
+	
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -167,9 +171,11 @@ bool ModuleParticles::CleanUp()
 			active[i] = nullptr;
 		}
 	}
-
+	LOG("Unloading particles");
 	Mix_FreeChunk(sfx03);
-
+	LOG("Unloading particles");
+App->textures->Unload(graphics);
+LOG("Unloading particles");
 	return true;
 }
 
@@ -270,14 +276,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
-				//if ((int)active[i]->position.y % 2)
-				//	App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1] = R;
-				//else
-				//	App->scene_1to3->bubble_board[(((int)active[i]->position.y - BUBBLE_OFFSET_Y) / 15) - 1][(((int)active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1] = R;
-				
+				App->scene_1to3->bubble_board[2][2] = App->player->rnd;
 				active[i]->collider->to_delete = true;
 
-				delete active[i];
+				//delete active[i];
 				active[i] = nullptr;
 			}
 		}

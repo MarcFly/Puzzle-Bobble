@@ -13,6 +13,7 @@ private:
 public:
 
 	Bobble_Blue(int x, int y);
+	~Bobble_Blue(){}
 };
 
 //
@@ -27,6 +28,7 @@ private:
 public:
 
 	Bobble_Red(int x, int y);
+	~Bobble_Red(){}
 };
 
 //
@@ -41,6 +43,7 @@ private:
 public:
 
 	Bobble_Green(int x, int y);
+	~Bobble_Green(){}
 };
 
 //
@@ -55,6 +58,7 @@ private:
 public:
 
 	Bobble_Yellow(int x, int y);
+	~Bobble_Yellow(){}
 };
 
 //
@@ -69,6 +73,7 @@ private:
 public:
 
 	Bobble_Black(int x, int y);
+	~Bobble_Black(){}
 };
 
 //
@@ -83,6 +88,7 @@ private:
 public:
 
 	Bobble_Orange(int x, int y);
+	~Bobble_Orange(){}
 };
 
 //
@@ -97,6 +103,7 @@ private:
 public:
 
 	Bobble_Grey(int x, int y);
+	~Bobble_Grey(){}
 };
 
 //
@@ -111,6 +118,7 @@ private:
 public:
 
 	Bobble_Purple(int x, int y);
+	~Bobble_Purple(){}
 };
 
 

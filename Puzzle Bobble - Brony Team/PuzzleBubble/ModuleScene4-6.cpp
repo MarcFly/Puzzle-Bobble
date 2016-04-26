@@ -44,6 +44,7 @@ bool ModuleScene4to6::Start()
 	App->player->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
+	App->enemies->Enable();
 
 	App->collision->AddCollider({ 78, 15, 9, 215 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 78, 15, 145, 8 }, COLLIDER_CEILING);
@@ -63,6 +64,7 @@ bool ModuleScene4to6::CleanUp()
 	App->player->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
+	App->enemies->Disable();
 
 	return true;
 }

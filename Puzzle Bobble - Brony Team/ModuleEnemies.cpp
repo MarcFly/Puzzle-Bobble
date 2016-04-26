@@ -12,7 +12,7 @@
 ModuleEnemies::ModuleEnemies()
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		enemies[i] = nullptr;
+		enemies[i] = new Enemy;
 }
 
 // Destructor
@@ -35,12 +35,9 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
-			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
 				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
-			}
 		}
 	}
 
