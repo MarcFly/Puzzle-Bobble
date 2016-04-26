@@ -617,46 +617,48 @@ update_status ModulePlayer::Update()
 	
 		board_it = 0;
 		int Bubble_count[9];
+		int total_bubs = 0;
+		int columns = 0;
+		int section = 1;
 		
 		for (int i = 0; i < 9; i++)
 			Bubble_count[i] = 0;
 
-		for(int i = 0; i < 96; i++){		//I use rnd to check the columns we have passed for each row, so I can track how many empty spaces are in a row to a max of 8
+		for(int i = 0; i < 96; i++){
 
-			if (Bubble_count[0] == 8) i = 96;
+			if (Bubble_count[0] == 8) break;
 			
   			Bubble_count[board_copy[board_it]]++;
 
 			board_it++;
-			rnd++;
+			columns++;
 
-			if (rnd == 8 && Bubble_count[0] != 8){
-				rnd = 0;
+			if (columns == 8 && Bubble_count[0] != 8){
+				columns = 0;
 				Bubble_count[0] = 0;
 			}
 
 		}
 
-		Bubble_count[0] = 0; //Bubble_count[0] is used as count for the total amount of balls left
 
 		for (int i = 1; i < 9; i++)
-			Bubble_count[0] += Bubble_count[i];
+			total_bubs += Bubble_count[i];
 
-		rnd = rand() % Bubble_count[0] + 1;
 
-		Bubble_count[0] = 1;
+		rnd = rand() % total_bubs + 1; 
 
-		while (true){        //Bubble_count[0] is now used to check the amount of operations made and as a changing variable to make the operation
 
-			if (rnd -= Bubble_count[Bubble_count[0]] <= 0){
+		for(int i = 1; i < 9; i++){  
 
-				rnd = Bubble_count[0];
+			if ((rnd - Bubble_count[i]) <= 0){
+
+				rnd = section;
 				break;
 			}
 
-			rnd -= Bubble_count[0];
+			rnd -= Bubble_count[i];
 			
-			Bubble_count[0]++;
+			section++;
 		}
 
 		//for now I put rand to 2 so it is Red = 2
