@@ -281,8 +281,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				App->scene_1to3->bubble_board[2][2] = App->player->rnd;
 				active[i]->collider->to_delete = true;
 
-				delete active[i];
 				App->player->rnd = 0;
+
+				delete active[i];
 				active[i] = nullptr;
 			}
 		}
