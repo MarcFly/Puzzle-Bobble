@@ -598,14 +598,14 @@ update_status ModulePlayer::Update()
 		change_sprite++;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->Bubble[rnd].life == 0) {
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 
 		//Making the Board pointer look at actual level
 
 
 		int board_it = 0;
 
-		if (lvl <= 3) {
+		if (lvl <= 2) {
 			for (int y = 0; y < 12; y++) {
 				for (int x = 0; x < 8; x++) {
 					board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
@@ -637,7 +637,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-		Bubble_count[0] = 0;
+		Bubble_count[0] = 0; //Bubble_count[0] is used as count for the total amount of balls left
 
 		for (int i = 1; i < 9; i++)
 			Bubble_count[0] += Bubble_count[i];

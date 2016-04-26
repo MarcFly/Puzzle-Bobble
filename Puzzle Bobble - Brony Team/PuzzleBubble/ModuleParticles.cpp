@@ -183,9 +183,13 @@ LOG("Unloading particles");
 
 update_status ModuleParticles::Update()
 {
+	switch (App->player->rnd){
+	case 1:
+		Bubble[1].speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+		Bubble[1].speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+	}
 	
-	Bubble[App->player->rnd].speed.x = -cos(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
-	Bubble[App->player->rnd].speed.y = -sin(((float)App->player->player_angle) * M_PI / 180.f) * BUBBLE_SPEED;
+	LOG("%f", App->player->player_angle);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
