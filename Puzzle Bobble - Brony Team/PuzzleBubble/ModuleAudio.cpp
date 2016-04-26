@@ -22,7 +22,7 @@ bool ModuleAudio::Start()
 	LOG("Loading music 02 and music 03");
 
 	Mix_Init(MIX_INIT_OGG);
-	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, AUDIO_U8, 2, 1024);
+	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024);
 	music02 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_02.ogg");
 	music03 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_03.ogg");
 
