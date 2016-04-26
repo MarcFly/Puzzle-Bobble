@@ -649,7 +649,7 @@ update_status ModulePlayer::Update()
 
 		//for now I put rand to 2 so it is Red = 2
 		
-		//rnd = 2;
+		rnd = 2;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 
 		//Shoot audio
