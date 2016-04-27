@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "Globals.h"
 #include "Application.h"
+#include "Bobbles.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
@@ -20,6 +21,48 @@
 ModulePlayer::ModulePlayer()
 {
 	srand(time(NULL));
+
+	// bubbles
+
+	BluBub.x = 18;
+	BluBub.y = 559;
+	BluBub.w = 16;
+	BluBub.h = 16;
+				
+	RedBub.x = 18;
+	RedBub.y = 607;
+	RedBub.w = 16;
+	RedBub.h = 16;
+				
+	GreenBub.x = 266;
+	GreenBub.y = 559;
+	GreenBub.w = 16;
+	GreenBub.h = 16;
+				
+	YelBub.x = 18;
+	YelBub.y = 631;
+	YelBub.x = 16;
+	YelBub.h = 16;
+				
+	BlkBub.x = 266;
+	BlkBub.y = 583;
+	BlkBub.w = 16;
+	BlkBub.h = 16;
+				
+	GreyBub.x = 18;
+	GreyBub.y = 583;
+	GreyBub.w = 16;
+	GreyBub.h = 16;
+				
+	OraBub.x = 266;
+	OraBub.y = 607;
+	OraBub.w = 16;
+	OraBub.h = 16;
+				
+	PplBub.x = 266;
+	PplBub.y = 631;
+	PplBub.w = 16;
+	PplBub.h = 16;
 
 	// tube 
 
@@ -674,7 +717,6 @@ update_status ModulePlayer::Update()
 
 	// BLITS
 
-
 	// Small Machine blit
 
 	if (smachine_pos == 2) smachine_pos = 0;
@@ -719,6 +761,22 @@ update_status ModulePlayer::Update()
 	// Tube blit
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
+
+
+	// Bubble to shoot
+
+	switch (rnd){
+
+	case 1: App->render->Blit(graphics, 143, 180, &BluBub, 0.75f); break;
+	case 2: App->render->Blit(graphics, 143, 180, &RedBub, 0.75f); break;
+	case 3: App->render->Blit(graphics, 143, 180, &GreenBub, 0.75f); break;
+	case 4: App->render->Blit(graphics, 143, 180, &YelBub, 0.75f); break;
+	case 5: App->render->Blit(graphics, 143, 180, &BlkBub, 0.75f); break;
+	case 6: App->render->Blit(graphics, 143, 180, &OraBub, 0.75f); break;
+	case 7: App->render->Blit(graphics, 143, 180, &GreyBub, 0.75f); break;
+	case 8: App->render->Blit(graphics, 143, 180, &PplBub, 0.75f); break;
+	default: break;
+	}
 
 	return UPDATE_CONTINUE;
 }
