@@ -276,11 +276,11 @@ update_status ModuleScene1to3::PostUpdate(){
 			prev_bb[y][x] = bubble_board[y][x];
 		}
 	}
-//	for (int x = 0; x < 8; x++) {
-//		if (bubble_board[11][x]){
-//			App->fade->FadeToBlack(this, (Module*)App->scene_mainmenu);
-//		}
-//	}
+	for (int x = 0; x < 8; x++) {
+		if (bubble_board[11][x]){
+			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }

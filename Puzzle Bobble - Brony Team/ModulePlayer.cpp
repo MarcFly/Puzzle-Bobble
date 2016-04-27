@@ -527,9 +527,9 @@ ModulePlayer::~ModulePlayer()
 
 bool ModulePlayer::CleanUp() {
 	LOG("\nFreeing sfx01");
-	Mix_FreeChunk(sfx01);
+	//Mix_FreeChunk(sfx01);
 	
-	//LOG("\nPlayer CleanUp exited successfully");
+	LOG("\nPlayer CleanUp exited successfully");
 	return true;
 }
 

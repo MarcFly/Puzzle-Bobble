@@ -83,6 +83,9 @@
     <ClInclude Include="..\Bobbles.h">
       <Filter>Bobbles</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneGameOver.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ModuleInput.cpp">
@@ -138,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="..\Bobbles.cpp">
       <Filter>Bobbles</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneGameOver.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

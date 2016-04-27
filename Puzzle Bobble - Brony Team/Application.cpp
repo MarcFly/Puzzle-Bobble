@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "PuzzleBubble\ModuleScene1-3.h"
 #include "PuzzleBubble\ModuleScene4-6.h"
+#include "PuzzleBubble\ModuleSceneGameOver.h"
 #include "PuzzleBubble/ModuleSceneMainMenu.h"
 #include "PuzzleBubble/ModuleParticles.h"
 #include "PuzzleBubble\ModuleFadeToBlack.h"
@@ -23,6 +24,7 @@ Application::Application()
 	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
+	modules[i++] = scene_gameover = new ModuleSceneGameOver();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
@@ -44,6 +46,9 @@ bool Application::Init()
 	player->Disable();
 	scene_1to3->Disable();
 	scene_4to6->Disable();
+	scene_gameover->Disable();
+	collision->Disable();
+	particles->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
