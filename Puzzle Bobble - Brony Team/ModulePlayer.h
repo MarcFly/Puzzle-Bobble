@@ -49,6 +49,7 @@ public:
 	int change_sprite;
 	int board_copy[96];
 	int rnd;
+	int rnd_aux;
 
 	int lvl = 0;
 
