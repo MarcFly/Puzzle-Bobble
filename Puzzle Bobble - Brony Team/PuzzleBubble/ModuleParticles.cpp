@@ -284,23 +284,18 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL){
-				active[i]->speed.x *= -1;
-
-				//sfx 03 is played when a bubble collides with a wall
-				Mix_PlayChannel(-1, sfx03, 0);
-			}
+			
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
 				Mix_PlayChannel(-1, sfx02, 0);
 				
 				if ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) % 2){
 					if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) > 0)
-						if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 8)
-							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1)] = App->player->rnd;
+						if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 7)
+							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
 
-					else if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 0)
-						App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) + 1)] = App->player->rnd;
+						else if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 0)
+							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) + 1)] = App->player->rnd;
 
 						else
 							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
@@ -324,9 +319,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	
 							}
 						else if (y == ((int)(((active[i]->position.y - 8) / 16))))
-							for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && x != 0; x--){
+							for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && x != 0 && x <= 7; x--){
 
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
+								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd && x <= 7 )
 									total_coll++;
 
 							}
@@ -348,6 +343,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				}
 
 				else{
+
+
 					App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1)] = App->player->rnd;
 
 					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
@@ -393,11 +390,25 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 
 				active[i]->collider->to_delete = true;
 
-				App->player->rnd = 0;
+				
 
 				delete active[i];
 				active[i] = nullptr;
+
+				if (active[i] == nullptr)
+					App->player->rnd = 0;
 			}
+
+			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_WALL){
+				active[i]->speed.x *= -1;
+
+				//sfx 03 is played when a bubble collides with a wall
+				Mix_PlayChannel(-1, sfx03, 0);
+			}
+
 		}
 	}
+
+	
+
 }
