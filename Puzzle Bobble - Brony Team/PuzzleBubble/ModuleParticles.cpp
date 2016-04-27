@@ -8,6 +8,8 @@
 #include "../ModuleCollision.h"
 #include "ModuleScene1-3.h"
 #include "ModuleAudio.h"
+#include "ModuleSceneMainMenu.h"
+#include "ModuleFadeToBlack.h"
 
 #define BUBBLE_SPEED 3.3f
 
@@ -160,6 +162,11 @@ bool ModuleParticles::Start()
 
 	point_rnd = App->player->rnd;
 
+	if (App->player->lvl < 3)
+		for (int y = 0; y < 12; y++)
+			for (int x = 0; x < 12; x++)
+				copy_board[y][x] = App->scene_1to3->bubble_board[y][x];
+
 	return true;
 }
 
@@ -282,10 +289,16 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
+
+				
+
 				if ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) % 2)
-				App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
+				copy_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
 				else
-					App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1)] = App->player->rnd;
+					copy_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1)] = App->player->rnd;
+
+
+
 
 				active[i]->collider->to_delete = true;
 
@@ -296,4 +309,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 		}
 	}
+	
+
+	if (App->player->lvl < 3)
+		for (int y = 0; y < 12; y++)
+			for (int x = 0; x < 12; x++)
+				App->scene_1to3->bubble_board[y][x] = copy_board[y][x];
+
+	
+
 }
