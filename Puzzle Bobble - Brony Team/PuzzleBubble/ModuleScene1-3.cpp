@@ -204,10 +204,12 @@ update_status ModuleScene1to3::Update()
 
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 
+	//This is useful to change a bubble color in any position (in this case position 0,0)
+	/*
 	if (App->input->keyboard[SDL_SCANCODE_G] == 1) {
 		bubble_board[0][0] = G;
 	}
-
+	*/
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		//App->player->lvl++;
 		//if (App->player->lvl == 4) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
@@ -234,7 +236,7 @@ update_status ModuleScene1to3::PostUpdate(){
 
 			if (to_erase) {
 				App->enemies->EraseAll();
-
+				 
 				for (int y = 0; y < 12; y++) {
 					for (int x = 0; x < 8; x++) {
 						switch (bubble_board[y][x]) {
