@@ -5,7 +5,12 @@
 Bobble_Blue::Bobble_Blue(int x, int y) : Enemy(x, y)
 {
 	idle.PushBack({ 18, 559, 16, 16 });
-	idle.speed = 0.05f;
+	idle.PushBack({ 35, 559, 16, 16 });
+	idle.PushBack({ 52, 559, 16, 16 });
+	idle.PushBack({ 18, 559, 16, 16 });
+	idle.PushBack({ 18, 559, 16, 16 });
+	idle.PushBack({ 18, 559, 16, 16 });
+	idle.speed = 0.1f;
 
 	explode.PushBack({ 112, 260, 16, 16 });
 	explode.PushBack({ 132, 260, 16, 16 });
@@ -44,6 +49,10 @@ Bobble_Red::Bobble_Red(int x, int y) : Enemy(x, y)
 Bobble_Green::Bobble_Green(int x, int y) : Enemy(x, y)
 {
 	idle.PushBack({ 266, 559, 16, 16 });
+	idle.PushBack({ 266, 559, 16, 16 });
+	idle.PushBack({ 266, 559, 16, 16 });
+	idle.PushBack({ 283, 559, 16, 16 });
+	idle.PushBack({ 300, 559, 16, 16 });
 	idle.speed = 0.05f;
 
 	explode.PushBack({ 338, 260, 16, 16 });
@@ -61,6 +70,9 @@ Bobble_Green::Bobble_Green(int x, int y) : Enemy(x, y)
 
 Bobble_Yellow::Bobble_Yellow(int x, int y) : Enemy(x, y)
 {
+
+	idle.PushBack({ 18, 631, 16, 16 });
+	idle.PushBack({ 35, 631, 16, 16 });
 	idle.PushBack({ 18, 631, 16, 16 });
 	idle.speed = 0.05f;
 
