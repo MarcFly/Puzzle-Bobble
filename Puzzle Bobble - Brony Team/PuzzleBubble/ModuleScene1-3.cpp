@@ -211,7 +211,7 @@ update_status ModuleScene1to3::Update()
 	
 
 	for (int x = 0; x < 8; x++) {
-		if (bubble_board[11][x]){
+		if (bubble_board[10][x]){
 			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 		}
 	}
