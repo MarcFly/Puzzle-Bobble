@@ -25,26 +25,6 @@ ModuleScene1to3::ModuleScene1to3()
 	background.w = 310;
 	background.h = 235;
 
-	bubbles[R].x = 12;
-	bubbles[R].y = 312;
-	bubbles[R].w = 16;
-	bubbles[R].h = 16;
-		  
-	bubbles[G].x = 318;
-	bubbles[G].y = 260;
-	bubbles[G].w = 16;
-	bubbles[G].h = 16;
-		  
-	bubbles[B].x = 12;
-	bubbles[B].y = 260;
-	bubbles[B].w = 16;
-	bubbles[B].h = 16;
-		  
-	bubbles[Y].x = 12;
-	bubbles[Y].y = 338;
-	bubbles[Y].w = 16;
-	bubbles[Y].h = 16;
-
 	level_info.x = 35;
 	level_info.y = 1710;
 	level_info.w = 310;
@@ -62,7 +42,12 @@ ModuleScene1to3::~ModuleScene1to3()
 bool ModuleScene1to3::Start()
 {
 
+	playonce = true;
+
 	LOG("Loading 1-3 scene");
+
+	sfx05 = nullptr;
+	sfx05 = Mix_LoadWAV("../../Audio/SFX/SFX 05.wav");
 
 	int tmp[3][12][8] = {
 
@@ -227,7 +212,7 @@ update_status ModuleScene1to3::Update()
 }
 
 update_status ModuleScene1to3::PostUpdate(){
-	
+
 	to_erase = false;
 
 	for (int y = 0; y < 12; y++) {
@@ -282,6 +267,10 @@ update_status ModuleScene1to3::PostUpdate(){
 	}
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[11][x]){
+			if (playonce) {
+				Mix_PlayChannel(-1, sfx05, 0);
+				playonce = false;
+			}
 			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 		}
 	}

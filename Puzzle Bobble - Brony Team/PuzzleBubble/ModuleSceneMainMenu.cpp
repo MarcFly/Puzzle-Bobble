@@ -30,12 +30,16 @@ bool ModuleSceneMainMenu::Start()
 {
 	LOG("Loading Main Menu scene");
 
+	sfx08 = nullptr;
+
 	background_graphics = App->textures->Load("Sprites/MainScreen.png");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
 	UI_graphics = App->textures->Load("Sprites/UIMainScreen.png");
 
 	LOG("Loading music02");
 	Mix_PlayMusic(App->audio->music02, 1);
+
+	sfx08 = Mix_LoadWAV("../../Audio/SFX/SFX 08.wav");
 	LOG("Scene MainMenu Started Succesfully");
 
 	return true;
@@ -57,6 +61,7 @@ update_status ModuleSceneMainMenu::Update()
 	App->render->Blit(UI_graphics, 60, 150, &(UI.GetCurrentFrame()), 0.75f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+		Mix_PlayChannel(-1, sfx08, 0);
 		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
 	}
 

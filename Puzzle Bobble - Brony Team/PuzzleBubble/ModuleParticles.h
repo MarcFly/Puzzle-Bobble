@@ -49,6 +49,8 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
+	Mix_Chunk* sfx02 = nullptr;
+
 public:
 
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...

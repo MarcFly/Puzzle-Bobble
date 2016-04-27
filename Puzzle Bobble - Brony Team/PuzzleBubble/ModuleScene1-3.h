@@ -3,7 +3,7 @@
 
 #include "../Module.h"
 #include "../Animation.h"
-
+#include "ModuleAudio.h"
 
 #define NUM_BUBBLES_1 5
 
@@ -33,6 +33,9 @@ public:
 	int bubble_board[12][8];
 	int prev_bb[12][8];
 	bool to_erase;
+	bool playonce;
+
+	Mix_Chunk* sfx05 = nullptr;
 
 };
 

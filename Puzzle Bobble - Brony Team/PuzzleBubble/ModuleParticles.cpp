@@ -27,6 +27,8 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	sfx03 = nullptr;
+	sfx02 = nullptr;
+	sfx02 = Mix_LoadWAV("../../Audio/SFX/SFX 02.wav");
 
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
@@ -285,6 +287,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
+				Mix_PlayChannel(-1, sfx02, 0);
 				if ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) % 2)
 				App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
 				else
