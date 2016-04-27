@@ -39,7 +39,7 @@ ModulePlayer::ModulePlayer()
 	GreenBub.w = 16;
 	GreenBub.h = 16;
 				
-	YelBub.x = 35;
+	YelBub.x = 18;
 	YelBub.y = 631;
 	YelBub.x = 16;
 	YelBub.h = 16;
