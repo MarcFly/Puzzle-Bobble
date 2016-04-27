@@ -9,7 +9,7 @@ This is a puzzle game where the player must aim and shoot bubbles in order to po
 Bubbles pop when 3 or more are sticked together and the player looses if they arrive to the deadline on the bottom of the stage.
 
 //---
-  Intructions->
+  Instructions-><br />
 	'a' to shoot bubbles <br />
 	'left/right' to aim arrow <br />
 
