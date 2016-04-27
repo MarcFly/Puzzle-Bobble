@@ -50,7 +50,9 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()	
 {
 	int speed = 3;
-	
+	// I, J, K and L commands should be removed before publishing final version
+	//because we don't want to move camera in the game
+
 	if(App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
