@@ -157,8 +157,8 @@ bool ModuleScene1to3::Start()
 	}
 
 	LOG("Loading textures");
-	background_graphics = App->textures->Load("Sprites/Backgrounds/Background 1-3.png");
-	foreground_graphics = App->textures->Load("Sprites/Backgrounds/Borders 1-3.png");
+	background_graphics = App->textures->Load("Sprites/Background 1-3.png");
+	foreground_graphics = App->textures->Load("Sprites/Borders 1-3.png");
 	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
 
 
