@@ -19,6 +19,7 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
+	void PopBubbles();
 
 public:
 	SDL_Texture* background_graphics = nullptr;

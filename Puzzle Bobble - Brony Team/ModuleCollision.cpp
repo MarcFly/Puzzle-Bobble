@@ -21,7 +21,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER][COLLIDER_CEILING] = false;
 
 	matrix[COLLIDER_BOBBLE][COLLIDER_WALL] = false;
-	matrix[COLLIDER_BOBBLE][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_BOBBLE][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_BOBBLE][COLLIDER_BOBBLE] = false;
 	matrix[COLLIDER_BOBBLE][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_BOBBLE][COLLIDER_CEILING] = false;

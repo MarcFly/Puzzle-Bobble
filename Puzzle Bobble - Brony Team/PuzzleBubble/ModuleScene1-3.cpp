@@ -235,6 +235,7 @@ update_status ModuleScene1to3::PostUpdate(){
 	}
 
 			if (to_erase) {
+				PopBubbles();
 				App->enemies->EraseAll();
 				 
 				for (int y = 0; y < 12; y++) {
@@ -275,6 +276,14 @@ update_status ModuleScene1to3::PostUpdate(){
 			prev_bb[y][x] = bubble_board[y][x];
 		}
 	}
+//	for (int x = 0; x < 8; x++) {
+//		if (bubble_board[11][x]){
+//			App->fade->FadeToBlack(this, (Module*)App->scene_mainmenu);
+//		}
+//	}
 
 	return UPDATE_CONTINUE;
+}
+
+void ModuleScene1to3::PopBubbles(){
 }
