@@ -3,9 +3,9 @@ By Brony Team
 
 //---
   Intructions->
-	'a' to shoot bubbles
-	'spacebar' to go to next stage
-	'left/right' to aim arrow
+	'a' to shoot bubbles <br />
+	'spacebar' to go to next stage <br />
+	'left/right' to aim arrow <br />
 	'j/k/l/i' to debug scroll
 
 
