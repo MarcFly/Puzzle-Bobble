@@ -50,7 +50,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()	
 {
 	int speed = 3;
-
+	
 	if(App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
@@ -61,7 +61,7 @@ update_status ModuleRender::Update()
 		camera.x += speed;
 	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_REPEAT)
 		camera.x -= speed;
-
+		
 	return update_status::UPDATE_CONTINUE;
 }
 
