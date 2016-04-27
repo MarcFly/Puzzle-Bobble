@@ -822,7 +822,6 @@ update_status ModulePlayer::Update()
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
-
 	// Bubble to shoot
 
 	switch (rnd_aux){
@@ -836,6 +835,8 @@ update_status ModulePlayer::Update()
 	case 7: App->render->Blit(graphics, 143, 186, &GreyBub, 0.75f); break;
 	case 8: App->render->Blit(graphics, 143, 186, &PplBub, 0.75f); break;
 	default: break;
+
+
 	}
 
 	return UPDATE_CONTINUE;

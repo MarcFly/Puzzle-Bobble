@@ -23,5 +23,6 @@ public:
 	Mix_Music* music02 = nullptr;
 	Mix_Music* music03 = nullptr;
 	Mix_Music* music05 = nullptr;
+	Mix_Music* music07 = nullptr;
 };
 #endif

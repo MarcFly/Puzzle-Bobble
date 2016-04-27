@@ -27,6 +27,7 @@ bool ModuleAudio::Start()
 	music02 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_02.ogg");
 	music03 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_03.ogg");
 	music05 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_05.ogg");
+	music07 = Mix_LoadMUS("../../Audio/MUSIC/MUSIC_07.ogg");
 
 	return true;
 }
@@ -38,6 +39,7 @@ bool ModuleAudio::CleanUp()
 	Mix_FreeMusic(music05);
 	Mix_FreeMusic(music02);
 	Mix_FreeMusic(music03);
+	Mix_FreeMusic(music07);
 
 	Mix_CloseAudio();
 	Mix_Quit();

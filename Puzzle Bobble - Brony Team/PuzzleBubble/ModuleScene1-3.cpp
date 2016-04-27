@@ -236,7 +236,7 @@ update_status ModuleScene1to3::Update()
 	}
 
 	if (empty == true)
-		App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 
  	return UPDATE_CONTINUE;
 }

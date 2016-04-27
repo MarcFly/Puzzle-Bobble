@@ -13,6 +13,7 @@
 #include "PuzzleBubble\ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "PuzzleBubble\ModuleSceneWin.h"
 
 Application::Application()
 {
@@ -26,6 +27,7 @@ Application::Application()
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
 	modules[i++] = scene_gameover = new ModuleSceneGameOver();
+	modules[i++] = scene_win = new ModuleSceneWin();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
@@ -47,6 +49,7 @@ bool Application::Init()
 	scene_1to3->Disable();
 	scene_4to6->Disable();
 	scene_gameover->Disable();
+	scene_win->Disable();
 	collision->Disable();
 	particles->Disable();
 

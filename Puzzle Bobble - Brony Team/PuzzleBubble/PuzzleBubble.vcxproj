@@ -88,6 +88,7 @@
     <ClInclude Include="ModuleScene1-3.h" />
     <ClInclude Include="ModuleScene4-6.h" />
     <ClInclude Include="ModuleSceneGameOver.h" />
+    <ClInclude Include="ModuleSceneWin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Application.cpp" />
@@ -109,6 +110,7 @@
     <ClCompile Include="ModuleScene1-3.cpp" />
     <ClCompile Include="ModuleScene4-6.cpp" />
     <ClCompile Include="ModuleSceneGameOver.cpp" />
+    <ClCompile Include="ModuleSceneWin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
