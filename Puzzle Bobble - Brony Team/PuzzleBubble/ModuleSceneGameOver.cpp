@@ -36,8 +36,8 @@ bool ModuleSceneGameOver::Start()
 bool ModuleSceneGameOver::CleanUp()
 {
 	LOG("Unloading GameOver scene");
-//	App->textures->Unload(background_graphics);
-	App->player->Disable();
+	App->textures->Unload(background_graphics);
+	//App->player->Disable();
 
 	return true;
 }

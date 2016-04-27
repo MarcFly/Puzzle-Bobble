@@ -210,7 +210,9 @@ update_status ModuleScene1to3::Update()
 		bubble_board[0][0] = G;
 	}
 	*/
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+
+	// UNCOMMENT THIS TO DEBUG
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		//App->player->lvl++;
 		//if (App->player->lvl == 4) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
@@ -218,7 +220,7 @@ update_status ModuleScene1to3::Update()
 
 
 	}
-
+	*/
  	return UPDATE_CONTINUE;
 }
 

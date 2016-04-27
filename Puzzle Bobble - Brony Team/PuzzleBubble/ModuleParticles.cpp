@@ -26,7 +26,7 @@ ModuleParticles::~ModuleParticles()
 
 bool ModuleParticles::Start()
 {
-	
+	sfx03 = nullptr;
 
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
@@ -159,6 +159,8 @@ bool ModuleParticles::Start()
 
 
 	point_rnd = App->player->rnd;
+	
+	sfx03 = Mix_LoadWAV("../../Audio/SFX/SFX 03.wav");
 
 	return true;
 }
@@ -176,9 +178,11 @@ bool ModuleParticles::CleanUp()
 			active[i] = nullptr;
 		}
 	}
-	LOG("Unloading particles");
-	Mix_FreeChunk(sfx03);
-	LOG("Unloading particles");
+	LOG("Unloading sfx03 particles");
+	if (sfx03 != nullptr){
+//		Mix_FreeChunk(sfx03);
+	}
+	LOG("Unloading graphics particles");
 App->textures->Unload(graphics);
 LOG("Unloading particles");
 	return true;
@@ -277,7 +281,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				active[i]->speed.x *= -1;
 
 				//sfx 03 is played when a bubble collides with a wall
-				sfx03 = Mix_LoadWAV("../../Audio/SFX/SFX 03.wav");
 				Mix_PlayChannel(-1, sfx03, 0);
 			}
 
