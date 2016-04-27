@@ -47,7 +47,7 @@ bool ModuleScene1to3::Start()
 	LOG("Loading 1-3 scene");
 
 	sfx05 = nullptr;
-	sfx05 = Mix_LoadWAV("../../Audio/SFX/SFX 05.wav");
+	sfx05 = Mix_LoadWAV("Resources/Audio/SFX/SFX 05.wav");
 
 	int tmp[3][12][8] = {
 
@@ -142,9 +142,9 @@ bool ModuleScene1to3::Start()
 	}
 
 	LOG("Loading textures");
-	background_graphics = App->textures->Load("Sprites/Background 1-3.png");
-	foreground_graphics = App->textures->Load("Sprites/Borders 1-3.png");
-	game_sprites_graphics = App->textures->Load("Sprites/Game Sprites.png");
+	background_graphics = App->textures->Load("Resources/Sprites/Background 1-3.png");
+	foreground_graphics = App->textures->Load("Resources/Sprites/Borders 1-3.png");
+	game_sprites_graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
 
 
 	App->player->Enable();
@@ -212,6 +212,10 @@ update_status ModuleScene1to3::Update()
 
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[10][x]){
+			if (playonce) {
+				Mix_PlayChannel(-1, sfx05, 0);
+				playonce = false;
+			}
 			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 		}
 	}
@@ -295,16 +299,6 @@ update_status ModuleScene1to3::PostUpdate(){
 			prev_bb[y][x] = bubble_board[y][x];
 		}
 	}
-	for (int x = 0; x < 8; x++) {
-		if (bubble_board[11][x]){
-			if (playonce) {
-				Mix_PlayChannel(-1, sfx05, 0);
-				playonce = false;
-			}
-			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
-		}
-	}
-
 	return UPDATE_CONTINUE;
 }
 

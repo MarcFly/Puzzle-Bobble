@@ -28,10 +28,10 @@ bool ModuleParticles::Start()
 {
 	sfx03 = nullptr;
 	sfx02 = nullptr;
-	sfx02 = Mix_LoadWAV("../../Audio/SFX/SFX 02.wav");
+	sfx02 = Mix_LoadWAV("Resources/Audio/SFX/SFX 02.wav");
 
 	LOG("Loading particles");
-	graphics = App->textures->Load("Sprites/Player sprites.png");
+	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
 	Bubble[0].life = 0;
 
@@ -164,7 +164,7 @@ bool ModuleParticles::Start()
 
 	point_rnd = App->player->rnd;
 	
-	sfx03 = Mix_LoadWAV("../../Audio/SFX/SFX 03.wav");
+	sfx03 = Mix_LoadWAV("Resources/Audio/SFX/SFX 03.wav");
 
 	return true;
 }

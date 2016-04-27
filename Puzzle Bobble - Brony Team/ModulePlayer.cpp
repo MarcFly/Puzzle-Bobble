@@ -596,7 +596,7 @@ bool ModulePlayer::Start()
 
 	player_angle = 90;
 
-	graphics = App->textures->Load("Sprites/Player sprites.png");
+	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
 	rnd = 0;
 	rnd_aux = 0;
@@ -771,7 +771,7 @@ update_status ModulePlayer::Update()
 		
 
 		//Shoot audio
-		sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");
+		sfx01 = Mix_LoadWAV("Resources/Audio/SFX/SFX 01.wav");
 		Mix_PlayChannel(-1, sfx01, 0);
 	}
 

@@ -32,14 +32,14 @@ bool ModuleSceneMainMenu::Start()
 
 	sfx08 = nullptr;
 
-	background_graphics = App->textures->Load("Sprites/MainScreen.png");
-	graphics = App->textures->Load("Sprites/Game Sprites.png");
-	UI_graphics = App->textures->Load("Sprites/UIMainScreen.png");
+	background_graphics = App->textures->Load("Resources/Sprites/MainScreen.png");
+	graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
+	UI_graphics = App->textures->Load("Resources/Sprites/UIMainScreen.png");
 
 	LOG("Loading music02");
 	Mix_PlayMusic(App->audio->music02, 1);
 
-	sfx08 = Mix_LoadWAV("../../Audio/SFX/SFX 08.wav");
+	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
 	LOG("Scene MainMenu Started Succesfully");
 
 	return true;

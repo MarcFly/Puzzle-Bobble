@@ -28,7 +28,7 @@ bool ModuleSceneWin::Start()
 {
 	LOG("Loading Win scene");
 
-	background_graphics = App->textures->Load("Sprites/Game Sprites.png");
+	background_graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
 
 	Mix_PlayMusic(App->audio->music07, -1);
 
