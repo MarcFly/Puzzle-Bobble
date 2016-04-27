@@ -29,20 +29,20 @@ bool ModuleParticles::Start()
 	sfx03 = nullptr;
 
 	LOG("Loading particles");
-	graphics = App->textures->Load("Sprites/Game Sprites.png");
+	graphics = App->textures->Load("Sprites/Player sprites.png");
 
 	Bubble[0].life = 0;
 
 	// Blue Bubble particle
-	Bubble[1].anim.PushBack({ 12, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 32, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 52, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 72, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 92, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 72, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 52, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 32, 260, 18, 16 });
-	Bubble[1].anim.PushBack({ 12, 260, 18, 16 });
+	Bubble[1].anim.PushBack({ 18, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 35, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 52, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 69, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 86, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 103, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 120, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 137, 559, 16, 16 });
+	Bubble[1].anim.PushBack({ 154, 559, 16, 16 });
 	Bubble[1].anim.loop = false;
 	Bubble[1].anim.speed = 0.11111f;
 	Bubble[1].life = -1;
@@ -50,11 +50,13 @@ bool ModuleParticles::Start()
 	Bubble[1].position.y = 190;
 
 	// Red Bubble particle
-	Bubble[2].anim.PushBack({ 12, 312, 18, 16 });
-	Bubble[2].anim.PushBack({ 32, 312, 18, 16 });
-	Bubble[2].anim.PushBack({ 92, 312, 18, 16 });
-	Bubble[2].anim.PushBack({ 32, 312, 18, 16 });
-	Bubble[2].anim.PushBack({ 12, 312, 18, 16 });
+	Bubble[2].anim.PushBack({ 18, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 69, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 86, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 103, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 120, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 137, 607, 16, 16 });
+	Bubble[2].anim.PushBack({ 154, 607, 16, 16 });
 	Bubble[2].anim.loop = false;
 	Bubble[2].anim.speed = 0.2f;
 	Bubble[2].life = -1;
@@ -62,15 +64,15 @@ bool ModuleParticles::Start()
 	Bubble[2].position.y = 190;
 
 	// Green Bubble particle
-	Bubble[3].anim.PushBack({ 318, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 338, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 358, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 378, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 398, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 378, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 358, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 338, 260, 18, 16 });
-	Bubble[3].anim.PushBack({ 318, 260, 18, 16 });
+	Bubble[3].anim.PushBack({ 266, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 283, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 300, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 317, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 334, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 351, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 368, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 385, 559, 16, 16 });
+	Bubble[3].anim.PushBack({ 402, 559, 16, 16 });
 	Bubble[3].anim.loop = false;
 	Bubble[3].anim.speed = 0.11111f;
 	Bubble[3].life = -1;
@@ -78,15 +80,15 @@ bool ModuleParticles::Start()
 	Bubble[3].position.y = 190;
 
 	// Yellow Bubble particle
-	Bubble[4].anim.PushBack({ 12, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 32, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 52, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 72, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 92, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 72, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 52, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 32, 338, 18, 16 });
-	Bubble[4].anim.PushBack({ 12, 338, 18, 16 });
+	Bubble[4].anim.PushBack({ 18, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 35, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 52, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 69, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 86, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 103, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 120, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 137, 631, 16, 16 });
+	Bubble[4].anim.PushBack({ 154, 631, 16, 16 });
 	Bubble[4].anim.loop = false;
 	Bubble[4].anim.speed = 0.11111f;
 	Bubble[4].life = -1;
@@ -94,15 +96,15 @@ bool ModuleParticles::Start()
 	Bubble[4].position.y = 190;
 
 	// Black Bubble particle
-	Bubble[5].anim.PushBack({ 318, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 338, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 358, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 378, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 398, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 378, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 358, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 338, 286, 18, 16 });
-	Bubble[5].anim.PushBack({ 318, 286, 18, 16 });
+	Bubble[5].anim.PushBack({ 266, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 283, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 300, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 317, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 334, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 351, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 368, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 385, 583, 16, 16 });
+	Bubble[5].anim.PushBack({ 402, 583, 16, 16 });
 	Bubble[5].anim.loop = false;
 	Bubble[5].anim.speed = 0.11111f;
 	Bubble[5].life = -1;
@@ -110,15 +112,15 @@ bool ModuleParticles::Start()
 	Bubble[5].position.y = 190;
 
 	// Orange Bubble particle
-	Bubble[6].anim.PushBack({ 318, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 338, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 358, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 378, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 398, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 378, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 358, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 338, 312, 18, 16 });
-	Bubble[6].anim.PushBack({ 318, 312, 18, 16 });
+	Bubble[6].anim.PushBack({ 266, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 283, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 300, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 317, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 334, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 351, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 368, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 385, 607, 16, 16 });
+	Bubble[6].anim.PushBack({ 402, 607, 16, 16 });
 	Bubble[6].anim.loop = false;
 	Bubble[6].anim.speed = 0.11111f;
 	Bubble[6].life = -1;
@@ -126,15 +128,15 @@ bool ModuleParticles::Start()
 	Bubble[6].position.y = 190;
 
 	// Grey Bubble particle
-	Bubble[7].anim.PushBack({ 12, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 32, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 52, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 72, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 92, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 72, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 52, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 32, 286, 18, 16 });
-	Bubble[7].anim.PushBack({ 12, 286, 18, 16 });
+	Bubble[7].anim.PushBack({ 18, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 35, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 52, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 69, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 86, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 103, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 120, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 137, 583, 16, 16 });
+	Bubble[7].anim.PushBack({ 154, 583, 16, 16 });
 	Bubble[7].anim.loop = false;
 	Bubble[7].anim.speed = 0.11111f;
 	Bubble[7].life = -1;
@@ -142,15 +144,15 @@ bool ModuleParticles::Start()
 	Bubble[7].position.y = 190;
 	
 	// Purple Bubble particle
-	Bubble[8].anim.PushBack({ 318, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 338, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 358, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 378, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 398, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 378, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 358, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 338, 338, 18, 16 });
-	Bubble[8].anim.PushBack({ 318, 338, 18, 16 });
+	Bubble[8].anim.PushBack({ 266, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 283, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 300, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 317, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 334, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 351, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 368, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 385, 631, 16, 16 });
+	Bubble[8].anim.PushBack({ 402, 631, 16, 16 });
 	Bubble[8].anim.loop = false;
 	Bubble[8].anim.speed = 0.11111f;
 	Bubble[8].life = -1;
