@@ -827,14 +827,14 @@ update_status ModulePlayer::Update()
 
 	switch (rnd_aux){
 
-	case 1: App->render->Blit(graphics, 143, 180, &BluBub, 0.75f); break;
-	case 2: App->render->Blit(graphics, 143, 180, &RedBub, 0.75f); break;
-	case 3: App->render->Blit(graphics, 143, 180, &GreenBub, 0.75f); break;
-	case 4: App->render->Blit(graphics, 143, 180, &YelBub, 0.75f); break;
-	case 5: App->render->Blit(graphics, 143, 180, &BlkBub, 0.75f); break;
-	case 6: App->render->Blit(graphics, 143, 180, &OraBub, 0.75f); break;
-	case 7: App->render->Blit(graphics, 143, 180, &GreyBub, 0.75f); break;
-	case 8: App->render->Blit(graphics, 143, 180, &PplBub, 0.75f); break;
+	case 1: App->render->Blit(graphics, 143, 186, &BluBub, 0.75f); break;
+	case 2: App->render->Blit(graphics, 143, 186, &RedBub, 0.75f); break;
+	case 3: App->render->Blit(graphics, 143, 186, &GreenBub, 0.75f); break;
+	case 4: App->render->Blit(graphics, 143, 186, &YelBub, 0.75f); break;
+	case 5: App->render->Blit(graphics, 143, 186, &BlkBub, 0.75f); break;
+	case 6: App->render->Blit(graphics, 143, 186, &OraBub, 0.75f); break;
+	case 7: App->render->Blit(graphics, 143, 186, &GreyBub, 0.75f); break;
+	case 8: App->render->Blit(graphics, 143, 186, &PplBub, 0.75f); break;
 	default: break;
 	}
 
