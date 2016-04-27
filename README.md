@@ -12,6 +12,7 @@ Bubbles pop when 3 or more are sticked together and the player looses if they ar
   Instructions-><br />
 	'a' to shoot bubbles <br />
 	'left/right' to aim arrow <br />
+	'space' to start playing and to close the game after winning or losing <br />
 
 //---
 
