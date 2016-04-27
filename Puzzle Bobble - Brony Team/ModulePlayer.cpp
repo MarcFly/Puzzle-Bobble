@@ -540,7 +540,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	arrow_center.x = 50;
-	arrow_center.y = 130;
+	arrow_center.y = 128;
 
 	arrow_pos = 0;
 	bmachine_pos = 0;
@@ -679,14 +679,14 @@ update_status ModulePlayer::Update()
 	if (smachine_pos == 2) smachine_pos = 0;
 	else if (smachine_pos == -1) smachine_pos = 1;
 
-	App->render->Blit(graphics, 134, 179, &s_machine[smachine_pos], 0.75f);
+	App->render->Blit(graphics, 134, 177, &s_machine[smachine_pos], 0.75f);
 
 	// Big Machine blit
 
 	if (bmachine_pos == 12) bmachine_pos = 0;
 	else if (bmachine_pos == -1) bmachine_pos = 11;
 
-	App->render->Blit(graphics, 119, 195, &b_machine[bmachine_pos], 0.75f);
+	App->render->Blit(graphics, 119, 193, &b_machine[bmachine_pos], 0.75f);
 
 	// Arrow blit
 
@@ -701,7 +701,7 @@ update_status ModulePlayer::Update()
 	if (crank_pos == 8) crank_pos = 0;
 	else if (crank_pos == -1) crank_pos = 7;
 
-	App->render->Blit(graphics, 168, 202, &crank[crank_pos], 0.75f);
+	App->render->Blit(graphics, 168, 200, &crank[crank_pos], 0.75f);
 
 	// Bub wheel blit
 
@@ -710,14 +710,14 @@ update_status ModulePlayer::Update()
 		if (bubwheel_pos == 8) bubwheel_pos = 0;
 		else if (bubwheel_pos == -1) bubwheel_pos = 7;
 
-		App->render->Blit(graphics, 171, 200, &bub_wheel[bubwheel_pos], 0.75f);
+		App->render->Blit(graphics, 171, 198, &bub_wheel[bubwheel_pos], 0.75f);
 	}
 
-	else App->render->Blit(graphics, 171, 200, &bub_wheel[8], 0.75f);
+	else App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 
 	// Tube blit
 
-	App->render->Blit(graphics, 143, 203, &tube, 0.75f);
+	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
 	return UPDATE_CONTINUE;
 }
