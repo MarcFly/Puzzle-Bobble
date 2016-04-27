@@ -175,6 +175,8 @@ bool ModuleScene1to3::Start()
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
+	Mix_PlayMusic(App->audio->music03, -1);
+
 	return true;
 }
 

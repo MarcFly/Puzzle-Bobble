@@ -7,6 +7,7 @@
 #include "ModuleSceneMainMenu.h"
 #include "../ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 
 
 ModuleSceneMainMenu::ModuleSceneMainMenu()
@@ -32,6 +33,10 @@ bool ModuleSceneMainMenu::Start()
 	background_graphics = App->textures->Load("Sprites/MainScreen.png");
 	graphics = App->textures->Load("Sprites/Game Sprites.png");
 	UI_graphics = App->textures->Load("Sprites/UIMainScreen.png");
+
+	LOG("Loading music02");
+	Mix_PlayMusic(App->audio->music02, 1);
+	LOG("Scene MainMenu Started Succesfully");
 
 	return true;
 }

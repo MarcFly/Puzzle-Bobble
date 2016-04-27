@@ -9,6 +9,7 @@
 #include "../ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "../ModuleCollision.h"
+#include "ModuleAudio.h"
 
 
 ModuleSceneGameOver::ModuleSceneGameOver()
@@ -28,6 +29,8 @@ bool ModuleSceneGameOver::Start()
 	LOG("Loading GameOver scene");
 
 	background_graphics = App->textures->Load("Sprites/gameoverscene.png");
+
+	Mix_PlayMusic(App->audio->music05, -1);
 
 	return true;
 }

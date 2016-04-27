@@ -21,6 +21,7 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
@@ -30,7 +31,6 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = collision = new ModuleCollision();
-	modules[i++] = audio = new ModuleAudio();
 }	
 
 Application::~Application()
