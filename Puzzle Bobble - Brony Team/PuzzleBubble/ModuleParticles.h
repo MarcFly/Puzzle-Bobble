@@ -46,7 +46,7 @@ public:
 private:
 
 	SDL_Texture* graphics = nullptr;
-	Particle* active[MAX_ACTIVE_PARTICLES];
+	
 	uint last_particle = 0;
 
 public:
@@ -54,6 +54,8 @@ public:
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
 	int point_rnd;
+
+	Particle* active[MAX_ACTIVE_PARTICLES];
 
 	//sound fx
 	Mix_Chunk* sfx03 = nullptr;

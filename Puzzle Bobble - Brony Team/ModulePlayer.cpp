@@ -12,6 +12,7 @@
 #include "PuzzleBubble/ModuleAudio.h"
 #include "PuzzleBubble/ModuleScene1-3.h"
 #include "PuzzleBubble/ModuleScene4-6.h"
+#include "PuzzleBubble/ModuleFadeToBlack.h"
 
 
 #define ANGLE_INCREMENT 85.f/62.f
@@ -41,7 +42,7 @@ ModulePlayer::ModulePlayer()
 				
 	YelBub.x = 18;
 	YelBub.y = 631;
-	YelBub.x = 16;
+	YelBub.w = 16;
 	YelBub.h = 16;
 				
 	BlkBub.x = 266;
@@ -628,10 +629,7 @@ bool ModulePlayer::Start()
 
 	for (int i = 0; i < 96; i++){
 
-		Bubble_count[board_copy[board_it]]++;
-
-		board_it++;
-
+		Bubble_count[board_copy[i]]++;
 
 	}
 
@@ -704,7 +702,7 @@ update_status ModulePlayer::Update()
 
 	
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
 
 		
 		rnd = rnd_aux;
@@ -738,20 +736,19 @@ update_status ModulePlayer::Update()
 
 		for(int i = 0; i < 96; i++){
 			
-  			Bubble_count[board_copy[board_it]]++;
+  			Bubble_count[board_copy[i]]++;
 
-			board_it++;
-	
 		}
 
 
 		for (int i = 1; i < 9; i++)
 			total_bubs += Bubble_count[i];
 
+		//if (total_bubs == 0)
+			//App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 
 		rnd_aux = rand() % (total_bubs) + 1; 
 
-		rnd_aux--;
 
 		for(int i = 1; i < 9; i++){  
 
