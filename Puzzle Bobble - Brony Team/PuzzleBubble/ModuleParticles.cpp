@@ -296,7 +296,15 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				
 				if ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) % 2){
 					if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) > 0)
-						App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
+						if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 8)
+							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1)] = App->player->rnd;
+
+					else if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 0)
+						App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) + 1)] = App->player->rnd;
+
+						else
+							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
+
 
 					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
 					
