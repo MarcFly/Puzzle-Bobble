@@ -199,15 +199,45 @@ update_status ModuleScene1to3::Update()
 	*/
 
 	// UNCOMMENT THIS TO DEBUG
-	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		//App->player->lvl++;
 		//if (App->player->lvl == 4) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
 
-		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
+		App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 
 
 	}
-	*/
+	
+
+	for (int x = 0; x < 8; x++) {
+		if (bubble_board[11][x]){
+			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+		}
+	}
+
+	bool empty = true;
+
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 8; x++) {
+
+			if (bubble_board[y][x] == E)
+				empty = true;
+
+			else{
+				empty = false;
+				break;
+			}
+		}
+
+		if (empty == false)
+			break;
+
+	}
+
+	if (empty == true)
+		App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+
  	return UPDATE_CONTINUE;
 }
 

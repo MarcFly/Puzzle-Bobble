@@ -33,6 +33,14 @@ public:
 	SDL_Rect crank[8];
 	SDL_Rect bub_wheel[9];
 	SDL_Point arrow_center;
+	SDL_Rect BluBub;
+	SDL_Rect RedBub;
+	SDL_Rect GreenBub;
+	SDL_Rect YelBub;
+	SDL_Rect BlkBub;
+	SDL_Rect GreyBub;
+	SDL_Rect OraBub;
+	SDL_Rect PplBub;
 	int arrow_pos;
 	int bmachine_pos;
 	int smachine_pos;
@@ -41,6 +49,7 @@ public:
 	int change_sprite;
 	int board_copy[96];
 	int rnd;
+	int rnd_aux;
 
 	int lvl = 0;
 

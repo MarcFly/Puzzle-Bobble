@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "Globals.h"
 #include "Application.h"
+#include "Bobbles.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
@@ -11,6 +12,7 @@
 #include "PuzzleBubble/ModuleAudio.h"
 #include "PuzzleBubble/ModuleScene1-3.h"
 #include "PuzzleBubble/ModuleScene4-6.h"
+#include "PuzzleBubble/ModuleFadeToBlack.h"
 
 
 #define ANGLE_INCREMENT 85.f/62.f
@@ -20,6 +22,48 @@
 ModulePlayer::ModulePlayer()
 {
 	srand(time(NULL));
+
+	// bubbles
+
+	BluBub.x = 18;
+	BluBub.y = 559;
+	BluBub.w = 16;
+	BluBub.h = 16;
+				
+	RedBub.x = 18;
+	RedBub.y = 607;
+	RedBub.w = 16;
+	RedBub.h = 16;
+				
+	GreenBub.x = 266;
+	GreenBub.y = 559;
+	GreenBub.w = 16;
+	GreenBub.h = 16;
+				
+	YelBub.x = 18;
+	YelBub.y = 631;
+	YelBub.w = 16;
+	YelBub.h = 16;
+				
+	BlkBub.x = 266;
+	BlkBub.y = 583;
+	BlkBub.w = 16;
+	BlkBub.h = 16;
+				
+	GreyBub.x = 18;
+	GreyBub.y = 583;
+	GreyBub.w = 16;
+	GreyBub.h = 16;
+				
+	OraBub.x = 266;
+	OraBub.y = 607;
+	OraBub.w = 16;
+	OraBub.h = 16;
+				
+	PplBub.x = 266;
+	PplBub.y = 631;
+	PplBub.w = 16;
+	PplBub.h = 16;
 
 	// tube 
 
@@ -555,6 +599,63 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Sprites/Player sprites.png");
 
 	rnd = 0;
+	rnd_aux = 0;
+	//Making the Board pointer look at actual level
+
+
+	int board_it = 0;
+
+	if (lvl <= 2) {
+		for (int y = 0; y < 12; y++) {
+			for (int x = 0; x < 8; x++) {
+				board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
+				board_it++;
+			}
+		}
+	}
+
+
+
+	// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
+
+	board_it = 0;
+	int Bubble_count[9];
+	int total_bubs = 0;
+	int columns = 0;
+	int section = 1;
+
+	for (int i = 0; i < 9; i++)
+		Bubble_count[i] = 0;
+
+	for (int i = 0; i < 96; i++){
+
+		Bubble_count[board_copy[i]]++;
+
+	}
+
+
+	for (int i = 1; i < 9; i++)
+		total_bubs += Bubble_count[i];
+
+
+	rnd_aux = rand() % (total_bubs) + 1;
+
+	rnd_aux--;
+
+	for (int i = 1; i < 9; i++){
+
+		if ((rnd_aux - Bubble_count[i]) <= 0){
+
+			rnd_aux = section;
+			break;
+		}
+
+		rnd_aux -= Bubble_count[i];
+
+		section++;
+	}
+
+
 	return ret;
 }
 
@@ -599,8 +700,13 @@ update_status ModulePlayer::Update()
 		change_sprite++;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
+	
 
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
+
+		
+		rnd = rnd_aux;
+		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 		//Making the Board pointer look at actual level
 
 
@@ -614,6 +720,9 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
+
+		
+
 		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
 	
 		board_it = 0;
@@ -626,18 +735,8 @@ update_status ModulePlayer::Update()
 			Bubble_count[i] = 0;
 
 		for(int i = 0; i < 96; i++){
-
-			if (Bubble_count[0] == 8) break;
 			
-  			Bubble_count[board_copy[board_it]]++;
-
-			board_it++;
-			columns++;
-
-			if (columns == 8 && Bubble_count[0] != 8){
-				columns = 0;
-				Bubble_count[0] = 0;
-			}
+  			Bubble_count[board_copy[i]]++;
 
 		}
 
@@ -645,27 +744,31 @@ update_status ModulePlayer::Update()
 		for (int i = 1; i < 9; i++)
 			total_bubs += Bubble_count[i];
 
+		//if (total_bubs == 0)
+			//App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 
-		rnd = rand() % (total_bubs-1) + 1; 
+		rnd_aux = rand() % (total_bubs) + 1; 
 
 
 		for(int i = 1; i < 9; i++){  
 
-			if ((rnd - Bubble_count[i]) <= 0){
+			if ((rnd_aux - Bubble_count[i]) <= 0){
 
-				rnd = section;
+				rnd_aux = section;
 				break;
 			}
 
-			rnd -= Bubble_count[i];
+			rnd_aux -= Bubble_count[i];
 			
 			section++;
 		}
 
+
 		//for now I put rand to 2 so it is Red = 2
 		
 		//rnd = 3;
-		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
+
+		
 
 		//Shoot audio
 		sfx01 = Mix_LoadWAV("../../Audio/SFX/SFX 01.wav");
@@ -673,7 +776,6 @@ update_status ModulePlayer::Update()
 	}
 
 	// BLITS
-
 
 	// Small Machine blit
 
@@ -719,6 +821,22 @@ update_status ModulePlayer::Update()
 	// Tube blit
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
+
+
+	// Bubble to shoot
+
+	switch (rnd_aux){
+
+	case 1: App->render->Blit(graphics, 143, 180, &BluBub, 0.75f); break;
+	case 2: App->render->Blit(graphics, 143, 180, &RedBub, 0.75f); break;
+	case 3: App->render->Blit(graphics, 143, 180, &GreenBub, 0.75f); break;
+	case 4: App->render->Blit(graphics, 143, 180, &YelBub, 0.75f); break;
+	case 5: App->render->Blit(graphics, 143, 180, &BlkBub, 0.75f); break;
+	case 6: App->render->Blit(graphics, 143, 180, &OraBub, 0.75f); break;
+	case 7: App->render->Blit(graphics, 143, 180, &GreyBub, 0.75f); break;
+	case 8: App->render->Blit(graphics, 143, 180, &PplBub, 0.75f); break;
+	default: break;
+	}
 
 	return UPDATE_CONTINUE;
 }
