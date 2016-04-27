@@ -316,7 +316,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	
 							}
 						else if (y == ((int)(((active[i]->position.y - 8) / 16))))
-							for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1); x--){
+							for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && x != 0; x--){
 
 								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
 									total_coll++;
@@ -326,10 +326,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 					}
 
 					//CONTINUAR CADENA
-
+ 
 					if (total_coll >= 2)
 					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
-						for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1); x--){
+						for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && !(x == 0 && y == (int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))); x--){
 
 							if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
 								App->scene_1to3->bubble_board[y][x] = E;
@@ -345,7 +345,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
 
 						if (y == ((int)(((active[i]->position.y - 8) / 16)) + 1))
-							for (int x = ((int)(((active[i]->position.x - 64) / 16))); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16)) + 1); x++){
+							for (int x = ((int)(((active[i]->position.x - 64) / 16)) - 1); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16))); x++){
 
 								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
 									total_coll++;
@@ -353,7 +353,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 							}
 
 						else if (y == ((int)(((active[i]->position.y - 8) / 16)) - 1))
-							for (int x = ((int)(((active[i]->position.x - 64) / 16))); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16)) + 1); x++){
+							for (int x = ((int)(((active[i]->position.x - 64) / 16)) - 1); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16))); x++){
 
 								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
 									total_coll++;
