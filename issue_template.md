@@ -1,6 +1,12 @@
-### Expected behavior
+**Steps to Reproduce:**    
 
-### Actual behavior
+**Type:**    
 
-### Steps to reproduce the behavior
+**Severity:**    
+
+**Actual Result:**    
+
+**Expected Result:**    
+
+**Build:**    
 
