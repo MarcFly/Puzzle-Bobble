@@ -92,6 +92,10 @@ Bobble_Yellow::Bobble_Yellow(int x, int y) : Enemy(x, y)
 Bobble_Black::Bobble_Black(int x, int y) : Enemy(x, y)
 {
 	idle.PushBack({ 266, 583, 16, 16 });
+	idle.PushBack({ 266, 583, 16, 16 });
+	idle.PushBack({ 266, 583, 16, 16 });
+	idle.PushBack({ 283, 583, 16, 16 });
+	idle.PushBack({ 300, 583, 16, 16 });
 	idle.speed = 0.05f;
 
 	explode.PushBack({ 338, 286, 16, 16 });
@@ -145,7 +149,12 @@ Bobble_Grey::Bobble_Grey(int x, int y) : Enemy(x, y)
 
 Bobble_Purple::Bobble_Purple(int x, int y) : Enemy(x, y)
 {
-	idle.PushBack({ 318, 338, 16, 16 });
+	idle.PushBack({ 266, 631, 16, 16 });
+	idle.PushBack({ 266, 631, 16, 16 });
+	idle.PushBack({ 266, 631, 16, 16 });
+	idle.PushBack({ 283, 631, 16, 16 });
+	idle.PushBack({ 300, 631, 16, 16 });
+
 	idle.speed = 0.05f;
 
 	explode.PushBack({ 266, 631, 16, 16 });
