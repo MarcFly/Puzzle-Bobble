@@ -605,7 +605,7 @@ bool ModulePlayer::Start()
 
 	int board_it = 0;
 
-	if (lvl <= 2) {
+	if (App->lvl-1 <= 2) {
 		for (int y = 0; y < 12; y++) {
 			for (int x = 0; x < 8; x++) {
 				board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
@@ -712,7 +712,7 @@ update_status ModulePlayer::Update()
 
 		int board_it = 0;
 
-		if (lvl <= 2) {
+		if (App->lvl-1 <= 2) {
 			for (int y = 0; y < 12; y++) {
 				for (int x = 0; x < 8; x++) {
 					board_copy[board_it] = App->scene_1to3->bubble_board[y][x];

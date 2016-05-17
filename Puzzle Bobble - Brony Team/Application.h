@@ -52,6 +52,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	int lvl = 0;
+
 };
 
 extern Application* App;

@@ -12,6 +12,8 @@
 #include "../ModuleEnemies.h"
 #include "ModuleAudio.h"
 
+
+
 ModuleScene1to3::ModuleScene1to3()
 {
 
@@ -105,8 +107,8 @@ bool ModuleScene1to3::Start()
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {
-			bubble_board[y][x] = tmp[App->player->lvl][y][x];
-			prev_bb[y][x] = tmp[App->player->lvl][y][x];
+			bubble_board[y][x] = tmp[App->lvl-1][y][x];
+			prev_bb[y][x] = tmp[App->lvl-1][y][x];
 		}
 	}
 
@@ -202,6 +204,8 @@ bool ModuleScene1to3::CleanUp()
 	App->collision->Disable();
 	App->enemies->Disable();
 
+	App->lvl++;
+
 	return true;
 }
 
@@ -264,8 +268,15 @@ update_status ModuleScene1to3::Update()
 
 	}
 
-	if (empty == true)
-		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+	if (empty == true){
+		if (App->lvl > 2)
+			App->fade->FadeToBlack(this, (Module*)App->scene_win);
+
+		else{
+			
+			App->fade->FadeToBlack(this, this);
+		}
+	}
 
  	return UPDATE_CONTINUE;
 }
@@ -347,6 +358,9 @@ update_status ModuleScene1to3::PostUpdate(){
 			prev_bb[y][x] = bubble_board[y][x];
 		}
 	}
+
+	
+
 	return UPDATE_CONTINUE;
 }
 

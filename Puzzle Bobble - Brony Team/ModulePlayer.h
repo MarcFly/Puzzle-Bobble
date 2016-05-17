@@ -51,8 +51,6 @@ public:
 	int rnd;
 	int rnd_aux;
 
-	int lvl = 0;
-
 	//audio
 	Mix_Chunk* sfx01 = nullptr;
 

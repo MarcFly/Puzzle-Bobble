@@ -63,6 +63,7 @@ update_status ModuleSceneMainMenu::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
 		Mix_PlayChannel(-1, sfx08, 0);
 		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
+		App->lvl = 1;
 	}
 
 	return UPDATE_CONTINUE;
