@@ -87,13 +87,13 @@ bool ModuleScene1to3::Start()
 
 		//LEVEL 3
 		{
-			{ R, R, Y, Y, B, B, G, G },
-			{ E, R, R, Y, Y, B, B, G },
-			{ B, B, G, G, R, R, Y, Y },
-			{ E, B, G, G, R, R, Y, Y },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
+			{ B, G, B, B, G, P, R, g },
+			{ E, B, E, Y, E, R, E, B },
+			{ E, Y, R, B, B, Y, g, E },
+			{ E, E, R, E, R, E, Y, E },
+			{ E, Y, Y, g, G, R, P, E },
+			{ E, g, E, R, E, G, E, R },
+			{ g, B, B, G, R, Y, P, B },
 			{ E, E, E, E, E, E, E, E },
 			{ E, E, E, E, E, E, E, E },
 			{ E, E, E, E, E, E, E, E },
