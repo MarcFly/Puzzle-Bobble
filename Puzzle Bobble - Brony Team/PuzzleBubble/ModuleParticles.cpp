@@ -9,7 +9,7 @@
 #include "ModuleScene1-3.h"
 #include "ModuleAudio.h"
 
-#define BUBBLE_SPEED 3.3f
+#define BUBBLE_SPEED 5.f
 
 #include "SDL/include/SDL_timer.h"
 
