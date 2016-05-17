@@ -114,6 +114,10 @@ Bobble_Black::Bobble_Black(int x, int y) : Enemy(x, y)
 Bobble_Orange::Bobble_Orange(int x, int y) : Enemy(x, y)
 {
 	idle.PushBack({ 266, 607, 16, 16 });
+	idle.PushBack({ 266, 607, 16, 16 });
+	idle.PushBack({ 266, 607, 16, 16 });
+	idle.PushBack({ 283, 607, 16, 16 });
+	idle.PushBack({ 300, 607, 16, 16 });
 	idle.speed = 0.05f;
 
 	explode.PushBack({ 338, 312, 16, 16 });
