@@ -54,14 +54,14 @@ bool ModuleScene1to3::Start()
 		//LEVEL 1
 		{
 
-			{ R, R, Y, Y, B, B, G, G },
-			{ E, R, R, Y, Y, B, B, G },
-			{ B, B, G, G, R, R, Y, Y },
-			{ E, B, G, G, R, R, Y, Y },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
-			{ E, E, E, E, E, E, E, E },
+			{ E, V, V, E, E, B, B, E },
+			{ E, E, g, E, E, E, R, E },
+			{ E, G, E, E, E, B, E, E },
+			{ E, E, G, E, E, E, P, E },
+			{ E, B, E, E, E, R, E, E },
+			{ E, E, R, E, E, E, B, E },
+			{ E, g, E, E, E, R, E, E },
+			{ E, E, P, E, E, E, g, E },
 			{ E, E, E, E, E, E, E, E },
 			{ E, E, E, E, E, E, E, E },
 			{ E, E, E, E, E, E, E, E },
@@ -72,7 +72,7 @@ bool ModuleScene1to3::Start()
 		//LEVEL 2
 		{
 			{ R, R, Y, Y, B, B, G, G },
-			{ E, R, R, Y, Y, B, B, G },
+			{ E, E, R, Y, Y, B, B, G },
 			{ B, B, G, G, R, R, Y, Y },
 			{ E, B, G, G, R, R, Y, Y },
 			{ E, E, E, E, E, E, E, E },
