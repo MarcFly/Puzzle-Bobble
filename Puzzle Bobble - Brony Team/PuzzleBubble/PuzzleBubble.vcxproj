@@ -83,6 +83,7 @@
     <ClInclude Include="..\p2Point.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
+    <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleSceneMainMenu.h" />
     <ClInclude Include="ModuleScene1-3.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="..\ModuleWindow.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
+    <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleSceneMainMenu.cpp" />
     <ClCompile Include="ModuleScene1-3.cpp" />

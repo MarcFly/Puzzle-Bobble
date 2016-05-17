@@ -14,6 +14,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "PuzzleBubble\ModuleSceneWin.h"
+#include "PuzzleBubble\ModuleFonts.h"
 
 Application::Application()
 {
@@ -31,8 +32,10 @@ Application::Application()
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
-	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fonts = new ModuleFonts();
+	modules[i++] = fade = new ModuleFadeToBlack();
+	
 }	
 
 Application::~Application()

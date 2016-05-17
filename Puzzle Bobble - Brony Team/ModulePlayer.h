@@ -51,6 +51,10 @@ public:
 	int rnd;
 	int rnd_aux;
 
+	uint score = 0;
+	char score_text[10];
+	int font_score = -1;
+
 	//audio
 	Mix_Chunk* sfx01 = nullptr;
 

@@ -13,6 +13,8 @@
 #include "PuzzleBubble/ModuleScene1-3.h"
 #include "PuzzleBubble/ModuleScene4-6.h"
 #include "PuzzleBubble/ModuleFadeToBlack.h"
+#include "PuzzleBubble/ModuleFonts.h"
+#include "stdio.h"
 
 
 #define ANGLE_INCREMENT 85.f/62.f
@@ -598,6 +600,8 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
+	font_score = App->fonts->Load("Resources/Sprites/Game Sprites.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+
 	rnd = 0;
 	rnd_aux = 0;
 	//Making the Board pointer look at actual level
@@ -704,6 +708,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
 
+		score += 10;
 		
 		rnd = rnd_aux;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
@@ -822,6 +827,10 @@ update_status ModulePlayer::Update()
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
+	// UI Blit
+	sprintf_s(score_text, 10, "%7d", score);
+	App->fonts->Blit(20, 20, 0, "!hello world");
+
 	// Bubble to shoot
 
 	switch (rnd_aux){
@@ -836,8 +845,8 @@ update_status ModulePlayer::Update()
 	case 8: App->render->Blit(graphics, 143, 186, &PplBub, 0.75f); break;
 	default: break;
 
-
 	}
+
 
 	return UPDATE_CONTINUE;
 }
