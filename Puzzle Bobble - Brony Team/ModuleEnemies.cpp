@@ -7,7 +7,7 @@
 #include "Enemy.h"
 #include "Bobbles.h"
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 200
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -59,18 +59,18 @@ update_status ModuleEnemies::Update()
 update_status ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if(enemies[i] != nullptr)
-		{
-			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
-			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
-				delete enemies[i];
-				enemies[i] = nullptr;
-			}
-		}
-	}
+	//for(uint i = 0; i < MAX_ENEMIES; ++i)
+	//{
+	//	if(enemies[i] != nullptr)
+	//	{
+	//		if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+	//		{
+	//			LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+	//			delete enemies[i];
+	//			enemies[i] = nullptr;
+	//		}
+	//	}
+	//}
 
 	return UPDATE_CONTINUE;
 }
@@ -99,7 +99,7 @@ bool ModuleEnemies::EraseAll() {
 	{
 		if (enemies[i] != nullptr)
 		{
-			App->collision->EraseCollider(enemies[i]->collider);
+			enemies[i]->collider->to_delete = true;
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}

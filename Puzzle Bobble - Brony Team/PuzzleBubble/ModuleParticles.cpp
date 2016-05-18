@@ -395,7 +395,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 
 				}
 
-				active[i]->collider->to_delete = true;
+				//active[i]->collider->to_delete = true;
 
 				App->player->rnd = 0;
 

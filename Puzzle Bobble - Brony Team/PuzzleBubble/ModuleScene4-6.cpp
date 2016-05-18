@@ -50,7 +50,7 @@ bool ModuleScene4to6::Start()
 	App->collision->AddCollider({ 78, 15, 145, 8 }, COLLIDER_CEILING);
 	App->collision->AddCollider({ 215, 15, 8, 215 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
+	//App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
 
 	return true;
 }
