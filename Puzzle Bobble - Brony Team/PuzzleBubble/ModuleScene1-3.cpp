@@ -245,6 +245,7 @@ update_status ModuleScene1to3::Update()
 				Mix_PlayChannel(-1, sfx05, 0);
 				playonce = false;
 			}
+			App->player->score = 0;
 			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 		}
 	}
@@ -360,7 +361,7 @@ update_status ModuleScene1to3::PostUpdate(){
 	}
 
 	
-
+	LOG("SCENE PostUpdate")
 	return UPDATE_CONTINUE;
 }
 

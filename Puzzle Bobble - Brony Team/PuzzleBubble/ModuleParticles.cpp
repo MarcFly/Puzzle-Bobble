@@ -166,6 +166,8 @@ bool ModuleParticles::Start()
 	
 	sfx03 = Mix_LoadWAV("Resources/Audio/SFX/SFX 03.wav");
 
+	LOG("Particle Loaded succsessfully");
+
 	return true;
 }
 

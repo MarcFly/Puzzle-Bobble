@@ -38,8 +38,8 @@ bool ModuleSceneMainMenu::Start()
 
 	LOG("Loading music02");
 	Mix_PlayMusic(App->audio->music02, 1);
-
 	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
+
 	LOG("Scene MainMenu Started Succesfully");
 
 	return true;
