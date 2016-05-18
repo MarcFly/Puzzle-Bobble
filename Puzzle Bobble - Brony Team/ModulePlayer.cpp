@@ -603,7 +603,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
-	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFont.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
 	rnd_aux = 0;
