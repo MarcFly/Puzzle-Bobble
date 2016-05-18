@@ -55,6 +55,7 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	for (int i = '!'; i < '~'; i++) {
 		fonts[id].table[i - '!'] = i;
 	}
+	fonts[id].graphic = tex;
 	fonts[id].rows = 3;
 	fonts[id].len = 96;
 	fonts[id].row_chars = 32;
@@ -97,17 +98,15 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 		// TODO 2: Find the character in the table and its position in the texture, then Blit
 		for (uint k = 0; k < font->len; k++) {
 			if (text[i] == font->table[k]){
-				if (text[i] >= '!' && text[i] >= '?') 
-					rect.y = 1631;
-				if (text[i] >= '!' && text[i] >= '?') 
-					rect.y = 1640;
-				if (text[i] >= '!' && text[i] >= '?') 
-					rect.y = 1649;
-
-				rect.x = 233 + (k % 32) * 8;
+				if (text[i] >= '0' && text[i] <= '9') {
+					rect.x = 146 + (text[i] - '0') * (font->char_w + 1);
+					rect.y = 2;
+				}
+				
 			}
-			App->render->Blit(font->graphic, x, y, &rect);
 		}
+			App->render->Blit(font->graphic, x, y, &rect);
+			x += font->char_w;
 
 	}
 

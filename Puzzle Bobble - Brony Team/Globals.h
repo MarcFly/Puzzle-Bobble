@@ -23,7 +23,6 @@ enum bubble_color {
 	E = 0, B, R, G, Y, V, O, g, P
 };
 
-
 #define BUBBLE_OFFSET_X_ODD 71
 #define BUBBLE_OFFSET_Y 8
 #define BUBBLE_OFFSET_X_PAIR 64

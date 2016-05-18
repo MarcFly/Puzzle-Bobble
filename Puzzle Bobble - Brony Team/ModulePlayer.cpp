@@ -19,7 +19,7 @@
 
 #define ANGLE_INCREMENT 85.f/62.f
 
-
+int ply_score = 0;
 
 ModulePlayer::ModulePlayer()
 {
@@ -564,6 +564,7 @@ ModulePlayer::ModulePlayer()
 
 	//-----------
 
+	score = ply_score;
 
 }
 
@@ -575,6 +576,8 @@ bool ModulePlayer::CleanUp() {
 	LOG("\nFreeing sfx01");
 	//Mix_FreeChunk(sfx01);
 	
+	ply_score = score;
+
 	LOG("\nPlayer CleanUp exited successfully");
 	return true;
 }
@@ -600,7 +603,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
-	font_score = App->fonts->Load("Resources/Sprites/Game Sprites.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFont.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
 	rnd_aux = 0;
@@ -707,8 +710,6 @@ update_status ModulePlayer::Update()
 	
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
-
-		score += 10;
 		
 		rnd = rnd_aux;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
@@ -829,7 +830,8 @@ update_status ModulePlayer::Update()
 
 	// UI Blit
 	sprintf_s(score_text, 10, "%7d", score);
-	App->fonts->Blit(20, 20, 0, "!hello world");
+	App->fonts->Blit(27, 8, 0, "00000000");
+	App->fonts->Blit(35, 8, 0, score_text);
 
 	// Bubble to shoot
 
