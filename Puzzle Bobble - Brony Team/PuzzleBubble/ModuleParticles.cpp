@@ -493,7 +493,7 @@ double chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of 
 				total_coll++;
 			}
 		}
-		return total_coll - 2;
+		return total_coll;
 	}
 
 
@@ -525,6 +525,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 
 				App->player->rnd = 0;
 
+				active[i]->collider->to_delete = true;
 				delete active[i];
 				active[i] = nullptr;
 			}
