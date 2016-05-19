@@ -64,6 +64,7 @@ update_status ModuleSceneMainMenu::Update()
 		Mix_PlayChannel(-1, sfx08, 0);
 		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
 		App->lvl = 1;
+		App->player->score = 0;
 	}
 
 	return UPDATE_CONTINUE;

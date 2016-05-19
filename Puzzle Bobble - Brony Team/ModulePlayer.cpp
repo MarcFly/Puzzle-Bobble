@@ -12,6 +12,7 @@
 #include "PuzzleBubble/ModuleAudio.h"
 #include "PuzzleBubble/ModuleScene1-3.h"
 #include "PuzzleBubble/ModuleScene4-6.h"
+#include "PuzzleBubble/ModuleSceneMainMenu.h"
 #include "PuzzleBubble/ModuleFadeToBlack.h"
 #include "PuzzleBubble/ModuleFonts.h"
 #include "stdio.h"
@@ -848,7 +849,11 @@ update_status ModulePlayer::Update()
 
 	}
 
+	//Changes made to not crash
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN) {
+		if (App->lvl > 2)
+			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3);
 	}
 
