@@ -277,6 +277,138 @@ bool Particle::Update()
 	return ret;
 }
 
+bool look_around(int y, int x){
+
+	bool done2;
+	int cj = 420;
+	for (int i = 0; i < 12; i++){
+		for (int j = 0; j < 8; j++){
+			if (App->particles->board_copy[i][j] == 420){
+				y = i;
+				x = j;
+				App->particles->board_copy[i][j] = App->player->rnd;
+				cj = j;
+				break;
+			}
+		}
+
+		if (App->particles->board_copy[i][cj] == App->player->rnd && x == cj && y == i)
+			break;
+	}
+
+
+	for (int i = y + 1; i >= y - 1 && i >= 0; i--){
+
+		if (i == y){
+
+			for (int j = x - 1; j <= x + 1 && j >= 0; j++){
+
+				if (j >= 0 && j <= 7 && App->scene_1to3->bubble_board[i][j] == App->player->rnd && App->particles->board_copy[i][j] == E){
+
+					App->particles->board_copy[i][j] = 420;
+				}
+			}
+		}
+
+		else{
+			if (i % 2 != 0){
+				for (int j = x; j <= x + 1 && j <= 7; j++){
+
+					if (j <= 7 && App->scene_1to3->bubble_board[i][j] == App->player->rnd && App->particles->board_copy[i][j] == E){
+
+						App->particles->board_copy[i][j] = 420;
+					}
+				}
+			}
+
+			else {
+
+				for (int j = x - 1; j <= x && j >= 0; j++){
+
+					if (j >= 0 && App->scene_1to3->bubble_board[i][j] == App->player->rnd && App->particles->board_copy[i][j] == E){
+
+						App->particles->board_copy[i][j] = 420;
+					}
+				}
+			}
+		}
+	}
+
+
+	for (int i = 0; i < 12; i++){
+		for (int j = 0; j < 8; j++){
+			if (App->particles->board_copy[i][j] == 420)
+				return false;
+			else
+				done2 = true;
+		}
+	}
+
+	return done2;
+
+}
+
+
+int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of collisions
+	while (true){
+		if (y > 11)
+			y /= 2;
+
+		if (x_ODD > 7){
+			x_ODD -= 1;
+
+			if (x_ODD < 1)
+				x_ODD += 1;
+
+			else break;
+		}
+
+		//C columns is for Y axis and R rows is for X axis
+		bool done = false;
+		int total_coll = 0;
+
+		for (int i = 0; i < 12; i++)
+			for (int j = 0; j < 8; j++)
+				App->particles->board_copy[i][j] = E;
+
+		if (y % 2 != 0){
+
+			App->scene_1to3->bubble_board[y][x_ODD] = App->player->rnd;
+			App->particles->board_copy[y][x_ODD] = App->player->rnd;
+			while (done == false)
+				done = look_around(y, x_ODD);
+
+		}
+
+
+		else{
+
+			App->scene_1to3->bubble_board[y][x_PAIR] = App->player->rnd;
+			App->particles->board_copy[y][x_PAIR] = App->player->rnd;
+			while (done == false)
+				done = look_around(y, x_PAIR);
+
+		}
+
+		for (int i = 0; i < 12; i++)
+			for (int j = 0; j < 8; j++)
+				if (App->particles->board_copy[i][j] == App->player->rnd)
+					total_coll++;
+
+
+		//"Popping" bubbles
+		if (total_coll <= 2)
+			total_coll = 0;
+		else
+			for (int i = 0; i < 12; i++)
+				for (int j = 0; j < 8; j++)
+					if (App->particles->board_copy[i][j] == App->player->rnd)
+						App->scene_1to3->bubble_board[i][j] = E;
+
+		return total_coll;
+	}
+}
+
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	LOG("\nparticle col\n");
 
@@ -296,108 +428,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
 				Mix_PlayChannel(-1, sfx02, 0);
 				
-				if ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) % 2){
-					if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) > 0)
-						if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 8)
-							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) - 1)] = App->player->rnd;
-
-					else if ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) == 0)
-						App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16) + 1)] = App->player->rnd;
-
-						else
-							App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16))] = App->player->rnd;
-
-
-					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
-					
-						if (y == ((int)(((active[i]->position.y - 8) / 16)) + 1))
-							for (int x = ((int)(((active[i]->position.x - 71) / 16))); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1); x--){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-
-							}
-
-						else if (y == ((int)(((active[i]->position.y - 8) / 16)) - 1))
-							for (int x = ((int)(((active[i]->position.x - 71) / 16))); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1); x--){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-	
-							}
-						else if (y == ((int)(((active[i]->position.y - 8) / 16))))
-							for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && x != 0; x--){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-
-							}
-
-					}
-
-					//CONTINUAR CADENA
- 
-					if (total_coll >= 2)
-					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
-						for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16)) - 1) && !(x == 0 && y == (int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))); x--){
-
-							if (App->scene_1to3->bubble_board[y][x] == App->player->rnd) {
-								App->scene_1to3->bubble_board[y][x] = E;
-								App->player->score += 10;
-							}
-
-						}
-					}
-
-				}
-
-				else{
-					App->scene_1to3->bubble_board[(int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16))][(int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1)] = App->player->rnd;
-
-					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
-
-						if (y == ((int)(((active[i]->position.y - 8) / 16)) + 1))
-							for (int x = ((int)(((active[i]->position.x - 64) / 16)) - 1); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16))); x++){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-
-							}
-
-						else if (y == ((int)(((active[i]->position.y - 8) / 16)) - 1))
-							for (int x = ((int)(((active[i]->position.x - 64) / 16)) - 1); x <= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16))); x++){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-
-							}
-						else if (y == ((int)(((active[i]->position.y - 8) / 16))))
-							for (int x = ((int)(((active[i]->position.x - 64) / 16))); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16)) - 1); x--){
-
-								if (App->scene_1to3->bubble_board[y][x] == App->player->rnd)
-									total_coll++;
-
-							}
-
-					}
-
-					//CONTINUAR CADENA
-
-					if (total_coll >= 2)
-					for (int y = ((int)(((active[i]->position.y - 8) / 16)) + 1); y >= ((int)(((active[i]->position.y - BUBBLE_OFFSET_Y) / 16)) - 1); y--){
-						for (int x = ((int)(((active[i]->position.x - 71) / 16)) + 1); x >= ((int)(((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16)) - 1); x--){
-
-							if (App->scene_1to3->bubble_board[y][x] == App->player->rnd) {
-								App->scene_1to3->bubble_board[y][x] = E;
-								App->player->score += 10;
-							}
-
-						}
-					}
-
-				}
-
-				//active[i]->collider->to_delete = true;
+				App->player->score += 10 * chain((active[i]->position.y - BUBBLE_OFFSET_Y) / 16, (active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16, ((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1);
 
 				App->player->rnd = 0;
 

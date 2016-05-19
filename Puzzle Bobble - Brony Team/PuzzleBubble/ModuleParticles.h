@@ -62,6 +62,7 @@ public:
 	//sound fx
 	Mix_Chunk* sfx03 = nullptr;
 
+	int board_copy[12][8];
 };
 
 #endif // __MODULEPARTICLES_H__
