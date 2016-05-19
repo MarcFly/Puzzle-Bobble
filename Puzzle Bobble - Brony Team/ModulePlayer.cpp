@@ -15,7 +15,7 @@
 #include "PuzzleBubble/ModuleFadeToBlack.h"
 #include "PuzzleBubble/ModuleFonts.h"
 #include "stdio.h"
-
+#include "PuzzleBubble/ModuleSceneMainMenu.h"
 
 #define ANGLE_INCREMENT 85.f/62.f
 
@@ -849,6 +849,8 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN) {
+		if (App->lvl > 2)
+			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3);
 	}
 
