@@ -257,6 +257,7 @@ anim(p.anim), position(p.position), speed(p.speed),
 fx(p.fx), born(p.born), life(p.life)
 {}
 
+
 bool Particle::Update()
 {
 	bool ret = true;
