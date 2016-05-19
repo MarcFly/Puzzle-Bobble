@@ -603,7 +603,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
-//	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
 	rnd_aux = 0;
@@ -830,7 +830,7 @@ update_status ModulePlayer::Update()
 
 	// UI Blit
 	sprintf_s(score_text, 10, "%7d", score);
-//	App->fonts->Blit(35, 8, 0, score_text);
+	App->fonts->Blit(35, 8, 0, score_text);
 
 	// Bubble to shoot
 

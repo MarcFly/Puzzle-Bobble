@@ -33,7 +33,7 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
-//	modules[i++] = fonts = new ModuleFonts();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	
 }	

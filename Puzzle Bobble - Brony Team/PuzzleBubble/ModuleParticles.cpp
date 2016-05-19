@@ -8,6 +8,7 @@
 #include "../ModuleCollision.h"
 #include "ModuleScene1-3.h"
 #include "ModuleAudio.h"
+#include "Math.h"
 
 #define BUBBLE_SPEED 5.f
 
@@ -313,18 +314,18 @@ void look_around_fall(){
 	}
 }
 
-int chain_fall(){
+double chain_fall(){
 
 	int total_coll = 0;
 
 	for (int i = 0; i < 12; i++)
-		for (int j = 0; j < 8; j++)
-			App->particles->board_copy[i][j] = E;
+	for (int j = 0; j < 8; j++)
+		App->particles->board_copy[i][j] = E;
 
 	for (int i = 0; i < 12; i++){
 		for (int j = 0; j < 8; j++)
-			if (App->scene_1to3->bubble_board[i][j] != E)
-				App->particles->board_copy[i][j] = 420;
+		if (App->scene_1to3->bubble_board[i][j] != E)
+			App->particles->board_copy[i][j] = 420;
 	}
 
 	// for (int i = 0; i < 12; i++)
@@ -334,21 +335,24 @@ int chain_fall(){
 	total_coll = 0;
 
 	for (int i = 0; i < 12; i++)
-		for (int j = 0; j < 8; j++)
-			if (App->particles->board_copy[i][j] == 420)
-				total_coll++;
+	for (int j = 0; j < 8; j++)
+	if (App->particles->board_copy[i][j] == 420)
+		total_coll++;
 
 
 	//"Popping" bubbles
-		
-	for (int i = 0; i < 12; i++)
+
+	for (int i = 0; i < 12; i++){
 		for (int j = 0; j < 8; j++)
-			if (App->particles->board_copy[i][j] == 420){
-				App->scene_1to3->bubble_board[i][j] = E;
-				App->particles->board_copy[i][j] = E;
-			}
+		if (App->particles->board_copy[i][j] == 420){
+			App->scene_1to3->bubble_board[i][j] = E;
+			App->particles->board_copy[i][j] = E;
+		}
+	}
 
 
+	if (total_coll < 2)
+		total_coll = 0;
 
 	return total_coll;
 
@@ -427,7 +431,7 @@ bool look_around(int y, int x){
 }
 
 
-int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of collisions
+double chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of collisions
 	while (true){
 		if (y > 11)
 			y /= 2;
@@ -479,19 +483,23 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 		//"Popping" bubbles
 		if (total_coll <= 2)
 			total_coll = 0;
-		else
+		else{
+			total_coll = 0;
 			for (int i = 0; i < 12; i++)
-				for (int j = 0; j < 8; j++)
-					if (App->particles->board_copy[i][j] == App->player->rnd)
-						App->scene_1to3->bubble_board[i][j] = E;
-
-		return total_coll;
+			for (int j = 0; j < 8; j++)
+			if (App->particles->board_copy[i][j] == App->player->rnd){
+				App->scene_1to3->bubble_board[i][j] = E;
+				total_coll++;
+			}
+		}
+		return total_coll - 2;
 	}
 
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	LOG("\nparticle col\n");
 
+	double result = 0;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -509,7 +517,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				
 				App->player->score += 10 * chain((active[i]->position.y - BUBBLE_OFFSET_Y) / 16, (active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16, ((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1);
 
-				App->player->score += 10 * (2 ^ chain_fall());
+				result = chain_fall();
+
+				if (result != 0)
+					App->player->score += (10 * (pow(2, result)));
+
 				App->player->rnd = 0;
 
 				delete active[i];
