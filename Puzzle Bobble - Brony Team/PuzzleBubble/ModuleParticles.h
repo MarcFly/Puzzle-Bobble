@@ -62,6 +62,7 @@ public:
 	//sound fx
 	Mix_Chunk* sfx03 = nullptr;
 
+	int ceiling_pos = 0;
 	int board_copy[12][8];
 };
 

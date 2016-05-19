@@ -277,6 +277,84 @@ bool Particle::Update()
 	return ret;
 }
 
+void look_around_fall(){
+
+	for (int j = 0; j < 8; j++)
+		if (App->particles->board_copy[App->particles->ceiling_pos][j] == 420)
+			App->particles->board_copy[App->particles->ceiling_pos][j] = 360;
+
+	for (int i = App->particles->ceiling_pos + 1; i < 12 - 1; i++){
+
+		for (int j = 0; j < 8; j++){
+
+
+			if (i % 2 == 0){
+				for (int k = j; k <= j + 1 && k < 8; k++)
+					if (App->particles->board_copy[i - 1][k] == 360 && App->particles->board_copy[i][j] != E)
+						App->particles->board_copy[i][j] = 360;
+			}
+
+			else {
+				for (int k = j - 1; k <= j && k >= 0; k++)
+					if (App->particles->board_copy[i - 1][k] == 360 && App->particles->board_copy[i][j] != E)
+						App->particles->board_copy[i][j] = 360;
+				
+			}
+		}
+
+		for (int j = 0; j < 8; j++){
+
+		
+				for (int k = j - 1; k <= j + 1; k++)
+					if (k >= 0 && k <= 7 && App->particles->board_copy[i][k] == 360 && App->particles->board_copy[i][j] != E)
+						App->particles->board_copy[i][j] = 360;
+		
+		}
+	}
+}
+
+int chain_fall(){
+
+	int total_coll = 0;
+
+	for (int i = 0; i < 12; i++)
+		for (int j = 0; j < 8; j++)
+			App->particles->board_copy[i][j] = E;
+
+	for (int i = 0; i < 12; i++){
+		for (int j = 0; j < 8; j++)
+			if (App->scene_1to3->bubble_board[i][j] != E)
+				App->particles->board_copy[i][j] = 420;
+	}
+
+	// for (int i = 0; i < 12; i++)
+	look_around_fall();
+
+
+	total_coll = 0;
+
+	for (int i = 0; i < 12; i++)
+		for (int j = 0; j < 8; j++)
+			if (App->particles->board_copy[i][j] == 420)
+				total_coll++;
+
+
+	//"Popping" bubbles
+		
+	for (int i = 0; i < 12; i++)
+		for (int j = 0; j < 8; j++)
+			if (App->particles->board_copy[i][j] == 420){
+				App->scene_1to3->bubble_board[i][j] = E;
+				App->particles->board_copy[i][j] = E;
+			}
+
+
+
+	return total_coll;
+
+}
+
+
 bool look_around(int y, int x){
 
 	bool done2;
@@ -354,16 +432,18 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 		if (y > 11)
 			y /= 2;
 
-		if (x_ODD > 7){
-			x_ODD -= 1;
+		if (x_ODD > 7)
+			x_ODD = 7;
 
-			if (x_ODD < 1)
-				x_ODD += 1;
+		if (x_ODD < 1)
+			x_ODD = 1;
+
+		if (x_PAIR > 7)
+			x_PAIR = 7;
 
 			else break;
 		}
 
-		//C columns is for Y axis and R rows is for X axis
 		bool done = false;
 		int total_coll = 0;
 
@@ -407,12 +487,11 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 
 		return total_coll;
 	}
-}
+
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	LOG("\nparticle col\n");
 
-	int total_coll = 0;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -430,6 +509,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				
 				App->player->score += 10 * chain((active[i]->position.y - BUBBLE_OFFSET_Y) / 16, (active[i]->position.x - BUBBLE_OFFSET_X_ODD) / 16, ((active[i]->position.x - BUBBLE_OFFSET_X_PAIR) / 16) - 1);
 
+				App->player->score += 10 * (2 ^ chain_fall());
 				App->player->rnd = 0;
 
 				delete active[i];

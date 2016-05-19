@@ -55,6 +55,7 @@ public:
 	char score_text[10];
 	char round_text[15];
 	int font_score = -1;
+	int timer;
 
 	//audio
 	Mix_Chunk* sfx01 = nullptr;
