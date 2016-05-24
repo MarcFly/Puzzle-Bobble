@@ -831,10 +831,11 @@ update_status ModulePlayer::Update()
 
 	// UI Blit
 	sprintf_s(score_text, 10, "%7d", score);
-	sprintf_s(round_text, 15, "ROUND %d", App->lvl + 3);
+	sprintf_s(round_text, 15, "0%d", App->lvl + 3);
 	App->fonts->Blit(35, 8, 0, score_text);
 	App->fonts->Blit(25, 0, 0, "1UP");
-	App->fonts->Blit(123, 187, 0, round_text);
+	App->fonts->Blit(123, 217, 0, "ROUND");
+	App->fonts->Blit(166, 217, 0, round_text);
 
 	// Bubble to shoot
 

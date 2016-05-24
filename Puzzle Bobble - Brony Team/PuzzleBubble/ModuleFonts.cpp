@@ -107,8 +107,8 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 					rect.y = 11;
 				}
 				if (text[i] == ' ') {
-					rect.x = 0;
-					rect.y = 0;
+					rect.x = 1;
+					rect.y = 1;
 				}
 
 				
