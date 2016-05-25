@@ -26,10 +26,6 @@ ModulePlayer::ModulePlayer()
 {
 	srand(time(NULL));
 
-	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
-
-	shots = 0;
-
 	// bubbles
 
 	BluBub.x = 18;
@@ -591,10 +587,15 @@ bool ModulePlayer::Start()
 {
 	srand(time(NULL));
 
-	timer_shot = 3000;
+
+	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
+
+	shots = 0;
+
+	timer_shot = SDL_GetTicks();
 
 	show_credits = true;
-	last_time_credits = 3000;
+	last_time_credits = SDL_GetTicks();
 
 	LOG("Loading player textures");
 	bool ret = true;
@@ -724,6 +725,10 @@ update_status ModulePlayer::Update()
 		timer_shot = SDL_GetTicks();
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_TAB] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
+		App->debug_mode = !App->debug_mode;
+	}
+
 	// BLITS
 
 	// Small Machine blit
@@ -772,12 +777,16 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
 	// SHOOTING AFTER 10 SECS
-	if (SDL_GetTicks() > timer_shot + 10000) {
+	if (SDL_GetTicks() > timer_shot + 9000) {
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
 
 	// UI Blit
+	if (App->debug_mode) {
+		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
+	}
+
 	sprintf_s(score_text, 10, "%7d", score);
 	sprintf_s(round_text, 15, "0%d", App->lvl + 3);
 	App->fonts->Blit(35, 8, 0, score_text);
@@ -817,12 +826,23 @@ update_status ModulePlayer::Update()
 
 	//Changes made to not crash
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->debug_mode) {
 		if (App->lvl > 2)
 			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3);
 	}
 
+
+	return UPDATE_CONTINUE;
+}
+
+update_status ModulePlayer::PostUpdate() {
+	if (App->debug_mode == true) {
+		shots = 0;
+		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN) {
+			shots = 6;
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }
