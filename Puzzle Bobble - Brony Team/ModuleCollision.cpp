@@ -101,7 +101,10 @@ update_status ModuleCollision::Update()
 void ModuleCollision::DebugDraw()
 {
 	
-	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
+	if (App->debug_mode == false)
+		debug = true;
+
+	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN && App->debug_mode == true)
 		debug = !debug;
 
 	if(debug == true)

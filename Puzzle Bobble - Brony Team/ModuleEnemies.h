@@ -48,10 +48,12 @@ private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
+
+
 private:
 
-	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
+	EnemyInfo queue[MAX_ENEMIES];
 	SDL_Texture* sprites;
 };
 

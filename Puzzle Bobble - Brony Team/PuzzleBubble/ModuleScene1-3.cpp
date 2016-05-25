@@ -211,6 +211,8 @@ bool ModuleScene1to3::Start()
 
 	Mix_PlayMusic(App->audio->music03, -1);
 
+	shake = false;
+
 	last_time = 0;
 
 	return true;
@@ -309,27 +311,21 @@ update_status ModuleScene1to3::PostUpdate(){
 
 	switch (App->player->shots) {
 	case 4:
-		//if (BUBBLE_OFFSET_X_ODD < 73)
-		//	BUBBLE_OFFSET_X_ODD += 2;
-		//else
-		//	BUBBLE_OFFSET_X_ODD -= 2;
-		//
-		//if (BUBBLE_OFFSET_X_PAIR < 66)
-		//	BUBBLE_OFFSET_X_PAIR += 2;
-		//else
-		//	BUBBLE_OFFSET_X_PAIR -= 2;
-
+		shake = true;
 		break;
 	case 5:
 		break;
-	case 6: 
+	case 6:
 		BUBBLE_OFFSET_Y += FALLING_CEILING_SPEED;
 		deadline_pos--;
 		col_ceiling->rect.y += FALLING_CEILING_SPEED;
 		col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
 		App->player->shots = 0;
+		to_erase = true;
+		shake = false;
 		break;
 	}
+	
 
 			if (to_erase) {
 				App->enemies->EraseAll();

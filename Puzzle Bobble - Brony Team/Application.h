@@ -57,6 +57,8 @@ public:
 	int lvl = 0;
 	uint credits = 0;
 
+	bool debug_mode;
+
 };
 
 extern Application* App;

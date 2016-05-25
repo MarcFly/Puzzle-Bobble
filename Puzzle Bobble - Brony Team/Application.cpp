@@ -29,8 +29,8 @@ Application::Application()
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
 	modules[i++] = scene_gameover = new ModuleSceneGameOver();
 	modules[i++] = scene_win = new ModuleSceneWin();
-	modules[i++] = player = new ModulePlayer();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fonts = new ModuleFonts();
@@ -47,6 +47,8 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
+
+	debug_mode = false;
 
 	player->Disable();
 	scene_1to3->Disable();

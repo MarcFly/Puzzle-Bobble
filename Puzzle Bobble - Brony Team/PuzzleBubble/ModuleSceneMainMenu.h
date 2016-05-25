@@ -27,6 +27,9 @@ public:
 	int font = -1;
 	char credits_text[15];
 
+	int timer_insert;
+	bool show_insert = true;
+
 	Mix_Chunk* sfx08 = nullptr;
 	
 };
