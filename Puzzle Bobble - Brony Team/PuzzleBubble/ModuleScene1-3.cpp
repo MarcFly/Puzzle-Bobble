@@ -17,15 +17,20 @@
 ModuleScene1to3::ModuleScene1to3()
 {
 
-	foreground.x = 88;
-	foreground.y = 23;
-	foreground.w = 145;
-	foreground.h = 201;
+	wall.x = 88;
+	wall.y = 23;
+	wall.w = 9;
+	wall.h = 215;
 
 	background.x = 9;
 	background.y = 9;
 	background.w = 310;
 	background.h = 235;
+
+	top_background.x = 9;
+	top_background.y = 9;
+	top_background.w = 310;
+	top_background.h = 15;
 
 	level_info.x = 35;
 	level_info.y = 1710;
@@ -228,11 +233,13 @@ update_status ModuleScene1to3::Update()
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 	
-	App->render->Blit(falling_graphics, col_ceiling->rect.x + 10, col_ceiling->rect.y - 153, &falling_ceiling);
+	App->render->Blit(falling_graphics, col_ceiling->rect.x + 10, col_ceiling->rect.y - 154, &falling_ceiling);
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 	
-	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
+	App->render->Blit(background_graphics, 0, 0, &top_background, 0.75f);
+	App->render->Blit(foreground_graphics, 79, 14, &wall, 0.92f);
+	App->render->Blit(foreground_graphics, 215, 14, &wall, 0.92f);
 
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 
