@@ -21,6 +21,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void PlayerShoot();
 
 public:
 		double player_angle;
@@ -61,6 +62,8 @@ public:
 	int timer;
 
 	int shots;
+
+	int timer_shot;
 
 	bool show_credits;
 	int last_time_credits;

@@ -591,8 +591,10 @@ bool ModulePlayer::Start()
 {
 	srand(time(NULL));
 
+	timer_shot = 3000;
+
 	show_credits = true;
-	last_time_credits = 0;
+	last_time_credits = 3000;
 
 	LOG("Loading player textures");
 	bool ret = true;
@@ -718,75 +720,8 @@ update_status ModulePlayer::Update()
 	
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
- 
-		rnd = rnd_aux;
-		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
-		//Making the Board pointer look at actual level
-
-
-		int board_it = 0;
-
-		if (App->lvl-1 <= 2) {
-			for (int y = 0; y < 12; y++) {
-				for (int x = 0; x < 8; x++) {
-					board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
-					board_it++;
-				}
-			}
-		}
-
-		
-
-		// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
-	
-		board_it = 0;
-		int Bubble_count[9];
-		int total_bubs = 0;
-		int columns = 0;
-		int section = 1;
-		
-		for (int i = 0; i < 9; i++)
-			Bubble_count[i] = 0;
-
-		for(int i = 0; i < 96; i++){
-			
-  			Bubble_count[board_copy[i]]++;
-
-		}
-
-
-		for (int i = 1; i < 9; i++)
-			total_bubs += Bubble_count[i];
-
-		//if (total_bubs == 0)
-			//App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
-
-		rnd_aux = rand() % (total_bubs) + 1; 
-
-
-		for(int i = 1; i < 9; i++){  
-
-			if ((rnd_aux - Bubble_count[i]) <= 0){
-
-				rnd_aux = section;
-				break;
-			}
-
-			rnd_aux -= Bubble_count[i];
-			
-			section++;
-		}
-
-
-		//for now I put rand to 2 so it is Red = 2
-		
-		//rnd = 3;
-
-		
-
-		//Shoot audio
-		sfx01 = Mix_LoadWAV("Resources/Audio/SFX/SFX 01.wav");
-		Mix_PlayChannel(-1, sfx01, 0);
+		PlayerShoot();
+		timer_shot = SDL_GetTicks();
 	}
 
 	// BLITS
@@ -836,6 +771,12 @@ update_status ModulePlayer::Update()
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
+	// SHOOTING AFTER 10 SECS
+	if (SDL_GetTicks() > timer_shot + 10000) {
+		PlayerShoot();
+		timer_shot = SDL_GetTicks();
+	}
+
 	// UI Blit
 	sprintf_s(score_text, 10, "%7d", score);
 	sprintf_s(round_text, 15, "0%d", App->lvl + 3);
@@ -845,7 +786,7 @@ update_status ModulePlayer::Update()
 	App->fonts->Blit(166, 217, 0, round_text);
 	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
 	
-	if (SDL_GetTicks() > last_time_credits + 3500) {
+	if (SDL_GetTicks() > last_time_credits + 2000) {
 		show_credits = false;
 	}
 	if (show_credits == true)
@@ -884,4 +825,76 @@ update_status ModulePlayer::Update()
 
 
 	return UPDATE_CONTINUE;
+}
+
+void ModulePlayer::PlayerShoot() {
+
+	rnd = rnd_aux;
+	App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
+	//Making the Board pointer look at actual level
+
+
+	int board_it = 0;
+
+	if (App->lvl - 1 <= 2) {
+		for (int y = 0; y < 12; y++) {
+			for (int x = 0; x < 8; x++) {
+				board_copy[board_it] = App->scene_1to3->bubble_board[y][x];
+				board_it++;
+			}
+		}
+	}
+
+
+
+	// Equation to Solve the bubble that will appear next, Works depending on the amount and type of bubble remaining
+
+	board_it = 0;
+	int Bubble_count[9];
+	int total_bubs = 0;
+	int columns = 0;
+	int section = 1;
+
+	for (int i = 0; i < 9; i++)
+		Bubble_count[i] = 0;
+
+	for (int i = 0; i < 96; i++){
+
+		Bubble_count[board_copy[i]]++;
+
+	}
+
+
+	for (int i = 1; i < 9; i++)
+		total_bubs += Bubble_count[i];
+
+	//if (total_bubs == 0)
+	//App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+
+	rnd_aux = rand() % (total_bubs)+1;
+
+
+	for (int i = 1; i < 9; i++){
+
+		if ((rnd_aux - Bubble_count[i]) <= 0){
+
+			rnd_aux = section;
+			break;
+		}
+
+		rnd_aux -= Bubble_count[i];
+
+		section++;
+	}
+
+
+	//for now I put rand to 2 so it is Red = 2
+
+	//rnd = 3;
+
+
+
+	//Shoot audio
+	sfx01 = Mix_LoadWAV("Resources/Audio/SFX/SFX 01.wav");
+	Mix_PlayChannel(-1, sfx01, 0);
 }
