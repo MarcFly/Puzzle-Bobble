@@ -36,6 +36,11 @@ ModuleScene1to3::ModuleScene1to3()
 	limit_line.y = 1688;
 	limit_line.w = 127;
 	limit_line.h = 4;
+
+	falling_ceiling.x = 97;
+	falling_ceiling.y = 24;
+	falling_ceiling.w = 127;
+	falling_ceiling.h = 162;
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -178,6 +183,7 @@ bool ModuleScene1to3::Start()
 	background_graphics = App->textures->Load("Resources/Sprites/Background 4-6.png");
 	foreground_graphics = App->textures->Load("Resources/Sprites/Borders 4-6.png");
 	game_sprites_graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
+	falling_graphics = App->textures->Load("Resources/Sprites/falling_ceiling2.png");
 
 
 	App->player->Enable();
@@ -194,6 +200,8 @@ bool ModuleScene1to3::Start()
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
 	Mix_PlayMusic(App->audio->music03, -1);
+
+	last_time = 0;
 
 	return true;
 }
@@ -219,12 +227,15 @@ update_status ModuleScene1to3::Update()
 {
 
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
+	
+	App->render->Blit(falling_graphics, col_ceiling->rect.x + 10, col_ceiling->rect.y - 153, &falling_ceiling);
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);
 	
 	App->render->Blit(foreground_graphics, 79, 14, &foreground, 0.92f);
 
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
+
 
 	//This is useful to change a bubble color in any position (in this case position 0,0)
 	/*
@@ -301,11 +312,24 @@ update_status ModuleScene1to3::PostUpdate(){
 	}
 
 	switch (App->player->shots) {
+	case 4:
+		//if (BUBBLE_OFFSET_X_ODD < 73)
+		//	BUBBLE_OFFSET_X_ODD += 2;
+		//else
+		//	BUBBLE_OFFSET_X_ODD -= 2;
+		//
+		//if (BUBBLE_OFFSET_X_PAIR < 66)
+		//	BUBBLE_OFFSET_X_PAIR += 2;
+		//else
+		//	BUBBLE_OFFSET_X_PAIR -= 2;
+
+		break;
+	case 5:
+		break;
 	case 6: 
-		
-		BUBBLE_OFFSET_Y += 10;
+		BUBBLE_OFFSET_Y += FALLING_CEILING_SPEED;
 		deadline_pos--;
-		col_ceiling->rect.y += 10;
+		col_ceiling->rect.y += FALLING_CEILING_SPEED;
 		col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
 		App->player->shots = 0;
 		break;
@@ -369,6 +393,7 @@ update_status ModuleScene1to3::PostUpdate(){
 				}
 			}
 		}
+
 
 	for (int y = 0; y < 12; y++) {
 		for (int x = 0; x < 8; x++) {

@@ -518,6 +518,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_CEILING || c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_BOBBLE) {
 				Mix_PlayChannel(-1, sfx02, 0);
 				
+				App->player->shots++;
+
 				App->player->score += 10 * chain((active[i]->position.y - App->scene_1to3->BUBBLE_OFFSET_Y) / 16, (active[i]->position.x - App->scene_1to3->BUBBLE_OFFSET_X_ODD) / 16, ((active[i]->position.x - App->scene_1to3->BUBBLE_OFFSET_X_PAIR) / 16) - 1);
 
 				result = chain_fall();

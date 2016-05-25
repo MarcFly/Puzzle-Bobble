@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 
 #define NUM_BUBBLES_1 5
+#define FALLING_CEILING_SPEED 15;
 
 struct SDL_Texture;
 
@@ -25,6 +26,8 @@ public:
 	SDL_Texture* background_graphics = nullptr;
 	SDL_Texture* foreground_graphics = nullptr;
 	SDL_Texture* game_sprites_graphics = nullptr;
+	SDL_Texture* falling_graphics = nullptr;
+	SDL_Rect falling_ceiling;
 	SDL_Rect bubbles[NUM_BUBBLES_1];
 	SDL_Rect foreground;
 	SDL_Rect background;
@@ -36,6 +39,7 @@ public:
 	bool playonce;
 	Collider* col_ceiling;
 	int deadline_pos;
+	uint last_time;
 
 	uint BUBBLE_OFFSET_X_ODD = 71;
 	uint BUBBLE_OFFSET_Y = 8;
