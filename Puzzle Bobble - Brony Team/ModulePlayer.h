@@ -51,13 +51,19 @@ public:
 	int rnd;
 	int rnd_aux;
 
+	Mix_Chunk* sfx08 = nullptr;
+
 	uint score = 0;
 	char score_text[10];
 	char round_text[15];
+	char credits_text[15];
 	int font_score = -1;
 	int timer;
 
 	int shots;
+
+	bool show_credits;
+	int last_time_credits;
 
 	//audio
 	Mix_Chunk* sfx01 = nullptr;

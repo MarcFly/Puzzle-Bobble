@@ -106,7 +106,7 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 					rect.x = 2 + (text[i] - 'A') * (font->char_w + 1);
 					rect.y = 11;
 				}
-				if (text[i] == ' ') {
+				if (text[i] == '_') {
 					rect.x = 1;
 					rect.y = 1;
 				}

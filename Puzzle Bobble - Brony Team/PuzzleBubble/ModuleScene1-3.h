@@ -29,6 +29,7 @@ public:
 	SDL_Texture* falling_graphics = nullptr;
 	SDL_Rect falling_ceiling;
 	SDL_Rect bubbles[NUM_BUBBLES_1];
+	SDL_Rect ceiling;
 	SDL_Rect wall;
 	SDL_Rect background;
 	SDL_Rect top_background;

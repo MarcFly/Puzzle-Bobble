@@ -26,6 +26,8 @@ ModulePlayer::ModulePlayer()
 {
 	srand(time(NULL));
 
+	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
+
 	shots = 0;
 
 	// bubbles
@@ -589,6 +591,9 @@ bool ModulePlayer::Start()
 {
 	srand(time(NULL));
 
+	show_credits = true;
+	last_time_credits = 0;
+
 	LOG("Loading player textures");
 	bool ret = true;
 
@@ -838,6 +843,20 @@ update_status ModulePlayer::Update()
 	App->fonts->Blit(25, 0, 0, "1UP");
 	App->fonts->Blit(123, 217, 0, "ROUND");
 	App->fonts->Blit(166, 217, 0, round_text);
+	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
+	
+	if (SDL_GetTicks() > last_time_credits + 3500) {
+		show_credits = false;
+	}
+	if (show_credits == true)
+		App->fonts->Blit(220, 217, 0, credits_text);
+
+	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN && App->credits < 99) {
+		Mix_PlayChannel(-1, sfx08, 0);
+		App->credits++;
+		show_credits = true;
+		last_time_credits = SDL_GetTicks();
+	}
 
 	// Bubble to shoot
 

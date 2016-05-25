@@ -24,6 +24,8 @@ public:
 	SDL_Texture* UI_graphics = nullptr;
 	SDL_Rect background;
 	Animation UI;
+	int font = -1;
+	char credits_text[15];
 
 	Mix_Chunk* sfx08 = nullptr;
 	

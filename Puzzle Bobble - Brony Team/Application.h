@@ -55,6 +55,7 @@ public:
 	bool CleanUp();
 
 	int lvl = 0;
+	uint credits = 0;
 
 };
 

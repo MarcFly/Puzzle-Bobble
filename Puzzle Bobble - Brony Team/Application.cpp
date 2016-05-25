@@ -56,6 +56,8 @@ bool Application::Init()
 	collision->Disable();
 	particles->Disable();
 
+	credits = 0;
+
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 

@@ -22,6 +22,11 @@ ModuleScene1to3::ModuleScene1to3()
 	wall.w = 9;
 	wall.h = 215;
 
+	ceiling.x = 97;
+	ceiling.y = 23;
+	ceiling.w = 197;
+	ceiling.h = 9;
+
 	background.x = 9;
 	background.y = 9;
 	background.w = 310;
@@ -231,6 +236,7 @@ bool ModuleScene1to3::CleanUp()
 update_status ModuleScene1to3::Update()
 {
 
+	// GRAPHIC RENDERS
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 	
 	App->render->Blit(falling_graphics, col_ceiling->rect.x + 10, col_ceiling->rect.y - 154, &falling_ceiling);
@@ -240,28 +246,11 @@ update_status ModuleScene1to3::Update()
 	App->render->Blit(background_graphics, 0, 0, &top_background, 0.75f);
 	App->render->Blit(foreground_graphics, 79, 14, &wall, 0.92f);
 	App->render->Blit(foreground_graphics, 215, 14, &wall, 0.92f);
+	App->render->Blit(foreground_graphics, 88, 14, &ceiling, 0.92f);
 
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
-
-
-	//This is useful to change a bubble color in any position (in this case position 0,0)
-	/*
-	if (App->input->keyboard[SDL_SCANCODE_G] == 1) {
-		bubble_board[0][0] = G;
-	}
-	*/
-
-	// UNCOMMENT THIS TO DEBUG
-
-	//if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
-	//	//App->player->lvl++;
-	//	//if (App->player->lvl == 4) App->fade->FadeToBlack(this, (Module*)App->scene_4to6);
-	//
-	//	App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
-	//
-	//
-	//}
 	
+	// ----
 
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[deadline_pos][x]){
