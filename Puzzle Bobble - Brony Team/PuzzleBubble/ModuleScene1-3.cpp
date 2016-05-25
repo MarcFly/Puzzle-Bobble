@@ -44,6 +44,12 @@ ModuleScene1to3::~ModuleScene1to3()
 bool ModuleScene1to3::Start()
 {
 
+	deadline_pos = 11;
+
+	BUBBLE_OFFSET_X_ODD = 71;
+	BUBBLE_OFFSET_Y = 8;
+	BUBBLE_OFFSET_X_PAIR = 64;
+
 	playonce = true;
 
 	LOG("Loading 1-3 scene");
@@ -180,7 +186,7 @@ bool ModuleScene1to3::Start()
 	App->enemies->Enable();
 
 	App->collision->AddCollider({ 78, 15, 9, 215 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 78, 15, 145, 8}, COLLIDER_CEILING);
+	col_ceiling = App->collision->AddCollider({ 78, 15, 145, 8}, COLLIDER_CEILING);
 	App->collision->AddCollider({ 215, 15, 8, 215 }, COLLIDER_WALL);
 
 	//App->collision->AddCollider({ 86, 184, 129, 4 }, COLLIDER_PLAYER);
@@ -240,7 +246,7 @@ update_status ModuleScene1to3::Update()
 	
 
 	for (int x = 0; x < 8; x++) {
-		if (bubble_board[10][x]){
+		if (bubble_board[deadline_pos][x]){
 			if (playonce) {
 				Mix_PlayChannel(-1, sfx05, 0);
 				playonce = false;
@@ -294,8 +300,18 @@ update_status ModuleScene1to3::PostUpdate(){
 		}
 	}
 
+	switch (App->player->shots) {
+	case 6: 
+		
+		BUBBLE_OFFSET_Y += 10;
+		deadline_pos--;
+		col_ceiling->rect.y += 10;
+		col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
+		App->player->shots = 0;
+		break;
+	}
+
 			if (to_erase) {
-				PopBubbles();
 				App->enemies->EraseAll();
 				 
 				for (int y = 0; y < 12; y++) {
@@ -363,7 +379,4 @@ update_status ModuleScene1to3::PostUpdate(){
 	
 	LOG("SCENE PostUpdate")
 	return UPDATE_CONTINUE;
-}
-
-void ModuleScene1to3::PopBubbles(){
 }

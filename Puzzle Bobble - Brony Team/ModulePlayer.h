@@ -57,6 +57,8 @@ public:
 	int font_score = -1;
 	int timer;
 
+	int shots;
+
 	//audio
 	Mix_Chunk* sfx01 = nullptr;
 

@@ -26,6 +26,8 @@ ModulePlayer::ModulePlayer()
 {
 	srand(time(NULL));
 
+	shots = 0;
+
 	// bubbles
 
 	BluBub.x = 18;
@@ -712,6 +714,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
 		
+		shots++;
+ 
 		rnd = rnd_aux;
 		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 		//Making the Board pointer look at actual level

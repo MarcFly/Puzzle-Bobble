@@ -19,7 +19,7 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
-	void PopBubbles();
+	void FallCeiling();
 
 public:
 	SDL_Texture* background_graphics = nullptr;
@@ -34,6 +34,12 @@ public:
 	int prev_bb[12][8];
 	bool to_erase;
 	bool playonce;
+	Collider* col_ceiling;
+	int deadline_pos;
+
+	uint BUBBLE_OFFSET_X_ODD = 71;
+	uint BUBBLE_OFFSET_Y = 8;
+	uint BUBBLE_OFFSET_X_PAIR = 64;
 
 	Mix_Chunk* sfx05 = nullptr;
 
