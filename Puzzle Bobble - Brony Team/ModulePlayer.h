@@ -28,8 +28,11 @@ public:
 public:
 	double player_angle;
 
+	SDL_Texture* greenbub_graphics = nullptr;
 	SDL_Texture* sign_graphics = nullptr;
 	SDL_Texture* graphics = nullptr;
+	SDL_Rect round_greenbub;
+	SDL_Rect greenbub_num;
 	SDL_Rect round_sign;
 	SDL_Rect tube;
 	SDL_Rect b_machine[12];

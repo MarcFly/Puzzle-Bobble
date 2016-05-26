@@ -570,6 +570,16 @@ ModulePlayer::ModulePlayer()
 	round_sign.w = 128;
 	round_sign.h = 48;
 
+	round_greenbub.x = 4;
+	round_greenbub.y = 44;
+	round_greenbub.w = 86;
+	round_greenbub.h = 16;
+
+	greenbub_num.x = 74;
+	greenbub_num.y = 9;
+	greenbub_num.w = 16;
+	greenbub_num.h = 16;
+
 	score = ply_score;
 
 }
@@ -581,7 +591,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::CleanUp() {
 	LOG("\nFreeing sfx01");
 	//Mix_FreeChunk(sfx01);
-	
+
 	ply_score = score;
 
 	LOG("\nPlayer CleanUp exited successfully");
@@ -625,6 +635,7 @@ bool ModulePlayer::Start()
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 	sign_graphics = App->textures->Load("Resources/Sprites/round_sign.png");
+	greenbub_graphics = App->textures->Load("Resources/Sprites/GreenBubFont.png");
 	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
@@ -692,12 +703,26 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 
-	if (SDL_GetTicks() > timer_secs + 2000) {
+	if (SDL_GetTicks() > timer_secs + 1500) {
 		App->input->Enable();
 		timer_shot = SDL_GetTicks();
 	}
-	else
+	else {
 		App->render->Blit(sign_graphics, 87, 50, &round_sign);
+		App->render->Blit(greenbub_graphics, 107, 56, &round_greenbub);
+		switch (App->lvl) {
+			case 1:
+				greenbub_num.x = 74;
+				break;
+			case 2:
+				greenbub_num.x = 91;
+				break;
+			case 3:
+				greenbub_num.x = 108;
+				break;
+		}
+		App->render->Blit(greenbub_graphics, 142, 75, &greenbub_num);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
@@ -817,11 +842,12 @@ update_status ModulePlayer::Update()
 	if (show_credits == true)
 		App->fonts->Blit(220, 217, 0, credits_text);
 
-	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN && App->credits < 99) {
+	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN) {
 		Mix_PlayChannel(-1, sfx08, 0);
-		App->credits++;
 		show_credits = true;
 		last_time_credits = SDL_GetTicks();
+		if (App->credits < 99)
+			App->credits++;
 	}
 
 	// Bubble to shoot
