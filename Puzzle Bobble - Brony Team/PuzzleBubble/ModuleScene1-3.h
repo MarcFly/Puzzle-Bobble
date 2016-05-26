@@ -47,6 +47,9 @@ public:
 	uint BUBBLE_OFFSET_Y = 8;
 	uint BUBBLE_OFFSET_X_PAIR = 64;
 
+	uint death_timer;
+	bool death_once;
+
 	bool shake;
 
 	Mix_Chunk* sfx05 = nullptr;

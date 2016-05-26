@@ -32,6 +32,8 @@ bool ModuleSceneMainMenu::Start()
 {
 	LOG("Loading Main Menu scene");
 
+	App->input->Enable();
+
 	sfx08 = nullptr;
 
 	background_graphics = App->textures->Load("Resources/Sprites/MainScreen.png");
@@ -55,6 +57,7 @@ bool ModuleSceneMainMenu::CleanUp()
 {
 	LOG("Unloading Main Menu scene");
 	App->player->Disable();
+	App->input->Disable();
 
 	return true;
 }

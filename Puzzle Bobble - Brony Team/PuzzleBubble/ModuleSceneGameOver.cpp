@@ -28,6 +28,9 @@ bool ModuleSceneGameOver::Start()
 {
 	LOG("Loading GameOver scene");
 
+	App->input->Enable();
+	App->particles->Disable();
+
 	background_graphics = App->textures->Load("Resources/Sprites/gameoverscene.png");
 
 	Mix_PlayMusic(App->audio->music05, -1);

@@ -75,6 +75,8 @@ public:
 
 	int timer_shot;
 
+	bool enable_once;
+
 	bool show_credits;
 	int last_time_credits;
 

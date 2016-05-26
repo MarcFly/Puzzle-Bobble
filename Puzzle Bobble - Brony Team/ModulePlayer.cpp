@@ -604,6 +604,8 @@ bool ModulePlayer::Start()
 	App->input->Disable();
 	srand(time(NULL));
 
+	enable_once = false;
+
 	timer_secs = SDL_GetTicks();
 
 	sfx08 = nullptr;
@@ -704,8 +706,11 @@ update_status ModulePlayer::Update()
 {
 
 	if (SDL_GetTicks() > timer_secs + 1500) {
-		App->input->Enable();
-		timer_shot = SDL_GetTicks();
+		if (enable_once == false) {
+			App->input->Enable();
+			timer_shot = SDL_GetTicks();
+			enable_once = true;
+		}
 	}
 	else {
 		App->render->Blit(sign_graphics, 87, 50, &round_sign);
@@ -724,7 +729,7 @@ update_status ModulePlayer::Update()
 		App->render->Blit(greenbub_graphics, 142, 75, &greenbub_num);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
@@ -742,7 +747,7 @@ update_status ModulePlayer::Update()
 		change_sprite++;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && player_angle < 175) {
 		if (player_angle >= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle += ANGLE_INCREMENT;
@@ -762,7 +767,7 @@ update_status ModulePlayer::Update()
 
 	
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
@@ -804,7 +809,7 @@ update_status ModulePlayer::Update()
 
 	// Bub wheel blit
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
 
 		if (bubwheel_pos == 8) bubwheel_pos = 0;
 		else if (bubwheel_pos == -1) bubwheel_pos = 7;
@@ -881,7 +886,7 @@ update_status ModulePlayer::Update()
 update_status ModulePlayer::PostUpdate() {
 	if (App->debug_mode == true) {
 		shots = 0;
-		if (App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN) {
+		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN) {
 			shots = 6;
 		}
 	}

@@ -59,6 +59,11 @@ ModuleScene1to3::~ModuleScene1to3()
 bool ModuleScene1to3::Start()
 {
 
+	App->particles->Enable();
+
+	death_timer = 0;
+	death_once = false;
+
 	deadline_pos = 11;
 
 	BUBBLE_OFFSET_X_ODD = 71;
@@ -229,6 +234,7 @@ bool ModuleScene1to3::CleanUp()
 	App->particles->Disable();
 	App->collision->Disable();
 	App->enemies->Disable();
+	App->input->Disable();
 
 	App->lvl++;
 
@@ -256,12 +262,19 @@ update_status ModuleScene1to3::Update()
 
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[deadline_pos][x]){
+			App->input->Disable();
+			App->particles->Disable();
 			if (playonce) {
 				Mix_PlayChannel(-1, sfx05, 0);
 				playonce = false;
 			}
 			App->player->score = 0;
-			App->fade->FadeToBlack(this, (Module*)App->scene_gameover, FADE_SPEED);
+			if (!death_once) {
+				death_timer = SDL_GetTicks();
+				death_once = !death_once;
+			}
+			if (SDL_GetTicks() > death_timer + 4000)
+				App->fade->FadeToBlack(this, (Module*)App->scene_gameover, FADE_SPEED);
 		}
 	}
 
@@ -285,9 +298,11 @@ update_status ModuleScene1to3::Update()
 	}
 
 	if (empty == true){
-		if (App->lvl > 2)
+		if (App->lvl > 2) {
+			App->particles->Disable();
+			App->input->Disable();
 			App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
-
+		}
 		else{
 			
 			App->fade->FadeToBlack(this, this, FADE_SPEED);
