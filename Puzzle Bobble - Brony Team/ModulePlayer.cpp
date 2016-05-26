@@ -565,6 +565,11 @@ ModulePlayer::ModulePlayer()
 
 	//-----------
 
+	round_sign.x = 0;
+	round_sign.y = 0;
+	round_sign.w = 128;
+	round_sign.h = 48;
+
 	score = ply_score;
 
 }
@@ -585,14 +590,20 @@ bool ModulePlayer::CleanUp() {
 
 bool ModulePlayer::Start()
 {
+
+	App->input->Disable();
 	srand(time(NULL));
 
+	timer_secs = SDL_GetTicks();
 
+	sfx08 = nullptr;
+	sfx11 = nullptr;
 	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
+	sfx11 = Mix_LoadWAV("Resources/Audio/SFX/SFX 11.wav");
+	
+	Mix_PlayChannel(-1, sfx11, 0);
 
 	shots = 0;
-
-	timer_shot = SDL_GetTicks();
 
 	show_credits = true;
 	last_time_credits = SDL_GetTicks();
@@ -613,7 +624,7 @@ bool ModulePlayer::Start()
 	player_angle = 90;
 
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
-
+	sign_graphics = App->textures->Load("Resources/Sprites/round_sign.png");
 	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
@@ -681,6 +692,12 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 
+	if (SDL_GetTicks() > timer_secs + 2000) {
+		App->input->Enable();
+		timer_shot = SDL_GetTicks();
+	}
+	else
+		App->render->Blit(sign_graphics, 87, 50, &round_sign);
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
 		if (player_angle <= 90) arrow_pos++;
@@ -788,11 +805,10 @@ update_status ModulePlayer::Update()
 	}
 
 	sprintf_s(score_text, 10, "%7d", score);
-	sprintf_s(round_text, 15, "0%d", App->lvl + 3);
+	sprintf_s(round_text, 15, "LEVEL_0%d", App->lvl + 3);
 	App->fonts->Blit(35, 8, 0, score_text);
 	App->fonts->Blit(25, 0, 0, "1UP");
-	App->fonts->Blit(123, 217, 0, "ROUND");
-	App->fonts->Blit(166, 217, 0, round_text);
+	App->fonts->Blit(123, 217, 0, round_text);
 	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
 	
 	if (SDL_GetTicks() > last_time_credits + 2000) {
@@ -828,8 +844,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->debug_mode) {
 		if (App->lvl > 2)
-			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu);
-		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3);
+			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu, FADE_SPEED);
+		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
 	}
 
 
@@ -887,9 +903,6 @@ void ModulePlayer::PlayerShoot() {
 
 	for (int i = 1; i < 9; i++)
 		total_bubs += Bubble_count[i];
-
-	//if (total_bubs == 0)
-	//App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
 
 	rnd_aux = rand() % (total_bubs)+1;
 

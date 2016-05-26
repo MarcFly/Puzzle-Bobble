@@ -261,7 +261,7 @@ update_status ModuleScene1to3::Update()
 				playonce = false;
 			}
 			App->player->score = 0;
-			App->fade->FadeToBlack(this, (Module*)App->scene_gameover);
+			App->fade->FadeToBlack(this, (Module*)App->scene_gameover, FADE_SPEED);
 		}
 	}
 
@@ -286,11 +286,11 @@ update_status ModuleScene1to3::Update()
 
 	if (empty == true){
 		if (App->lvl > 2)
-			App->fade->FadeToBlack(this, (Module*)App->scene_win);
+			App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
 
 		else{
 			
-			App->fade->FadeToBlack(this, this);
+			App->fade->FadeToBlack(this, this, FADE_SPEED);
 		}
 	}
 

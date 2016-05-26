@@ -87,7 +87,7 @@ update_status ModuleSceneMainMenu::Update()
 	App->fonts->Blit(220, 210, 0, credits_text);
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == 1 && App->credits > 0) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_1to3);
+		App->fade->FadeToBlack(this, (Module*)App->scene_1to3, FADE_SPEED);
 		App->lvl = 1;
 		App->player->score = 0;
 		App->credits--;

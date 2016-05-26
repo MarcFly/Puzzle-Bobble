@@ -51,7 +51,7 @@ update_status ModuleSceneWin::Update()
 	App->render->Blit(background_graphics, 95, 90, &background, 0.75f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_mainmenu);
+		App->fade->FadeToBlack(this, (Module*)App->scene_mainmenu, FADE_SPEED);
 	}
 
 	return UPDATE_CONTINUE;

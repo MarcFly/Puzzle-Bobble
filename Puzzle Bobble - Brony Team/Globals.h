@@ -23,6 +23,8 @@ enum bubble_color {
 	E = 0, B, R, G, Y, V, O, g, P
 };
 
+#define FADE_SPEED .75f
+
 typedef unsigned int uint;
 
 #define SCREEN_SIZE 4

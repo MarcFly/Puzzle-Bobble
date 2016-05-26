@@ -23,11 +23,14 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	void PlayerShoot();
+	void StartingSequence();
 
 public:
-		double player_angle;
+	double player_angle;
 
+	SDL_Texture* sign_graphics = nullptr;
 	SDL_Texture* graphics = nullptr;
+	SDL_Rect round_sign;
 	SDL_Rect tube;
 	SDL_Rect b_machine[12];
 	SDL_Rect s_machine[2];
@@ -53,6 +56,9 @@ public:
 	int rnd;
 	int rnd_aux;
 
+	uint timer_secs;
+	bool ready_playonce;
+
 	Mix_Chunk* sfx08 = nullptr;
 
 	uint score = 0;
@@ -71,6 +77,7 @@ public:
 
 	//audio
 	Mix_Chunk* sfx01 = nullptr;
+	Mix_Chunk* sfx11 = nullptr;
 
 	iPoint position;
 
