@@ -359,6 +359,21 @@ update_status ModuleScene1to3::PostUpdate(){
 			shake_timer_once = false;
 			Mix_PlayChannel(-1, sfx07, 0);
 			break;
+		case -1: 
+			if (BUBBLE_OFFSET_Y > 8) {
+				BUBBLE_OFFSET_Y -= FALLING_CEILING_SPEED;
+				BUBBLE_OFFSET_X_ODD = 71;
+				BUBBLE_OFFSET_X_PAIR = 64;
+				deadline_pos++;
+				col_ceiling->rect.y -= FALLING_CEILING_SPEED;
+				col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
+				App->player->shots = 0;
+				to_erase = true;
+				shake = false;
+				shake_timer_once = false;
+				Mix_PlayChannel(-1, sfx07, 0);
+			}
+			break;
 		}
 
 		if (App->player->shots == 4) {

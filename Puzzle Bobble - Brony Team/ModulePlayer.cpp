@@ -893,6 +893,9 @@ update_status ModulePlayer::PostUpdate() {
 		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN) {
 			shots = 6;
 		}
+		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_G] == KEY_DOWN) {
+			shots = -1;
+		}
 	}
 
 	return UPDATE_CONTINUE;
