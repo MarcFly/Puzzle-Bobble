@@ -31,6 +31,11 @@ bool ModuleParticles::Start()
 	sfx02 = nullptr;
 	sfx02 = Mix_LoadWAV("Resources/Audio/SFX/SFX 02.wav");
 
+	sfx14 = nullptr;
+	sfx14 = Mix_LoadWAV("Resources/Audio/SFX/SFX 14.wav");
+	sfx16 = nullptr;
+	sfx16 = Mix_LoadWAV("Resources/Audio/SFX/SFX 16.wav");
+
 	LOG("Loading particles");
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 
@@ -491,6 +496,8 @@ double chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of 
 			for (int i = 0; i < 12; i++)
 			for (int j = 0; j < 8; j++)
 			if (App->particles->board_copy[i][j] == App->player->rnd){
+				Mix_PlayChannel(-1, App->particles->sfx14, 0);
+				Mix_PlayChannel(-1, App->particles->sfx16, 0);
 				App->scene_1to3->bubble_board[i][j] = E;
 				total_coll++;
 			}
@@ -524,9 +531,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 
 				result = chain_fall();
 
-				if (result != 0)
+				if (result != 0) {
 					App->player->score += (10 * (pow(2, result)));
-
+					Mix_PlayChannel(-1, sfx14, 0);
+					Mix_PlayChannel(-1, sfx16, 0);
+				}
 				App->player->rnd = 0;
 
 				active[i]->collider->to_delete = true;
