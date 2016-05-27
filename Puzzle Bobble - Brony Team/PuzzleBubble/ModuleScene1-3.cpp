@@ -276,6 +276,7 @@ update_status ModuleScene1to3::Update()
 		deadline_pos = 10;
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[deadline_pos][x]){
+			Mix_PauseMusic();
 			is_gameover = true;
 			App->input->Disable();
 			App->particles->Disable();
@@ -301,7 +302,7 @@ update_status ModuleScene1to3::Update()
 	bool empty = true;
 
 	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 8; x++) {
+		for (int x = 0; x < 8; x++) { 
 
 			if (bubble_board[y][x] == E)
 				empty = true;
@@ -318,13 +319,12 @@ update_status ModuleScene1to3::Update()
 	}
 
 	if (empty == true){
+		App->particles->Disable();
+		App->input->Disable();
 		if (App->lvl > 2) {
-			App->particles->Disable();
-			App->input->Disable();
 			App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
 		}
 		else{
-			
 			App->fade->FadeToBlack(this, this, FADE_SPEED);
 		}
 	}
@@ -395,7 +395,7 @@ update_status ModuleScene1to3::PostUpdate(){
 			}
 		}
 		if (App->player->shots == 5) {
-			if (SDL_GetTicks() > shake_timer + 50) {
+			if (SDL_GetTicks() > shake_timer + 75) {
 				to_erase = true;
 				if (BUBBLE_OFFSET_X_ODD < 72)
 					BUBBLE_OFFSET_X_ODD += 2;
