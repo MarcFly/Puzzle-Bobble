@@ -39,6 +39,7 @@ public:
 	int prev_bb[12][8];
 	bool to_erase;
 	bool playonce;
+	bool play_sfx13_once;
 	Collider* col_ceiling;
 	int deadline_pos;
 	uint last_time;
@@ -57,7 +58,9 @@ public:
 
 	bool shake;
 
-	Mix_Chunk* sfx05 = nullptr;
+	Mix_Chunk* sfx13 = nullptr;
+	Mix_Chunk* sfx09 = nullptr;
+	Mix_Chunk* sfx07 = nullptr;
 
 };
 

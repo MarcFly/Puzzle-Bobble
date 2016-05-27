@@ -61,6 +61,8 @@ bool ModuleScene1to3::Start()
 
 	App->particles->Enable();
 
+	play_sfx13_once = false;
+
 	shake_timer_once = false;
 
 	is_gameover = false;
@@ -78,8 +80,12 @@ bool ModuleScene1to3::Start()
 
 	LOG("Loading 1-3 scene");
 
-	sfx05 = nullptr;
-	sfx05 = Mix_LoadWAV("Resources/Audio/SFX/SFX 05.wav");
+	sfx13 = nullptr;
+	sfx13 = Mix_LoadWAV("Resources/Audio/SFX/SFX 13.wav");
+	sfx09 = nullptr;
+	sfx09 = Mix_LoadWAV("Resources/Audio/SFX/SFX 09.wav");
+	sfx07 = nullptr;
+	sfx07 = Mix_LoadWAV("Resources/Audio/SFX/SFX 07.wav");
 
 	int tmp[3][12][8] = {
 
@@ -224,6 +230,8 @@ bool ModuleScene1to3::Start()
 
 	last_time = 0;
 
+
+
 	return true;
 }
 
@@ -272,7 +280,7 @@ update_status ModuleScene1to3::Update()
 			App->input->Disable();
 			App->particles->Disable();
 			if (playonce) {
-				Mix_PlayChannel(-1, sfx05, 0);
+				Mix_PlayChannel(-1, sfx09, 0);
 				playonce = false;
 			}
 			App->player->score = 0;
@@ -280,7 +288,11 @@ update_status ModuleScene1to3::Update()
 				death_timer = SDL_GetTicks();
 				death_once = !death_once;
 			}
-			if (SDL_GetTicks() > death_timer + 4000)
+			if (SDL_GetTicks() > death_timer + 2000 && play_sfx13_once == false) {
+				Mix_PlayChannel(-1, sfx13, 0);
+				play_sfx13_once = true;
+			}
+			if (SDL_GetTicks() > death_timer + 3000)
 				App->fade->FadeToBlack(this, (Module*)App->scene_gameover, FADE_SPEED);
 		}
 	}
@@ -345,6 +357,7 @@ update_status ModuleScene1to3::PostUpdate(){
 			to_erase = true;
 			shake = false;
 			shake_timer_once = false;
+			Mix_PlayChannel(-1, sfx07, 0);
 			break;
 		}
 

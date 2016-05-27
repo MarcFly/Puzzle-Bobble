@@ -24,5 +24,7 @@ public:
 	Mix_Music* music03 = nullptr;
 	Mix_Music* music05 = nullptr;
 	Mix_Music* music07 = nullptr;
+
+	Mix_Chunk* sfx07 = nullptr;
 };
 #endif
