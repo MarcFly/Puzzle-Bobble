@@ -53,6 +53,8 @@ public:
 	bool shake_timer_once;
 	uint shake_timer;
 
+	bool is_gameover;
+
 	bool shake;
 
 	Mix_Chunk* sfx05 = nullptr;

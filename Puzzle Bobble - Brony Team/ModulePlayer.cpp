@@ -710,21 +710,22 @@ update_status ModulePlayer::Update()
 			App->input->Enable();
 			timer_shot = SDL_GetTicks();
 			enable_once = true;
+			App->input->keyboard[SDL_SCANCODE_A] = KEY_IDLE;
 		}
 	}
 	else {
 		App->render->Blit(sign_graphics, 87, 50, &round_sign);
 		App->render->Blit(greenbub_graphics, 107, 56, &round_greenbub);
 		switch (App->lvl) {
-			case 1:
-				greenbub_num.x = 74;
-				break;
-			case 2:
-				greenbub_num.x = 91;
-				break;
-			case 3:
-				greenbub_num.x = 108;
-				break;
+		case 1:
+			greenbub_num.x = 74;
+			break;
+		case 2:
+			greenbub_num.x = 91;
+			break;
+		case 3:
+			greenbub_num.x = 108;
+			break;
 		}
 		App->render->Blit(greenbub_graphics, 142, 75, &greenbub_num);
 	}
@@ -738,10 +739,10 @@ update_status ModulePlayer::Update()
 
 
 		if (change_sprite == 2){
-		crank_pos--;
-		bubwheel_pos--;
-		smachine_pos++;
-		change_sprite = 0;
+			crank_pos--;
+			bubwheel_pos--;
+			smachine_pos++;
+			change_sprite = 0;
 		}
 
 		change_sprite++;
@@ -765,7 +766,7 @@ update_status ModulePlayer::Update()
 		change_sprite++;
 	}
 
-	
+
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
 		PlayerShoot();
@@ -840,7 +841,7 @@ update_status ModulePlayer::Update()
 	App->fonts->Blit(25, 0, 0, "1UP");
 	App->fonts->Blit(123, 217, 0, round_text);
 	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
-	
+
 	if (SDL_GetTicks() > last_time_credits + 2000) {
 		show_credits = false;
 	}
@@ -878,7 +879,10 @@ update_status ModulePlayer::Update()
 			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu, FADE_SPEED);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_R] == KEY_DOWN) {
+		App->lvl--;
+		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
+	}
 
 	return UPDATE_CONTINUE;
 }

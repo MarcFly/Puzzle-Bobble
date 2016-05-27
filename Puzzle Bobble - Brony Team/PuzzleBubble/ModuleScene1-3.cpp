@@ -63,6 +63,8 @@ bool ModuleScene1to3::Start()
 
 	shake_timer_once = false;
 
+	is_gameover = false;
+
 	death_timer = 0;
 	death_once = false;
 
@@ -261,9 +263,12 @@ update_status ModuleScene1to3::Update()
 	App->render->Blit(game_sprites_graphics, 0, 217, &level_info, 1.f);
 	
 	// ----
-
+	uint aux = deadline_pos;
+	if (deadline_pos == 11)
+		deadline_pos = 10;
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[deadline_pos][x]){
+			is_gameover = true;
 			App->input->Disable();
 			App->particles->Disable();
 			if (playonce) {
@@ -279,6 +284,7 @@ update_status ModuleScene1to3::Update()
 				App->fade->FadeToBlack(this, (Module*)App->scene_gameover, FADE_SPEED);
 		}
 	}
+	deadline_pos = aux;
 
 	bool empty = true;
 
@@ -326,49 +332,53 @@ update_status ModuleScene1to3::PostUpdate(){
 		}
 	}
 
-	switch (App->player->shots) {
-	case 6:
-		BUBBLE_OFFSET_Y += FALLING_CEILING_SPEED;
-		deadline_pos--;
-		col_ceiling->rect.y += FALLING_CEILING_SPEED;
-		col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
-		App->player->shots = 0;
-		to_erase = true;
-		shake = false;
-		shake_timer_once = false;
-		break;
-	}
+	if (is_gameover == false) {
+		switch (App->player->shots) {
+		case 6:
+			BUBBLE_OFFSET_Y += FALLING_CEILING_SPEED;
+			BUBBLE_OFFSET_X_ODD = 71;
+			BUBBLE_OFFSET_X_PAIR = 64;
+			deadline_pos--;
+			col_ceiling->rect.y += FALLING_CEILING_SPEED;
+			col_ceiling->SetPos(col_ceiling->rect.x, col_ceiling->rect.y);
+			App->player->shots = 0;
+			to_erase = true;
+			shake = false;
+			shake_timer_once = false;
+			break;
+		}
 
-	if (App->player->shots == 4) {
-		if (shake_timer_once == false) {
-			shake_timer = SDL_GetTicks();
-			shake_timer_once = true;
+		if (App->player->shots == 4) {
+			if (shake_timer_once == false) {
+				shake_timer = SDL_GetTicks();
+				shake_timer_once = true;
+			}
+			if (SDL_GetTicks() > shake_timer + 100) {
+				to_erase = true;
+				if (BUBBLE_OFFSET_X_ODD < 72)
+					BUBBLE_OFFSET_X_ODD += 2;
+				else
+					BUBBLE_OFFSET_X_ODD -= 2;
+				if (BUBBLE_OFFSET_X_PAIR < 65)
+					BUBBLE_OFFSET_X_PAIR += 2;
+				else
+					BUBBLE_OFFSET_X_PAIR -= 2;
+				shake_timer = SDL_GetTicks();
+			}
 		}
-		if (SDL_GetTicks() > shake_timer + 100) {
-			to_erase = true;
-			if (BUBBLE_OFFSET_X_ODD < 72)
-				BUBBLE_OFFSET_X_ODD += 2;
-			else
-				BUBBLE_OFFSET_X_ODD -= 2;
-			if (BUBBLE_OFFSET_X_PAIR < 65)
-				BUBBLE_OFFSET_X_PAIR += 2;
-			else 
-				BUBBLE_OFFSET_X_PAIR -= 2;
-			shake_timer = SDL_GetTicks();
-		}
-	}
-	if (App->player->shots == 5) {
-		if (SDL_GetTicks() > shake_timer + 50) {
-			to_erase = true;
-			if (BUBBLE_OFFSET_X_ODD < 72)
-				BUBBLE_OFFSET_X_ODD += 2;
-			else
-				BUBBLE_OFFSET_X_ODD -= 2;
-			if (BUBBLE_OFFSET_X_PAIR < 65)
-				BUBBLE_OFFSET_X_PAIR += 2;
-			else
-				BUBBLE_OFFSET_X_PAIR -= 2;
-			shake_timer = SDL_GetTicks();
+		if (App->player->shots == 5) {
+			if (SDL_GetTicks() > shake_timer + 50) {
+				to_erase = true;
+				if (BUBBLE_OFFSET_X_ODD < 72)
+					BUBBLE_OFFSET_X_ODD += 2;
+				else
+					BUBBLE_OFFSET_X_ODD -= 2;
+				if (BUBBLE_OFFSET_X_PAIR < 65)
+					BUBBLE_OFFSET_X_PAIR += 2;
+				else
+					BUBBLE_OFFSET_X_PAIR -= 2;
+				shake_timer = SDL_GetTicks();
+			}
 		}
 	}
 	
