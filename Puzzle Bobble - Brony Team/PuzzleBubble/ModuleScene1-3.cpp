@@ -61,6 +61,8 @@ bool ModuleScene1to3::Start()
 
 	App->particles->Enable();
 
+	shake_timer_once = false;
+
 	death_timer = 0;
 	death_once = false;
 
@@ -325,11 +327,6 @@ update_status ModuleScene1to3::PostUpdate(){
 	}
 
 	switch (App->player->shots) {
-	case 4:
-		shake = true;
-		break;
-	case 5:
-		break;
 	case 6:
 		BUBBLE_OFFSET_Y += FALLING_CEILING_SPEED;
 		deadline_pos--;
@@ -338,7 +335,41 @@ update_status ModuleScene1to3::PostUpdate(){
 		App->player->shots = 0;
 		to_erase = true;
 		shake = false;
+		shake_timer_once = false;
 		break;
+	}
+
+	if (App->player->shots == 4) {
+		if (shake_timer_once == false) {
+			shake_timer = SDL_GetTicks();
+			shake_timer_once = true;
+		}
+		if (SDL_GetTicks() > shake_timer + 100) {
+			to_erase = true;
+			if (BUBBLE_OFFSET_X_ODD < 72)
+				BUBBLE_OFFSET_X_ODD += 2;
+			else
+				BUBBLE_OFFSET_X_ODD -= 2;
+			if (BUBBLE_OFFSET_X_PAIR < 65)
+				BUBBLE_OFFSET_X_PAIR += 2;
+			else 
+				BUBBLE_OFFSET_X_PAIR -= 2;
+			shake_timer = SDL_GetTicks();
+		}
+	}
+	if (App->player->shots == 5) {
+		if (SDL_GetTicks() > shake_timer + 50) {
+			to_erase = true;
+			if (BUBBLE_OFFSET_X_ODD < 72)
+				BUBBLE_OFFSET_X_ODD += 2;
+			else
+				BUBBLE_OFFSET_X_ODD -= 2;
+			if (BUBBLE_OFFSET_X_PAIR < 65)
+				BUBBLE_OFFSET_X_PAIR += 2;
+			else
+				BUBBLE_OFFSET_X_PAIR -= 2;
+			shake_timer = SDL_GetTicks();
+		}
 	}
 	
 

@@ -50,6 +50,9 @@ public:
 	uint death_timer;
 	bool death_once;
 
+	bool shake_timer_once;
+	uint shake_timer;
+
 	bool shake;
 
 	Mix_Chunk* sfx05 = nullptr;
