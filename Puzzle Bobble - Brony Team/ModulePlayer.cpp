@@ -872,6 +872,21 @@ update_status ModulePlayer::Update()
 
 	}
 
+	// Bubble incoming
+
+	switch (rnd){
+
+	case 1: App->render->Blit(graphics, 125, 200, &BluBub, 0.75f); break;
+	case 2: App->render->Blit(graphics, 125, 200, &RedBub, 0.75f); break;
+	case 3: App->render->Blit(graphics, 125, 200, &GreenBub, 0.75f); break;
+	case 4: App->render->Blit(graphics, 125, 200, &YelBub, 0.75f); break;
+	case 5: App->render->Blit(graphics, 125, 200, &BlkBub, 0.75f); break;
+	case 6: App->render->Blit(graphics, 125, 200, &OraBub, 0.75f); break;
+	case 7: App->render->Blit(graphics, 125, 200, &GreyBub, 0.75f); break;
+	case 8: App->render->Blit(graphics, 125, 200, &PplBub, 0.75f); break;
+	default: break;
+	}
+
 	//Changes made to not crash
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->debug_mode) {
