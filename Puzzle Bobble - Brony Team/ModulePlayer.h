@@ -58,6 +58,7 @@ public:
 	int board_copy[96];
 	int rnd;
 	int rnd_aux;
+	int rnd_aux_2;
 
 	uint timer_secs;
 	bool ready_playonce;

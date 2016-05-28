@@ -642,6 +642,7 @@ bool ModulePlayer::Start()
 
 	rnd = 0;
 	rnd_aux = 0;
+	rnd_aux_2 = 0;
 	//Making the Board pointer look at actual level
 
 
@@ -693,6 +694,43 @@ bool ModulePlayer::Start()
 		}
 
 		rnd_aux -= Bubble_count[i];
+
+		section++;
+	}
+
+
+	Bubble_count[9];
+	total_bubs = 0;
+	columns = 0;
+	section = 1;
+
+	for (int i = 0; i < 9; i++)
+		Bubble_count[i] = 0;
+
+	for (int i = 0; i < 96; i++){
+
+		Bubble_count[board_copy[i]]++;
+
+	}
+
+
+	for (int i = 1; i < 9; i++)
+		total_bubs += Bubble_count[i];
+
+
+	rnd_aux_2 = rand() % (total_bubs)+1;
+
+	rnd_aux_2--;
+
+	for (int i = 1; i < 9; i++){
+
+		if ((rnd_aux_2 - Bubble_count[i]) <= 0){
+
+			rnd_aux_2 = section;
+			break;
+		}
+
+		rnd_aux_2 -= Bubble_count[i];
 
 		section++;
 	}
@@ -874,7 +912,7 @@ update_status ModulePlayer::Update()
 
 	// Bubble incoming
 
-	switch (rnd){
+	switch (rnd_aux_2){
 
 	case 1: App->render->Blit(graphics, 125, 200, &BluBub, 0.75f); break;
 	case 2: App->render->Blit(graphics, 125, 200, &RedBub, 0.75f); break;
@@ -919,6 +957,7 @@ update_status ModulePlayer::PostUpdate() {
 void ModulePlayer::PlayerShoot() {
 
 	rnd = rnd_aux;
+	rnd_aux = rnd_aux_2;
 	App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 	//Making the Board pointer look at actual level
 
@@ -957,18 +996,18 @@ void ModulePlayer::PlayerShoot() {
 	for (int i = 1; i < 9; i++)
 		total_bubs += Bubble_count[i];
 
-	rnd_aux = rand() % (total_bubs)+1;
+	rnd_aux_2 = rand() % (total_bubs)+1;
 
 
 	for (int i = 1; i < 9; i++){
 
-		if ((rnd_aux - Bubble_count[i]) <= 0){
+		if ((rnd_aux_2 - Bubble_count[i]) <= 0){
 
-			rnd_aux = section;
+			rnd_aux_2 = section;
 			break;
 		}
 
-		rnd_aux -= Bubble_count[i];
+		rnd_aux_2 -= Bubble_count[i];
 
 		section++;
 	}
