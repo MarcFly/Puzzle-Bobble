@@ -318,7 +318,7 @@ update_status ModuleScene1to3::Update()
 
 	}
 
-	int lvl_time = (SDL_GetTicks() - App->player->timer_secs) / 1000;
+	int lvl_time = (SDL_GetTicks() - App->player->timer_secs) / 10000;
 
 	if (empty == true){
 
