@@ -85,7 +85,7 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 		LOG("Unable to render text with bmp font id %d", font_id);
 		return;
 	}
-
+	
 	const Font* font = &fonts[font_id];
 	SDL_Rect rect;
 	uint len = strlen(text);

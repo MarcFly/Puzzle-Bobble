@@ -322,7 +322,7 @@ update_status ModuleScene1to3::Update()
 
 	if (empty == true){
 
-		if (lvl_time <= 64){
+		if (lvl_time <= 64 && App->input->enabled == true){
 
 			if (lvl_time > 5){
 
