@@ -69,7 +69,7 @@ public:
 	char round_text[15];
 	char credits_text[15];
 	int font_score = -1;
-	int timer;
+
 
 	int shots;
 

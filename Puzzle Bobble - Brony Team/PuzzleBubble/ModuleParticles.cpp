@@ -322,7 +322,7 @@ void look_around_fall(){
 	}
 }
 
-double chain_fall(){
+int chain_fall(){
 
 	int total_coll = 0;
 
@@ -439,7 +439,7 @@ bool look_around(int y, int x){
 }
 
 
-double chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of collisions
+int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of collisions
 	while (true){
 		if (y > 11)
 			y /= 2;
@@ -509,7 +509,7 @@ double chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 	LOG("\nparticle col\n");
 
-	double result = 0;
+	int result = 0;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -532,7 +532,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) {
 				result = chain_fall();
 
 				if (result != 0) {
-					App->player->score += (10 * (pow(2, result)));
+					App->player->score += (10 * (pow(2.f, result)));
 					Mix_PlayChannel(-1, sfx14, 0);
 					Mix_PlayChannel(-1, sfx16, 0);
 				}

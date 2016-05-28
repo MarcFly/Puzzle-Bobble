@@ -272,7 +272,7 @@ update_status ModuleScene1to3::Update()
 	
 	// ----
 	uint aux = deadline_pos;
-	if (deadline_pos == 11)
+	if (deadline_pos >= 11)
 		deadline_pos = 10;
 	for (int x = 0; x < 8; x++) {
 		if (bubble_board[deadline_pos][x]){
@@ -318,7 +318,25 @@ update_status ModuleScene1to3::Update()
 
 	}
 
+	int lvl_time = (SDL_GetTicks() - App->player->timer_secs) / 1000;
+
 	if (empty == true){
+
+		if (lvl_time <= 64){
+
+			if (lvl_time > 5){
+
+				App->player->score += (50000 / 60) * (60 - lvl_time);
+
+			}
+
+			else{
+
+				App->player->score += 50000;
+				
+			}
+		}
+
 		App->particles->Disable();
 		App->input->Disable();
 		if (App->lvl > 2) {
