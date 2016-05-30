@@ -68,6 +68,7 @@ public:
 	int font_greenbub = -1;
 
 	uint time_spent;
+	char time_score[10];
 	bool time_once;
 
 	bool shake;

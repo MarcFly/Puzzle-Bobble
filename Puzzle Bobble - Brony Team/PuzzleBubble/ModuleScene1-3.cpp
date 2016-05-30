@@ -348,13 +348,13 @@ update_status ModuleScene1to3::Update()
 
 			if (lvl_time > 5){
 				App->player->score += (50000 / 60) * (60 - lvl_time);
-
+				sprintf_s(time_score, 10, "%7d", (50000 / 60) * (60 - lvl_time));
 			}
 
 			else{
 
 				App->player->score += 50000;
-				
+				sprintf_s(time_score, 10, "%7d", 50000);
 			}
 			if (App->player->score >= 999999999)
 				App->player->score = 999999999;
@@ -377,7 +377,7 @@ update_status ModuleScene1to3::Update()
 		}
 		if (SDL_GetTicks() > win_timer + 2000) {
 			sprintf_s(secs_needed, 10, "%d", time_spent);
-			App->fonts->Blit(66, 100, 1, App->player->score_text);
+			App->fonts->Blit(66, 100, 1, time_score);
 			App->fonts->Blit(112, 65, 1, secs_needed);
 			App->render->Blit(greenbubfont_graphics, 169, 100, &PTS);
 			App->render->Blit(greenbubfont_graphics, 151, 65, &SEC);
