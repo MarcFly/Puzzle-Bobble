@@ -23,6 +23,7 @@ public:
 	void FallCeiling();
 
 public:
+	SDL_Texture* greenbubfont_graphics = nullptr;
 	SDL_Texture* background_graphics = nullptr;
 	SDL_Texture* foreground_graphics = nullptr;
 	SDL_Texture* game_sprites_graphics = nullptr;
@@ -35,6 +36,9 @@ public:
 	SDL_Rect top_background;
 	SDL_Rect limit_line;
 	SDL_Rect level_info;
+	SDL_Rect round_clear;
+	SDL_Rect PTS;
+	SDL_Rect SEC;
 	int bubble_board[12][8];
 	int prev_bb[12][8];
 	bool to_erase;
@@ -58,6 +62,13 @@ public:
 	uint shake_timer;
 
 	bool is_gameover;
+
+	char secs_needed[10];
+	char secs_points[10];
+	int font_greenbub = -1;
+
+	uint time_spent;
+	bool time_once;
 
 	bool shake;
 

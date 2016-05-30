@@ -55,12 +55,18 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	for (int i = '!'; i < '~'; i++) {
 		fonts[id].table[i - '!'] = i;
 	}
+
+
 	fonts[id].graphic = tex;
 	fonts[id].rows = 3;
 	fonts[id].len = 96;
 	fonts[id].row_chars = 32;
 	fonts[id].char_w = 8;
 	fonts[id].char_h = 8;
+	if (id == 1) {
+		fonts[id].char_w = 14;
+		fonts[id].char_h = 16;
+	}
 	
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
@@ -98,20 +104,27 @@ void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
 		// TODO 2: Find the character in the table and its position in the texture, then Blit
 		for (uint k = 0; k < font->len; k++) {
 			if (text[i] == font->table[k]){
-				if (text[i] >= '0' && text[i] <= '9') {
-					rect.x = 146 + (text[i] - '0') * (font->char_w + 1);
-					rect.y = 2;
+				if (font_id == 0) {
+					if (text[i] >= '0' && text[i] <= '9') {
+						rect.x = 146 + (text[i] - '0') * (font->char_w + 1);
+						rect.y = 2;
+					}
+					if (text[i] >= 'A' && text[i] <= 'Z') {
+						rect.x = 2 + (text[i] - 'A') * (font->char_w + 1);
+						rect.y = 11;
+					}
+					if (text[i] == '_') {
+						rect.x = 1;
+						rect.y = 1;
+					}
 				}
-				if (text[i] >= 'A' && text[i] <= 'Z') {
-					rect.x = 2 + (text[i] - 'A') * (font->char_w + 1);
-					rect.y = 11;
+				else
+				if (font_id == 1) {
+					if (text[i] >= '0' && text[i] <= '9') {
+						rect.x = 7 + (text[i] - '0') * font->char_w;
+						rect.y = 9;
+					}
 				}
-				if (text[i] == '_') {
-					rect.x = 1;
-					rect.y = 1;
-				}
-
-				
 			}
 		}
 			App->render->Blit(font->graphic, x, y, &rect);

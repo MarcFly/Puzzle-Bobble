@@ -575,9 +575,9 @@ ModulePlayer::ModulePlayer()
 	round_greenbub.w = 86;
 	round_greenbub.h = 16;
 
-	greenbub_num.x = 74;
+	greenbub_num.x = 72;
 	greenbub_num.y = 9;
-	greenbub_num.w = 16;
+	greenbub_num.w = 14;
 	greenbub_num.h = 16;
 
 	score = ply_score;
@@ -756,13 +756,13 @@ update_status ModulePlayer::Update()
 		App->render->Blit(greenbub_graphics, 107, 56, &round_greenbub);
 		switch (App->lvl) {
 		case 1:
-			greenbub_num.x = 74;
+			greenbub_num.x = 63;
 			break;
 		case 2:
-			greenbub_num.x = 91;
+			greenbub_num.x = 77;
 			break;
 		case 3:
-			greenbub_num.x = 108;
+			greenbub_num.x = 91;
 			break;
 		}
 		App->render->Blit(greenbub_graphics, 142, 75, &greenbub_num);

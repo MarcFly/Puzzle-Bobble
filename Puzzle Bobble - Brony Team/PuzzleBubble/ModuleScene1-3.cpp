@@ -11,7 +11,8 @@
 #include "../ModuleCollision.h"
 #include "../ModuleEnemies.h"
 #include "ModuleAudio.h"
-
+#include "ModuleFonts.h"
+#include <stdio.h>
 
 
 ModuleScene1to3::ModuleScene1to3()
@@ -51,6 +52,22 @@ ModuleScene1to3::ModuleScene1to3()
 	falling_ceiling.y = 24;
 	falling_ceiling.w = 127;
 	falling_ceiling.h = 162;
+
+	round_clear.x = 4;
+	round_clear.y = 76;
+	round_clear.w = 177;
+	round_clear.h = 16;
+
+	PTS.x = 4;
+	PTS.y = 94;
+	PTS.w = 51;
+	PTS.h = 17;
+
+	SEC.x = 62;
+	SEC.y = 94;
+	SEC.w = 51;
+	SEC.h = 17;
+
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -64,6 +81,7 @@ bool ModuleScene1to3::Start()
 	play_sfx13_once = false;
 
 	shake_timer_once = false;
+	time_once = false;
 
 	is_gameover = false;
 
@@ -212,7 +230,9 @@ bool ModuleScene1to3::Start()
 	foreground_graphics = App->textures->Load("Resources/Sprites/Borders 4-6.png");
 	game_sprites_graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
 	falling_graphics = App->textures->Load("Resources/Sprites/falling_ceiling2.png");
+	greenbubfont_graphics = App->textures->Load("Resources/Sprites/GreenBubFont.png");
 
+	font_greenbub = App->fonts->Load("Resources/Sprites/GreenBubFont.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -320,14 +340,13 @@ update_status ModuleScene1to3::Update()
 
 	}
 
-	int lvl_time = (SDL_GetTicks() - App->player->timer_secs) / 10000;
+	int lvl_time = (SDL_GetTicks() - App->player->timer_secs) / 1500;
 
 	if (empty == true){
 
 		if (lvl_time <= 64 && App->input->enabled == true){
 
 			if (lvl_time > 5){
-
 				App->player->score += (50000 / 60) * (60 - lvl_time);
 
 			}
@@ -337,7 +356,13 @@ update_status ModuleScene1to3::Update()
 				App->player->score += 50000;
 				
 			}
+			if (App->player->score >= 999999999)
+				App->player->score = 999999999;
 		}
+			if (time_once == false) {
+				time_spent = lvl_time;
+				time_once = true;
+			}
 
 		App->particles->Disable();
 		App->input->Disable();
@@ -347,8 +372,17 @@ update_status ModuleScene1to3::Update()
 			Mix_PlayMusic(App->audio->music04, 1);
 			win_once = true;
 		}
-
-		if (SDL_GetTicks() > win_timer + 5000) {
+		if (SDL_GetTicks() < win_timer + 2000) {
+			App->render->Blit(greenbubfont_graphics, 64, 75, &round_clear);
+		}
+		if (SDL_GetTicks() > win_timer + 2000) {
+			sprintf_s(secs_needed, 10, "%d", time_spent);
+			App->fonts->Blit(66, 100, 1, App->player->score_text);
+			App->fonts->Blit(112, 65, 1, secs_needed);
+			App->render->Blit(greenbubfont_graphics, 169, 100, &PTS);
+			App->render->Blit(greenbubfont_graphics, 151, 65, &SEC);
+		}
+		if (SDL_GetTicks() > win_timer + 4000) {
 			if (App->lvl > 2) {
 				App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
 			}
