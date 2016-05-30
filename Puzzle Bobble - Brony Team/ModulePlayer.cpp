@@ -894,6 +894,14 @@ update_status ModulePlayer::Update()
 			App->credits++;
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_DOWN && App->debug_mode == true) {
+		for (int y = 0; y < 12; y++) {
+			for (int x = 0; x < 8; x++) {
+				App->scene_1to3->bubble_board[y][x] = E;
+			}
+		}
+	}
+
 	// Bubble to shoot
 
 	switch (rnd_aux){

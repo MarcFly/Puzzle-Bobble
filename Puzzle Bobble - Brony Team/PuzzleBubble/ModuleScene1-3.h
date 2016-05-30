@@ -51,6 +51,9 @@ public:
 	uint death_timer;
 	bool death_once;
 
+	uint win_timer;
+	bool win_once;
+
 	bool shake_timer_once;
 	uint shake_timer;
 

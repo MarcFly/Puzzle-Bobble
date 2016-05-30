@@ -70,6 +70,9 @@ bool ModuleScene1to3::Start()
 	death_timer = 0;
 	death_once = false;
 
+	win_timer = 0;
+	win_once = false;
+
 	deadline_pos = 11;
 
 	BUBBLE_OFFSET_X_ODD = 71;
@@ -284,7 +287,6 @@ update_status ModuleScene1to3::Update()
 				Mix_PlayChannel(-1, sfx09, 0);
 				playonce = false;
 			}
-			App->player->score = 0;
 			if (!death_once) {
 				death_timer = SDL_GetTicks();
 				death_once = !death_once;
@@ -339,11 +341,20 @@ update_status ModuleScene1to3::Update()
 
 		App->particles->Disable();
 		App->input->Disable();
-		if (App->lvl > 2) {
-			App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
+		
+		if (win_once == false){
+			win_timer = SDL_GetTicks();
+			Mix_PlayMusic(App->audio->music04, 1);
+			win_once = true;
 		}
-		else{
-			App->fade->FadeToBlack(this, this, FADE_SPEED);
+
+		if (SDL_GetTicks() > win_timer + 5000) {
+			if (App->lvl > 2) {
+				App->fade->FadeToBlack(this, (Module*)App->scene_win, FADE_SPEED);
+			}
+			else{
+				App->fade->FadeToBlack(this, this, FADE_SPEED);
+			}
 		}
 	}
 

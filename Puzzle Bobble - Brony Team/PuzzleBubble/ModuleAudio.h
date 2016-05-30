@@ -20,10 +20,14 @@ public:
 	bool CleanUp();
 
 public:
+	Mix_Music* music01 = nullptr;
 	Mix_Music* music02 = nullptr;
 	Mix_Music* music03 = nullptr;
+	Mix_Music* music04 = nullptr;
 	Mix_Music* music05 = nullptr;
+	Mix_Music* music06 = nullptr;
 	Mix_Music* music07 = nullptr;
+	Mix_Music* music08 = nullptr;
 
 	Mix_Chunk* sfx07 = nullptr;
 };
