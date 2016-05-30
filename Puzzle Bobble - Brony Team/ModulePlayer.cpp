@@ -75,6 +75,18 @@ ModulePlayer::ModulePlayer()
 	tube.w = 13;
 	tube.h = 11;
 
+	// bag
+
+	bag[0].x = 294;
+	bag[0].y = 489;
+	bag[0].w = 56;
+	bag[0].h = 24;
+
+	bag[1].x = 351;
+	bag[1].y = 490;
+	bag[1].w = 40;
+	bag[1].h = 23;
+
 	// small machine
 
 	s_machine[0].x = 522;
@@ -237,6 +249,31 @@ ModulePlayer::ModulePlayer()
 	bub_wheel[8].y = 539;
 	bub_wheel[8].w = 26;
 	bub_wheel[8].h = 19;
+
+	bub_wheel[9].x = 309;
+	bub_wheel[9].y = 539;
+	bub_wheel[9].w = 26;
+	bub_wheel[9].h = 19;
+
+	bub_wheel[10].x = 336;
+	bub_wheel[10].y = 539;
+	bub_wheel[10].w = 26;
+	bub_wheel[10].h = 19;
+
+	bub_wheel[11].x = 363;
+	bub_wheel[11].y = 539;
+	bub_wheel[11].w = 26;
+	bub_wheel[11].h = 19;
+
+	bub_wheel[12].x = 390;
+	bub_wheel[12].y = 539;
+	bub_wheel[12].w = 26;
+	bub_wheel[12].h = 19;
+
+	bub_wheel[13].x = 417;
+	bub_wheel[13].y = 539;
+	bub_wheel[13].w = 26;
+	bub_wheel[13].h = 19;
 
 	//all arrow animation frames
 
@@ -817,6 +854,12 @@ update_status ModulePlayer::Update()
 
 	// BLITS
 
+
+	// Bag blit
+
+	App->render->Blit(graphics, 72, 194, &bag[0], 0.75f);
+
+
 	// Small Machine blit
 
 	if (smachine_pos == 2) smachine_pos = 0;
@@ -856,7 +899,29 @@ update_status ModulePlayer::Update()
 		App->render->Blit(graphics, 171, 198, &bub_wheel[bubwheel_pos], 0.75f);
 	}
 
-	else App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
+	else {
+		App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[9], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[10], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[11], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[12], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[13], 0.75f);
+
+
+		//animation of BUB yawning
+
+		//BUB_yawn.PushBack({ bub_wheel[8] });
+		//BUB_yawn.PushBack({ bub_wheel[9] });
+		//BUB_yawn.PushBack({ bub_wheel[10] });
+		//BUB_yawn.PushBack({ bub_wheel[11] });
+		//BUB_yawn.PushBack({ bub_wheel[12] });
+		//BUB_yawn.PushBack({ bub_wheel[13] });
+		//BUB_yawn.speed = 0.1f;
+		//
+		//yawn = &BUB_yawn;
+		//
+		//App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+	}
 
 	// Tube blit
 
@@ -922,14 +987,14 @@ update_status ModulePlayer::Update()
 
 	switch (rnd_aux_2){
 
-	case 1: App->render->Blit(graphics, 125, 200, &BluBub, 0.75f); break;
-	case 2: App->render->Blit(graphics, 125, 200, &RedBub, 0.75f); break;
-	case 3: App->render->Blit(graphics, 125, 200, &GreenBub, 0.75f); break;
-	case 4: App->render->Blit(graphics, 125, 200, &YelBub, 0.75f); break;
-	case 5: App->render->Blit(graphics, 125, 200, &BlkBub, 0.75f); break;
-	case 6: App->render->Blit(graphics, 125, 200, &OraBub, 0.75f); break;
-	case 7: App->render->Blit(graphics, 125, 200, &GreyBub, 0.75f); break;
-	case 8: App->render->Blit(graphics, 125, 200, &PplBub, 0.75f); break;
+	case 1: App->render->Blit(graphics, 107, 202, &BluBub, 0.75f); break;
+	case 2: App->render->Blit(graphics, 107, 202, &RedBub, 0.75f); break;
+	case 3: App->render->Blit(graphics, 107, 202, &GreenBub, 0.75f); break;
+	case 4: App->render->Blit(graphics, 107, 202, &YelBub, 0.75f); break;
+	case 5: App->render->Blit(graphics, 107, 202, &BlkBub, 0.75f); break;
+	case 6: App->render->Blit(graphics, 107, 202, &OraBub, 0.75f); break;
+	case 7: App->render->Blit(graphics, 107, 202, &GreyBub, 0.75f); break;
+	case 8: App->render->Blit(graphics, 107, 202, &PplBub, 0.75f); break;
 	default: break;
 	}
 
