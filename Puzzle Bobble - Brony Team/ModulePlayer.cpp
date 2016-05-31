@@ -1035,7 +1035,7 @@ update_status ModulePlayer::Update()
 		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
 	}
 
-	if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
+	else if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
 
 	else App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 
