@@ -43,10 +43,10 @@ public:
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 	void OnCollision(Collider*, Collider*);
 
-private:
-
+public:
 	SDL_Texture* graphics = nullptr;
 	
+private:
 	uint last_particle = 0;
 
 	Mix_Chunk* sfx02 = nullptr;
@@ -56,6 +56,8 @@ public:
 	//According to the Enemies we have so 0 to No Type, 1 to Blue, 2 to Red,...
 	Particle Bubble[9];
 	int point_rnd;
+
+	Particle bubble_pop[9];
 
 	Particle* active[MAX_ACTIVE_PARTICLES];
 

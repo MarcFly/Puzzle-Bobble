@@ -1039,6 +1039,7 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
 
 	// SHOOTING AFTER 10 SECS
+
 	if (SDL_GetTicks() > timer_shot + 9000) {
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
