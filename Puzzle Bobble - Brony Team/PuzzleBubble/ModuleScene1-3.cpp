@@ -40,7 +40,7 @@ ModuleScene1to3::ModuleScene1to3()
 
 	level_info.x = 35;
 	level_info.y = 1710;
-	level_info.w = 310;
+	level_info.w = 303;
 	level_info.h = 7;
 
 	limit_line.x = 34;

@@ -13,6 +13,11 @@ Bubbles pop when 3 or more are sticked together and the player looses if they ar
 	'a' to shoot bubbles <br />
 	'left/right' to aim arrow <br />
 	'space' to start playing and to close the game after winning or losing <br />
+	'esc' to close game <br />
+	'tab' activates debug mode and the following options and stops the ceiling from going down <br />
+		'F1' toggles on/off the visibility of hitboxes <br />
+		'F2' changes the color of current bubble in the following order: Blue Red Green Yellow Black Orange Grey Purple <br />
+		'E' wipes out the bubbles on the level automatically winning you the round <br />
 
 //---
 
