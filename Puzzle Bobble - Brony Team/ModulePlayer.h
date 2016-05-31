@@ -45,6 +45,7 @@ public:
 	SDL_Rect crank[8];
 	SDL_Rect bub_wheel[14];
 	SDL_Rect bub_ball[12];
+	SDL_Rect messages[6];
 	SDL_Point arrow_center;
 	SDL_Rect BluBub;
 	SDL_Rect RedBub;
@@ -80,6 +81,7 @@ public:
 	int shots;
 
 	int timer_shot;
+	int timer_still;
 
 	bool enable_once;
 

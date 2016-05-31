@@ -337,6 +337,39 @@ ModulePlayer::ModulePlayer()
 	bub_ball[11].w = 26;
 	bub_ball[11].h = 19;
 
+
+	// messages
+
+	messages[0].x = 1;
+	messages[0].y = 675;
+	messages[0].w = 32;
+	messages[0].h = 28;
+
+	messages[1].x = 34;
+	messages[1].y = 675;
+	messages[1].w = 32;
+	messages[1].h = 28;
+
+	messages[2].x = 67;
+	messages[2].y = 675;
+	messages[2].w = 32;
+	messages[2].h = 28;
+
+	messages[3].x = 100;
+	messages[3].y = 675;
+	messages[3].w = 32;
+	messages[3].h = 28;
+
+	messages[4].x = 133;
+	messages[4].y = 675;
+	messages[4].w = 32;
+	messages[4].h = 28;
+
+	messages[5].x = 166;
+	messages[5].y = 675;
+	messages[5].w = 32;
+	messages[5].h = 28;
+
 	//all arrow animation frames
 
 	position.x = 120;
@@ -753,6 +786,9 @@ bool ModulePlayer::Start()
 	rnd = 0;
 	rnd_aux = 0;
 	rnd_aux_2 = 0;
+
+	timer_still = SDL_GetTicks();
+
 	//Making the Board pointer look at actual level
 
 
@@ -983,8 +1019,15 @@ update_status ModulePlayer::Update()
 		//animation of BUB yawning
 		
 		yawn = &BUB_yawn;
+
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
+			timer_still = SDL_GetTicks();
+		}
 		
-		App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+		if (SDL_GetTicks() > timer_still + 4000) {
+			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+		}
+		else App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 	}
 
 	// Bub ball blit
@@ -1000,6 +1043,33 @@ update_status ModulePlayer::Update()
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
+
+	// MESSAGE
+
+	if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4400) {
+		App->render->Blit(graphics, 80, 180, &messages[1], 0.75f);
+	}
+
+	if (SDL_GetTicks() > timer_shot + 5000 && SDL_GetTicks() < timer_shot + 5400) {
+		App->render->Blit(graphics, 80, 180, &messages[2], 0.75f);
+	}
+
+	if (SDL_GetTicks() > timer_shot + 6000 && SDL_GetTicks() < timer_shot + 6400) {
+		App->render->Blit(graphics, 80, 180, &messages[3], 0.75f);
+	}
+
+	if (SDL_GetTicks() > timer_shot + 7000 && SDL_GetTicks() < timer_shot + 7400) {
+		App->render->Blit(graphics, 80, 180, &messages[4], 0.75f);
+	}
+
+	if (SDL_GetTicks() > timer_shot + 8000 && SDL_GetTicks() < timer_shot + 8400) {
+		App->render->Blit(graphics, 80, 180, &messages[5], 0.75f);
+	}
+
+	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() > timer_shot + 4900 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() > timer_shot + 5900 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() > timer_shot + 6900 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() > timer_shot + 7900 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() > timer_shot + 8900 ) {
+		App->render->Blit(graphics, 80, 180, &messages[0], 0.75f);
+	}
+
 
 // Change bubble
 
