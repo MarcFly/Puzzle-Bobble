@@ -275,6 +275,68 @@ ModulePlayer::ModulePlayer()
 	bub_wheel[13].w = 26;
 	bub_wheel[13].h = 19;
 
+	//BUB ball
+
+	bub_ball[0].x = 0;
+	bub_ball[0].y = 655;
+	bub_ball[0].w = 26;
+	bub_ball[0].h = 19;
+
+	bub_ball[1].x = 27;
+	bub_ball[1].y = 655;
+	bub_ball[1].w = 26;
+	bub_ball[1].h = 19;
+
+	bub_ball[2].x = 54;
+	bub_ball[2].y = 655;
+	bub_ball[2].w = 26;
+	bub_ball[2].h = 19;
+
+	bub_ball[3].x = 81;
+	bub_ball[3].y = 655;
+	bub_ball[3].w = 26;
+	bub_ball[3].h = 19;
+
+	bub_ball[4].x = 108;
+	bub_ball[4].y = 655;
+	bub_ball[4].w = 26;
+	bub_ball[4].h = 19;
+
+	bub_ball[5].x = 135;
+	bub_ball[5].y = 655;
+	bub_ball[5].w = 26;
+	bub_ball[5].h = 19;
+
+	bub_ball[6].x = 162;
+	bub_ball[6].y = 655;
+	bub_ball[6].w = 26;
+	bub_ball[6].h = 19;
+
+	bub_ball[7].x = 189;
+	bub_ball[7].y = 655;
+	bub_ball[7].w = 26;
+	bub_ball[7].h = 19;
+
+	bub_ball[8].x = 216;
+	bub_ball[8].y = 655;
+	bub_ball[8].w = 26;
+	bub_ball[8].h = 19;
+
+	bub_ball[9].x = 243;
+	bub_ball[9].y = 655;
+	bub_ball[9].w = 26;
+	bub_ball[9].h = 19;
+
+	bub_ball[10].x = 270;
+	bub_ball[10].y = 655;
+	bub_ball[10].w = 26;
+	bub_ball[10].h = 19;
+
+	bub_ball[11].x = 297;
+	bub_ball[11].y = 655;
+	bub_ball[11].w = 26;
+	bub_ball[11].h = 19;
+
 	//all arrow animation frames
 
 	position.x = 120;
@@ -922,6 +984,10 @@ update_status ModulePlayer::Update()
 		//
 		//App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
 	}
+
+	// Bub ball blit
+
+	App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 
 	// Tube blit
 

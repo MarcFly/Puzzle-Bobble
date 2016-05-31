@@ -39,12 +39,13 @@ public:
 	SDL_Rect greenbub_num;
 	SDL_Rect round_sign;
 	SDL_Rect tube;
-	SDL_Rect bag[1];
+	SDL_Rect bag[2];
 	SDL_Rect b_machine[12];
 	SDL_Rect s_machine[2];
 	SDL_Rect arrow[64];
 	SDL_Rect crank[8];
 	SDL_Rect bub_wheel[14];
+	SDL_Rect bub_ball[12];
 	SDL_Point arrow_center;
 	SDL_Rect BluBub;
 	SDL_Rect RedBub;
