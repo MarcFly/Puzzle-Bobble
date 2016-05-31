@@ -914,6 +914,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
+		timer_still = SDL_GetTicks();
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
@@ -952,6 +953,7 @@ update_status ModulePlayer::Update()
 
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
+		timer_still = SDL_GetTicks();
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
