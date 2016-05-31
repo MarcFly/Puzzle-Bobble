@@ -841,7 +841,6 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-
 	if (SDL_GetTicks() > timer_secs + 1500) {
 		if (enable_once == false) {
 			App->input->Enable();
@@ -999,24 +998,26 @@ update_status ModulePlayer::Update()
 		timer_shot = SDL_GetTicks();
 	}
 
-	// UI Blit
-	if (App->debug_mode) {
-		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
-	}
-
-	// Change bubble
+// Change bubble
 
 	if (App->debug_mode == true){
 
 		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
 
-			if (rnd_aux < 7)
+			if (rnd_aux < 8)
 				rnd_aux++;
 
 			else rnd_aux = 1;
 
 		}
 	}
+
+	// UI Blit
+	if (App->debug_mode) {
+		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
+	}
+
+	
 
 	sprintf_s(score_text, 10, "%7d", score);
 	sprintf_s(round_text, 15, "LEVEL_0%d", App->lvl + 3);
