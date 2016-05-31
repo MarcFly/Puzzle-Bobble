@@ -1004,6 +1004,20 @@ update_status ModulePlayer::Update()
 		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
 	}
 
+	// Change bubble
+
+	if (App->debug_mode == true){
+
+		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
+
+			if (rnd_aux < 7)
+				rnd_aux++;
+
+			else rnd_aux = 1;
+
+		}
+	}
+
 	sprintf_s(score_text, 10, "%7d", score);
 	sprintf_s(round_text, 15, "LEVEL_0%d", App->lvl + 3);
 	App->fonts->Blit(35, 8, 0, score_text);
