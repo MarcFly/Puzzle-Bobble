@@ -1028,14 +1028,21 @@ update_status ModulePlayer::Update()
 
 	// Bub ball blit
 
+	hurry = &Bub_hurry;
 	shoot = &Bub_shoot;
 	stand = &Bub_stand;
 
-	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+	//if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+	//	App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+	//}
+
+	//else if (SDL_GetTicks() == (timer_shot + 4500 || timer_shot + 5500 || timer_shot + 6500 || timer_shot + 7500 || timer_shot + 8500)) App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
+
+	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 4700 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 5700 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 6700 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 7700 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 8700){
+		App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
 	}
 
-	else if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
+	//else if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
 
 	else App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 
@@ -1088,8 +1095,6 @@ update_status ModulePlayer::Update()
 
 	// MESSAGE & Bub
 
-	hurry = &Bub_hurry;
-
 	// 5
 	if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4500) {
 		App->render->Blit(graphics, 80, 180, &messages[1], 0.75f);
@@ -1118,7 +1123,6 @@ update_status ModulePlayer::Update()
 	// HURRY UP
 	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000 ) {
 		App->render->Blit(graphics, 80, 180, &messages[0], 0.75f);
-		App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
 	}
 
 
