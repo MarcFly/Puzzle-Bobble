@@ -68,6 +68,11 @@ ModuleScene1to3::ModuleScene1to3()
 	SEC.w = 51;
 	SEC.h = 17;
 
+	NOBONUS.x = 119;
+	NOBONUS.y = 93;
+	NOBONUS.w = 126;
+	NOBONUS.h = 18;
+
 }
 
 ModuleScene1to3::~ModuleScene1to3()
@@ -377,10 +382,18 @@ update_status ModuleScene1to3::Update()
 		}
 		if (SDL_GetTicks() > win_timer + 2000) {
 			sprintf_s(secs_needed, 10, "%d", time_spent);
-			App->fonts->Blit(66, 100, 1, time_score);
-			App->fonts->Blit(112, 65, 1, secs_needed);
-			App->render->Blit(greenbubfont_graphics, 169, 100, &PTS);
-			App->render->Blit(greenbubfont_graphics, 151, 65, &SEC);
+			if (time_spent <= 64) {
+				App->fonts->Blit(61, 100, 1, time_score);
+				App->render->Blit(greenbubfont_graphics, 163, 100, &PTS);
+			}
+			else
+				App->render->Blit(greenbubfont_graphics, 85, 100, &NOBONUS);
+			
+			if (time_spent >= 100)
+				App->fonts->Blit(97, 65, 1, secs_needed);
+			else 
+				App->fonts->Blit(105, 65, 1, secs_needed);
+			App->render->Blit(greenbubfont_graphics, 148, 65, &SEC);
 		}
 		if (SDL_GetTicks() > win_timer + 4000) {
 			if (App->lvl > 2) {

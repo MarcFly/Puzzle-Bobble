@@ -39,6 +39,7 @@ public:
 	SDL_Rect round_clear;
 	SDL_Rect PTS;
 	SDL_Rect SEC;
+	SDL_Rect NOBONUS;
 	int bubble_board[12][8];
 	int prev_bb[12][8];
 	bool to_erase;
