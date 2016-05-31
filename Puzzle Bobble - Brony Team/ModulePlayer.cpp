@@ -245,7 +245,7 @@ ModulePlayer::ModulePlayer()
 	bub_wheel[7].w = 26;
 	bub_wheel[7].h = 19;
 
-	bub_wheel[8].x = 282;
+	bub_wheel[8].x = 281;
 	bub_wheel[8].y = 539;
 	bub_wheel[8].w = 26;
 	bub_wheel[8].h = 19;
@@ -683,11 +683,14 @@ ModulePlayer::ModulePlayer()
 
 	BUB_yawn.PushBack({ bub_wheel[8] });
 	BUB_yawn.PushBack({ bub_wheel[9] });
-	BUB_yawn.PushBack({ bub_wheel[10] });
-	BUB_yawn.PushBack({ bub_wheel[11] });
 	BUB_yawn.PushBack({ bub_wheel[12] });
 	BUB_yawn.PushBack({ bub_wheel[13] });
-	BUB_yawn.speed = 0.1f;
+	BUB_yawn.PushBack({ bub_wheel[12] });
+	BUB_yawn.PushBack({ bub_wheel[13] });
+	BUB_yawn.PushBack({ bub_wheel[12] });
+	BUB_yawn.PushBack({ bub_wheel[10] });
+
+	BUB_yawn.speed = 0.05f;
 
 }
 
