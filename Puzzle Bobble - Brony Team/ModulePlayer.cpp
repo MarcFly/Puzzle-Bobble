@@ -1095,36 +1095,39 @@ update_status ModulePlayer::Update()
 
 	// MESSAGE & Bub
 
-	// 5
-	if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4500) {
-		App->render->Blit(graphics, 80, 180, &messages[1], 0.75f);
-	}
+	if (timer_shot > 3500){
 
-	// 4
-	if (SDL_GetTicks() > timer_shot + 5000 && SDL_GetTicks() < timer_shot + 5500) {
-		App->render->Blit(graphics, 80, 180, &messages[2], 0.75f);
-	}
+		// 5
+		if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4500) {
+			App->render->Blit(graphics, 80, 180, &messages[1], 0.75f);
+		}
 
-	// 3
-	if (SDL_GetTicks() > timer_shot + 6000 && SDL_GetTicks() < timer_shot + 6500) {
-		App->render->Blit(graphics, 80, 180, &messages[3], 0.75f);
-	}
+		// 4
+		if (SDL_GetTicks() > timer_shot + 5000 && SDL_GetTicks() < timer_shot + 5500) {
+			App->render->Blit(graphics, 80, 180, &messages[2], 0.75f);
+		}
 
-	// 2
-	if (SDL_GetTicks() > timer_shot + 7000 && SDL_GetTicks() < timer_shot + 7500) {
-		App->render->Blit(graphics, 80, 180, &messages[4], 0.75f);
-	}
+		// 3
+		if (SDL_GetTicks() > timer_shot + 6000 && SDL_GetTicks() < timer_shot + 6500) {
+			App->render->Blit(graphics, 80, 180, &messages[3], 0.75f);
+		}
 
-	// 1
-	if (SDL_GetTicks() > timer_shot + 8000 && SDL_GetTicks() < timer_shot + 8500) {
-		App->render->Blit(graphics, 80, 180, &messages[5], 0.75f);
-	}
+		// 2
+		if (SDL_GetTicks() > timer_shot + 7000 && SDL_GetTicks() < timer_shot + 7500) {
+			App->render->Blit(graphics, 80, 180, &messages[4], 0.75f);
+		}
 
-	// HURRY UP
-	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000 ) {
-		App->render->Blit(graphics, 80, 180, &messages[0], 0.75f);
-	}
+		// 1
+		if (SDL_GetTicks() > timer_shot + 8000 && SDL_GetTicks() < timer_shot + 8500) {
+			App->render->Blit(graphics, 80, 180, &messages[5], 0.75f);
+		}
 
+		// HURRY UP
+		if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000) {
+			App->render->Blit(graphics, 80, 180, &messages[0], 0.75f);
+		}
+
+	}
 
 // Change bubble
 
