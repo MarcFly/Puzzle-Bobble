@@ -31,6 +31,13 @@ public:
 
 	Animation BUB_yawn;
 	Animation* yawn;
+	Animation Bub_shoot;
+	Animation* shoot;
+	Animation Bub_hurry;
+	Animation* hurry;
+	Animation Bub_stand;
+	Animation* stand;
+
 	SDL_Texture* greenbub_graphics = nullptr;
 	SDL_Texture* sign_graphics = nullptr;
 	SDL_Texture* graphics = nullptr;

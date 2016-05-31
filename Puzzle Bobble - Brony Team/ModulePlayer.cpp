@@ -714,6 +714,7 @@ ModulePlayer::ModulePlayer()
 
 	score = ply_score;
 
+
 	BUB_yawn.PushBack({ bub_wheel[8] });
 	BUB_yawn.PushBack({ bub_wheel[9] });
 	BUB_yawn.PushBack({ bub_wheel[12] });
@@ -725,6 +726,32 @@ ModulePlayer::ModulePlayer()
 
 	BUB_yawn.speed = 0.05f;
 
+
+	Bub_shoot.PushBack({ bub_ball[7] });
+	Bub_shoot.PushBack({ bub_ball[8] });
+	Bub_shoot.PushBack({ bub_ball[9] });
+	Bub_hurry.PushBack({ bub_ball[0] });
+	Bub_hurry.PushBack({ bub_ball[4] });
+	Bub_hurry.PushBack({ bub_ball[5] });
+	Bub_hurry.PushBack({ bub_ball[6] });
+
+	Bub_shoot.speed = 0.1f;
+
+
+	Bub_hurry.PushBack({ bub_ball[10] });
+	Bub_hurry.PushBack({ bub_ball[11] });
+	Bub_hurry.PushBack({ bub_ball[10] });
+	Bub_hurry.PushBack({ bub_ball[11] });
+
+	Bub_hurry.speed = 0.1f;
+
+
+	Bub_stand.PushBack({ bub_ball[0] });
+	Bub_stand.PushBack({ bub_ball[1] });
+	Bub_stand.PushBack({ bub_ball[2] });
+	Bub_stand.PushBack({ bub_ball[3] });
+
+	Bub_stand.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -999,6 +1026,22 @@ update_status ModulePlayer::Update()
 
 	App->render->Blit(graphics, 168, 200, &crank[crank_pos], 0.75f);
 
+	// Bub ball blit
+
+	shoot = &Bub_shoot;
+	stand = &Bub_stand;
+
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+	}
+
+	if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
+
+	else App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+
+
+
+
 	// Bub wheel blit
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
@@ -1032,10 +1075,6 @@ update_status ModulePlayer::Update()
 		else App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 	}
 
-	// Bub ball blit
-
-	App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
-
 	// Tube blit
 
 	App->render->Blit(graphics, 143, 201, &tube, 0.75f);
@@ -1047,7 +1086,9 @@ update_status ModulePlayer::Update()
 		timer_shot = SDL_GetTicks();
 	}
 
-	// MESSAGE
+	// MESSAGE & Bub
+
+	hurry = &Bub_hurry;
 
 	// 5
 	if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4500) {
@@ -1077,6 +1118,7 @@ update_status ModulePlayer::Update()
 	// HURRY UP
 	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000 ) {
 		App->render->Blit(graphics, 80, 180, &messages[0], 0.75f);
+		App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
 	}
 
 
