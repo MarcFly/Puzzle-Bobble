@@ -681,6 +681,14 @@ ModulePlayer::ModulePlayer()
 
 	score = ply_score;
 
+	BUB_yawn.PushBack({ bub_wheel[8] });
+	BUB_yawn.PushBack({ bub_wheel[9] });
+	BUB_yawn.PushBack({ bub_wheel[10] });
+	BUB_yawn.PushBack({ bub_wheel[11] });
+	BUB_yawn.PushBack({ bub_wheel[12] });
+	BUB_yawn.PushBack({ bub_wheel[13] });
+	BUB_yawn.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -961,7 +969,7 @@ update_status ModulePlayer::Update()
 	}
 
 	else {
-		App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
+		//App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 		//App->render->Blit(graphics, 171, 198, &bub_wheel[9], 0.75f);
 		//App->render->Blit(graphics, 171, 198, &bub_wheel[10], 0.75f);
 		//App->render->Blit(graphics, 171, 198, &bub_wheel[11], 0.75f);
@@ -970,18 +978,10 @@ update_status ModulePlayer::Update()
 
 
 		//animation of BUB yawning
-
-		//BUB_yawn.PushBack({ bub_wheel[8] });
-		//BUB_yawn.PushBack({ bub_wheel[9] });
-		//BUB_yawn.PushBack({ bub_wheel[10] });
-		//BUB_yawn.PushBack({ bub_wheel[11] });
-		//BUB_yawn.PushBack({ bub_wheel[12] });
-		//BUB_yawn.PushBack({ bub_wheel[13] });
-		//BUB_yawn.speed = 0.1f;
-		//
-		//yawn = &BUB_yawn;
-		//
-		//App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+		
+		yawn = &BUB_yawn;
+		
+		App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
 	}
 
 	// Bub ball blit

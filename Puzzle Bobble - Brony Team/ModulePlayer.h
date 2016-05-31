@@ -14,9 +14,6 @@ struct SDL_Texture;
 
 class ModulePlayer : public Module
 {
-private:
-	//Animation BUB_yawn;
-	//Animation* yawn;
 
 public:
 		ModulePlayer();
@@ -32,6 +29,8 @@ public:
 public:
 	double player_angle;
 
+	Animation BUB_yawn;
+	Animation* yawn;
 	SDL_Texture* greenbub_graphics = nullptr;
 	SDL_Texture* sign_graphics = nullptr;
 	SDL_Texture* graphics = nullptr;
