@@ -774,6 +774,8 @@ bool ModulePlayer::Start()
 	srand(time(NULL));
 
 	enable_once = false;
+	anim_shoot = false;
+	get_shoot = true;
 
 	timer_secs = SDL_GetTicks();
 
@@ -1031,7 +1033,11 @@ update_status ModulePlayer::Update()
 	shoot = &Bub_shoot;
 	stand = &Bub_stand;
 
-	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && anim_shoot == false){
+
+		anim_shoot = true;
+		get_shoot = true;
+
 		//shoot_int = SDL_GetTicks();
 
 		//if (SDL_GetTicks() > shoot_int + 500 || SDL_GetTicks() < shoot_int + 1000) App->render->Blit(graphics, 120, 198, &bub_ball[7], 0.75f);
@@ -1042,7 +1048,18 @@ update_status ModulePlayer::Update()
 		//if (SDL_GetTicks() > shoot_int + 2000 || SDL_GetTicks() < shoot_int + 3500) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
 		//if (SDL_GetTicks() > shoot_int + 3500 || SDL_GetTicks() < shoot_int + 4000) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
 
+		//App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+	}
+
+	else if (anim_shoot == true){
+
+		if (get_shoot == true){
+			shoot_int = SDL_GetTicks();
+			get_shoot = false;
+		}
+
 		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+		if (SDL_GetTicks() > shoot_int + 1200) anim_shoot = false;
 	}
 
 	else if (timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){

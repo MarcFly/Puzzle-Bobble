@@ -76,6 +76,8 @@ public:
 
 	uint timer_secs;
 	bool ready_playonce;
+	bool anim_shoot;
+	bool get_shoot;
 
 	Mix_Chunk* sfx08 = nullptr;
 
