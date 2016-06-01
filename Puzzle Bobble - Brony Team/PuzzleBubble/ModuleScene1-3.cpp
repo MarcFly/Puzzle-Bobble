@@ -237,6 +237,7 @@ bool ModuleScene1to3::Start()
 	falling_graphics = App->textures->Load("Resources/Sprites/falling_ceiling2.png");
 	greenbubfont_graphics = App->textures->Load("Resources/Sprites/GreenBubFont.png");
 
+	if (font_greenbub == -1)
 	font_greenbub = App->fonts->Load("Resources/Sprites/GreenBubFont.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	App->player->Enable();

@@ -816,6 +816,7 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Resources/Sprites/Player sprites.png");
 	sign_graphics = App->textures->Load("Resources/Sprites/round_sign.png");
 	greenbub_graphics = App->textures->Load("Resources/Sprites/GreenBubFont.png");
+	if (font_score == -1)
 	font_score = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	rnd = 0;
@@ -1237,6 +1238,8 @@ update_status ModulePlayer::Update()
 			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu, FADE_SPEED);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
 	}
+
+	LOG("Player Update End");
 	return UPDATE_CONTINUE;
 }
 
@@ -1299,7 +1302,9 @@ void ModulePlayer::PlayerShoot() {
 	for (int i = 1; i < 9; i++)
 		total_bubs += Bubble_count[i];
 
-	rnd_aux_2 = rand() % (total_bubs)+1;
+	int random;
+	random = rand();
+	rnd_aux_2 = random % (total_bubs)+1;
 
 
 	for (int i = 1; i < 9; i++){
