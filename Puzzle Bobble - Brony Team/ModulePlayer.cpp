@@ -1039,7 +1039,7 @@ update_status ModulePlayer::Update()
 	shoot = &Bub_shoot;
 	stand = &Bub_stand;
 
-	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && anim_shoot == false){
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && anim_shoot == false){
 
 		anim_shoot = true;
 		get_shoot = true;
@@ -1055,15 +1055,15 @@ update_status ModulePlayer::Update()
 		//App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
 
 		if (SDL_GetTicks() >= shoot_int && SDL_GetTicks() < shoot_int + 100) App->render->Blit(graphics, 120, 198, &bub_ball[7], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 100 && SDL_GetTicks() < shoot_int + 200) App->render->Blit(graphics, 120, 198, &bub_ball[8], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 200 && SDL_GetTicks() < shoot_int + 300) App->render->Blit(graphics, 120, 198, &bub_ball[9], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 300 && SDL_GetTicks() < shoot_int + 400) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 400 && SDL_GetTicks() < shoot_int + 500) App->render->Blit(graphics, 120, 198, &bub_ball[4], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 500 && SDL_GetTicks() < shoot_int + 600) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 600 && SDL_GetTicks() < shoot_int + 700) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
-		if (SDL_GetTicks() >= shoot_int + 700 && SDL_GetTicks() < shoot_int + 800) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 80 && SDL_GetTicks() < shoot_int + 160) App->render->Blit(graphics, 120, 198, &bub_ball[8], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 160 && SDL_GetTicks() < shoot_int + 240) App->render->Blit(graphics, 120, 198, &bub_ball[9], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 240 && SDL_GetTicks() < shoot_int + 320) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 320 && SDL_GetTicks() < shoot_int + 400) App->render->Blit(graphics, 120, 198, &bub_ball[4], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 400 && SDL_GetTicks() < shoot_int + 480) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 480 && SDL_GetTicks() < shoot_int + 560) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 560 && SDL_GetTicks() < shoot_int + 640) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 
-		if (SDL_GetTicks() >= shoot_int + 790) {
+		if (SDL_GetTicks() >= shoot_int + 620) {
 			App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 			anim_shoot = false;
 		}
