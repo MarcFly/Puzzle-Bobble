@@ -91,7 +91,7 @@ public:
 	int shots;
 
 	int timer_shot;
-	//int timer_still;
+	int timer_still;
 
 	bool enable_once;
 

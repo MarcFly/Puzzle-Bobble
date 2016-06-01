@@ -765,9 +765,9 @@ bool ModulePlayer::CleanUp() {
 
 	timer_shot = SDL_GetTicks();
 
-	//App->textures->Unload(graphics);
-	//App->textures->Unload(sign_graphics);
-	//App->textures->Unload(greenbub_graphics);
+	App->textures->Unload(graphics);
+	App->textures->Unload(sign_graphics);
+	App->textures->Unload(greenbub_graphics);
 
 	ply_score = score;
 
@@ -823,7 +823,7 @@ bool ModulePlayer::Start()
 	rnd_aux = 0;
 	rnd_aux_2 = 0;
 
-	//timer_still = SDL_GetTicks();
+	timer_still = SDL_GetTicks();
 
 	//Making the Board pointer look at actual level
 
@@ -950,7 +950,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
-		//timer_still = SDL_GetTicks();
+		timer_still = SDL_GetTicks();
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
@@ -989,7 +989,7 @@ update_status ModulePlayer::Update()
 
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
-		//timer_still = SDL_GetTicks();
+		timer_still = SDL_GetTicks();
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
@@ -1083,8 +1083,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
 
-		if (bubwheel_pos == 8) bubwheel_pos = 0;
-		else if (bubwheel_pos == -1) bubwheel_pos = 7;
+		if (bubwheel_pos >= 8) bubwheel_pos = 0;
+		else if (bubwheel_pos <= -1) bubwheel_pos = 7;
 
 		App->render->Blit(graphics, 171, 198, &bub_wheel[bubwheel_pos], 0.75f);
 	}
@@ -1095,11 +1095,10 @@ update_status ModulePlayer::Update()
 		
 		//yawn = &BUB_yawn;
 		
-		//if (SDL_GetTicks() > timer_still + 4000) {
-		//	App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
-		//}
-		//else 
-
+		if (SDL_GetTicks() > timer_still + 4000) {
+			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+		}
+		else 
 		App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 	}
 
