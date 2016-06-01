@@ -1298,8 +1298,8 @@ void ModulePlayer::PlayerShoot() {
 
 	for (int i = 1; i < 9; i++)
 		total_bubs += Bubble_count[i];
-
-	rnd_aux_2 = rand() % (total_bubs)+1;
+	if (total_bubs > 0)
+		rnd_aux_2 = rand() % (total_bubs)+1;
 
 
 	for (int i = 1; i < 9; i++){
@@ -1323,6 +1323,7 @@ void ModulePlayer::PlayerShoot() {
 
 
 	//Shoot audio
-	sfx01 = Mix_LoadWAV("Resources/Audio/SFX/SFX 01.wav");
+	if (App->input->enabled == true)
+		sfx01 = Mix_LoadWAV("Resources/Audio/SFX/SFX 01.wav");
 	Mix_PlayChannel(-1, sfx01, 0);
 }
