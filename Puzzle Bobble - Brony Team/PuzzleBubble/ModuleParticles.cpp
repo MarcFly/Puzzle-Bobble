@@ -42,18 +42,6 @@ bool ModuleParticles::Start()
 
 	Bubble[0].life = 0;
 
-	//Bubble pop animation
-	bubble_pop[B].anim.PushBack({ 7, 713, 25, 25 });
-	bubble_pop[B].anim.PushBack({ 40, 709, 33, 31 });
-	bubble_pop[B].anim.PushBack({ 80, 708, 31, 31 });
-	bubble_pop[B].anim.PushBack({ 117, 709, 33, 30 });
-	bubble_pop[B].anim.PushBack({ 157, 709, 32, 32 });
-	bubble_pop[B].anim.loop = false;
-	bubble_pop[B].anim.speed = 1.0f;
-	bubble_pop[B].life = bubble_pop[B].anim.speed * 5;
-	bubble_pop[B].position.x = 0;
-	bubble_pop[B].position.y = 0;
-
 	// Blue Bubble particle
 	Bubble[1].anim.PushBack({ 18, 559, 16, 16 });
 	Bubble[1].anim.PushBack({ 35, 559, 16, 16 });
@@ -511,14 +499,6 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 			if (App->particles->board_copy[i][j] == App->player->rnd){
 				Mix_PlayChannel(-1, App->particles->sfx14, 0);
 				Mix_PlayChannel(-1, App->particles->sfx16, 0);
-				if (i % 2) {
-					App->particles->bubble_pop[B].position.x = (i + 1) * 15 + App->scene_1to3->BUBBLE_OFFSET_X_PAIR;
-				}
-				else {
-					App->particles->bubble_pop[B].position.x = (i + 1) * 15 + App->scene_1to3->BUBBLE_OFFSET_X_ODD;
-				}
-				App->particles->bubble_pop[B].position.y = (j + 1) * 16 + App->scene_1to3->BUBBLE_OFFSET_Y;
-				App->particles->AddParticle(App->particles->bubble_pop[B], App->particles->bubble_pop[B].position.x, App->particles->bubble_pop[B].position.y, COLLIDER_NONE);
 				App->scene_1to3->bubble_board[i][j] = E;
 				total_coll++;
 			}

@@ -57,8 +57,6 @@ public:
 	Particle Bubble[9];
 	int point_rnd;
 
-	Particle bubble_pop[9];
-
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 	//sound fx
