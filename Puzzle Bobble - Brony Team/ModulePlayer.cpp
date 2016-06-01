@@ -1259,7 +1259,9 @@ void ModulePlayer::PlayerShoot() {
 
 	rnd = rnd_aux;
 	rnd_aux = rnd_aux_2;
-	App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
+
+	if (App->input->enabled == true)
+		App->particles->AddParticle(App->particles->Bubble[rnd], App->particles->Bubble[rnd].position.x, App->particles->Bubble[rnd].position.y, COLLIDER_PLAYER_SHOT);
 	//Making the Board pointer look at actual level
 
 
