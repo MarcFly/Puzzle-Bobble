@@ -734,8 +734,10 @@ ModulePlayer::ModulePlayer()
 	Bub_shoot.PushBack({ bub_ball[4] });
 	Bub_shoot.PushBack({ bub_ball[5] });
 	Bub_shoot.PushBack({ bub_ball[6] });
+	Bub_shoot.PushBack({ bub_ball[0] });
+	Bub_shoot.PushBack({ bub_ball[0] });
 
-	Bub_shoot.speed = 0.1f;
+	Bub_shoot.speed = 0.13f;
 
 	Bub_hurry.PushBack({ bub_ball[10] });
 	Bub_hurry.PushBack({ bub_ball[11] });
@@ -1050,8 +1052,18 @@ update_status ModulePlayer::Update()
 			get_shoot = false;
 		}
 
-		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
-		if (SDL_GetTicks() > shoot_int + 1200) anim_shoot = false;
+		//App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+
+		if (SDL_GetTicks() >= shoot_int && SDL_GetTicks() < shoot_int + 100) App->render->Blit(graphics, 120, 198, &bub_ball[7], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 100 && SDL_GetTicks() < shoot_int + 200) App->render->Blit(graphics, 120, 198, &bub_ball[8], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 200 && SDL_GetTicks() < shoot_int + 300) App->render->Blit(graphics, 120, 198, &bub_ball[9], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 300 && SDL_GetTicks() < shoot_int + 400) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 400 && SDL_GetTicks() < shoot_int + 500) App->render->Blit(graphics, 120, 198, &bub_ball[4], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 500 && SDL_GetTicks() < shoot_int + 600) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 600 && SDL_GetTicks() < shoot_int + 700) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
+		if (SDL_GetTicks() >= shoot_int + 700 && SDL_GetTicks() < shoot_int + 800) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+
+		if (SDL_GetTicks() >= shoot_int + 790) anim_shoot = false;
 	}
 
 	else if (timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){
@@ -1099,7 +1111,7 @@ update_status ModulePlayer::Update()
 		timer_shot = SDL_GetTicks();
 	}
 
-	// MESSAGE & Bub
+	// MESSAGE
 
 	if (timer_shot > 3500){
 
