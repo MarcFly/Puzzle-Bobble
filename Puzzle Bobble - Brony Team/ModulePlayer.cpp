@@ -761,6 +761,10 @@ bool ModulePlayer::CleanUp() {
 	LOG("\nFreeing sfx01");
 	//Mix_FreeChunk(sfx01);
 
+	App->textures->Unload(graphics);
+	App->textures->Unload(sign_graphics);
+	App->textures->Unload(greenbub_graphics);
+
 	ply_score = score;
 
 	LOG("\nPlayer CleanUp exited successfully");
