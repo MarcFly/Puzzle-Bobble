@@ -760,7 +760,7 @@ ModulePlayer::~ModulePlayer()
 }
 
 bool ModulePlayer::CleanUp() {
-	LOG("\nFreeing sfx01");
+	LOG("\nPlayer CleanUP");
 	//Mix_FreeChunk(sfx01);
 
 	timer_shot = SDL_GetTicks();
@@ -777,7 +777,7 @@ bool ModulePlayer::CleanUp() {
 
 bool ModulePlayer::Start()
 {
-
+	LOG("Player Start");
 	App->input->Disable();
 	srand(time(NULL));
 
@@ -823,7 +823,7 @@ bool ModulePlayer::Start()
 	rnd_aux = 0;
 	rnd_aux_2 = 0;
 
-	timer_still = SDL_GetTicks();
+	//timer_still = SDL_GetTicks();
 
 	//Making the Board pointer look at actual level
 
@@ -917,6 +917,7 @@ bool ModulePlayer::Start()
 		section++;
 	}
 
+	LOG("Player Start end");
 
 	return ret;
 }
@@ -949,7 +950,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && player_angle > 5 && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) {
-		timer_still = SDL_GetTicks();
+		//timer_still = SDL_GetTicks();
 		if (player_angle <= 90) arrow_pos++;
 		else arrow_pos--;
 		player_angle -= ANGLE_INCREMENT;
@@ -988,7 +989,7 @@ update_status ModulePlayer::Update()
 
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && App->particles->active[0] == nullptr) {
-		timer_still = SDL_GetTicks();
+		//timer_still = SDL_GetTicks();
 		PlayerShoot();
 		timer_shot = SDL_GetTicks();
 	}
@@ -1092,16 +1093,14 @@ update_status ModulePlayer::Update()
 
 		//animation of BUB yawning
 		
-		yawn = &BUB_yawn;
-
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
-			timer_still = SDL_GetTicks();
-		}
+		//yawn = &BUB_yawn;
 		
-		if (SDL_GetTicks() > timer_still + 4000) {
-			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
-		}
-		else App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
+		//if (SDL_GetTicks() > timer_still + 4000) {
+		//	App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
+		//}
+		//else 
+
+		App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
 	}
 
 	// Tube blit
@@ -1239,11 +1238,6 @@ update_status ModulePlayer::Update()
 			App->fade->FadeToBlack(App->scene_1to3, App->scene_mainmenu, FADE_SPEED);
 		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_R] == KEY_DOWN) {
-		App->lvl--;
-		App->fade->FadeToBlack(App->scene_1to3, App->scene_1to3, FADE_SPEED);
-	}
-
 	return UPDATE_CONTINUE;
 }
 

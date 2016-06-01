@@ -19,7 +19,7 @@
 Application::Application()
 {
 	int i = 0;
-	modules[i++] = window = new ModuleWindow();
+	modules[i++] = window = new ModuleWindow();							
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
@@ -29,9 +29,9 @@ Application::Application()
 	modules[i++] = scene_4to6 = new ModuleScene4to6();
 	modules[i++] = scene_gameover = new ModuleSceneGameOver();
 	modules[i++] = scene_win = new ModuleSceneWin();
-	modules[i++] = collision = new ModuleCollision();
-	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = fade = new ModuleFadeToBlack();

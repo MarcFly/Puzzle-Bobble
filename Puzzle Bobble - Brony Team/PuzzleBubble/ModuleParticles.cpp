@@ -27,6 +27,7 @@ ModuleParticles::~ModuleParticles()
 
 bool ModuleParticles::Start()
 {
+	LOG("Particles Start");
 	sfx03 = nullptr;
 	sfx02 = nullptr;
 	sfx02 = Mix_LoadWAV("Resources/Audio/SFX/SFX 02.wav");
