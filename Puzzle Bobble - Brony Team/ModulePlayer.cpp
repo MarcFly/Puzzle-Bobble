@@ -1115,7 +1115,7 @@ update_status ModulePlayer::Update()
 
 	// MESSAGE
 
-	if (timer_shot > 3500){
+	if (timer_shot > 3500 && App->input->enabled == true){
 
 		// 5
 		if (SDL_GetTicks() > timer_shot + 4000 && SDL_GetTicks() < timer_shot + 4500) {
@@ -1165,23 +1165,23 @@ update_status ModulePlayer::Update()
 
 	// UI Blit
 	if (App->debug_mode) {
-		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
+		App->fonts->Blitf(2, 217, 0, "DEBUG_MODE");
 	}
 
 	
 
 	sprintf_s(score_text, 10, "%7d", score);
 	sprintf_s(round_text, 15, "LEVEL_0%d", App->lvl + 3);
-	App->fonts->Blit(35, 8, 0, score_text);
-	App->fonts->Blit(25, 0, 0, "1UP");
-	App->fonts->Blit(123, 217, 0, round_text);
+	App->fonts->Blitf(35, 8, 0, score_text);
+	App->fonts->Blitf(25, 0, 0, "1UP");
+	App->fonts->Blitf(123, 217, 0, round_text);
 	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
 
 	if (SDL_GetTicks() > last_time_credits + 2000) {
 		show_credits = false;
 	}
 	if (show_credits == true)
-		App->fonts->Blit(220, 217, 0, credits_text);
+		App->fonts->Blitf(220, 217, 0, credits_text);
 
 	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_DOWN) {
 		Mix_PlayChannel(-1, sfx08, 0);

@@ -78,7 +78,7 @@ update_status ModuleSceneMainMenu::Update()
 	
 	if (App->debug_mode == true) {
 		App->credits = 99;
-		App->fonts->Blit(2, 217, 0, "DEBUG_MODE");
+		App->fonts->Blitf(2, 217, 0, "DEBUG_MODE");
 	}
 
 	if (App->credits > 0)
@@ -89,10 +89,10 @@ update_status ModuleSceneMainMenu::Update()
 			timer_insert = SDL_GetTicks();
 		}
 		if (show_insert)
-			App->fonts->Blit(106, 155, 0, "INSERT_COIN");
+			App->fonts->Blitf(106, 155, 0, "INSERT_COIN");
 	}
 	sprintf_s(credits_text, 15, "CREDITS_%d", App->credits);
-	App->fonts->Blit(220, 210, 0, credits_text);
+	App->fonts->Blitf(220, 210, 0, credits_text);
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == 1 && App->credits > 0) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_1to3, FADE_SPEED);

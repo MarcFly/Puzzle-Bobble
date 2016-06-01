@@ -385,16 +385,16 @@ update_status ModuleScene1to3::Update()
 		if (SDL_GetTicks() > win_timer + 2000) {
 			sprintf_s(secs_needed, 10, "%d", time_spent);
 			if (time_spent <= 64) {
-				App->fonts->Blit(61, 100, 1, time_score);
+				App->fonts->Blitf(61, 100, 1, time_score);
 				App->render->Blit(greenbubfont_graphics, 163, 100, &PTS);
 			}
 			else
 				App->render->Blit(greenbubfont_graphics, 85, 100, &NOBONUS);
 			
 			if (time_spent >= 100)
-				App->fonts->Blit(97, 65, 1, secs_needed);
+				App->fonts->Blitf(97, 65, 1, secs_needed);
 			else 
-				App->fonts->Blit(105, 65, 1, secs_needed);
+				App->fonts->Blitf(105, 65, 1, secs_needed);
 			App->render->Blit(greenbubfont_graphics, 148, 65, &SEC);
 		}
 		if (SDL_GetTicks() > win_timer + 4000) {

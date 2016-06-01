@@ -84,7 +84,7 @@ void ModuleFonts::UnLoad(int font_id)
 }
 
 // Render text using a bmp font
-void ModuleFonts::Blit(int x, int y, int font_id, const char* text) const
+void ModuleFonts::Blitf(int x, int y, int font_id, const char* text) const
 {
 	if(text == nullptr || font_id < 0 || font_id >= MAX_FONTS || fonts[font_id].graphic == nullptr)
 	{
