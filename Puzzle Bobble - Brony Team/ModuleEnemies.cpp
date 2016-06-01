@@ -58,19 +58,7 @@ update_status ModuleEnemies::Update()
 
 update_status ModuleEnemies::PostUpdate()
 {
-	// check camera position to decide what to spawn
-	//for(uint i = 0; i < MAX_ENEMIES; ++i)
-	//{
-	//	if(enemies[i] != nullptr)
-	//	{
-	//		if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
-	//		{
-	//			LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
-	//			delete enemies[i];
-	//			enemies[i] = nullptr;
-	//		}
-	//	}
-	//}
+	LOG("postupdate ENEMIES");
 
 	return UPDATE_CONTINUE;
 }

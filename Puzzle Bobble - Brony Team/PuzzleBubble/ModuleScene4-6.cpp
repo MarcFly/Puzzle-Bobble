@@ -71,7 +71,7 @@ bool ModuleScene4to6::CleanUp()
 
 update_status ModuleScene4to6::Update()
 {
-
+	LOG("46 update");
 	App->render->Blit(background_graphics, 0, 0, &background, 0.75f);
 
 	App->render->Blit(game_sprites_graphics, 87, 184, &limit_line, 1.f);

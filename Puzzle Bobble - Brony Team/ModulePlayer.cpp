@@ -1242,6 +1242,7 @@ update_status ModulePlayer::Update()
 }
 
 update_status ModulePlayer::PostUpdate() {
+	LOG("Player Postupdate");
 	if (App->debug_mode == true) {
 		shots = 0;
 		if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_F] == KEY_DOWN) {
@@ -1251,7 +1252,7 @@ update_status ModulePlayer::PostUpdate() {
 			shots = -1;
 		}
 	}
-
+	LOG("Player postupdate finish");
 	return UPDATE_CONTINUE;
 }
 
