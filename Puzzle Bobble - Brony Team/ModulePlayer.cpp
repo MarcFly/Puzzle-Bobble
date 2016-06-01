@@ -1070,7 +1070,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	else if (timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){
+	else if (App->input->enabled == true && timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){
 		App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
 	}
 
@@ -1095,7 +1095,7 @@ update_status ModulePlayer::Update()
 		
 		yawn = &BUB_yawn;
 		
-		if (SDL_GetTicks() > timer_still + 4000) {
+		if (SDL_GetTicks() > timer_still + 4000 && App->input->enabled == true) {
 			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
 		}
 		else 
