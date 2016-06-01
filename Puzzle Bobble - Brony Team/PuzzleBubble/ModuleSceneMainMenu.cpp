@@ -44,6 +44,7 @@ bool ModuleSceneMainMenu::Start()
 	Mix_PlayMusic(App->audio->music02, 1);
 	sfx08 = Mix_LoadWAV("Resources/Audio/SFX/SFX 08.wav");
 
+	if (font == -1) 
 	font = App->fonts->Load("Resources/Sprites/stdWhiteFontCLEAN.png", " !@,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	timer_insert = 500;

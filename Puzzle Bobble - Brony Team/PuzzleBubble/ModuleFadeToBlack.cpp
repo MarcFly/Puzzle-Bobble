@@ -24,6 +24,7 @@ bool ModuleFadeToBlack::Start()
 
 update_status ModuleFadeToBlack::Update()
 {
+	LOG("Fade Update start");
 	if (start_time > 0)
 	{
 		Uint32 now = SDL_GetTicks() - start_time;
@@ -58,11 +59,13 @@ update_status ModuleFadeToBlack::Update()
 			}
 		}
 	}
+	LOG("Fade update end");
 	return UPDATE_CONTINUE;
 }
 
 void ModuleFadeToBlack::FadeToBlack(Module* module_off, Module* module_on, float time)
 {
+	LOG("Fade to Black");
 	if (already_fading == false) {
 		already_fading = true;
 		module_out = module_off;

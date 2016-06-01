@@ -24,6 +24,7 @@ Application::Application()
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = scene_mainmenu = new ModuleSceneMainMenu();
 	modules[i++] = scene_1to3 = new ModuleScene1to3();
 	modules[i++] = scene_gameover = new ModuleSceneGameOver();
@@ -32,7 +33,6 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player = new ModulePlayer();
-	modules[i++] = fade = new ModuleFadeToBlack();
 	
 }	
 
@@ -71,11 +71,9 @@ update_status Application::Update()
 	update_status ret = UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
-
+			ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
-
+			ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i) {
 			ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 	}

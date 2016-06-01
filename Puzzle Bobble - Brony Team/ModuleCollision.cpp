@@ -94,7 +94,7 @@ update_status ModuleCollision::Update()
 	}
 
 	DebugDraw();
-
+	LOG("COL update end");
 	return UPDATE_CONTINUE;
 }
 

@@ -283,7 +283,7 @@ bool Particle::Update()
 	position.y += speed.y;
 
 	collider->SetPos(position.x + 1, position.y + 1);
-
+	LOG("Particles update end");
 	return ret;
 }
 
