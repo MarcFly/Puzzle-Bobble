@@ -1063,7 +1063,10 @@ update_status ModulePlayer::Update()
 		if (SDL_GetTicks() >= shoot_int + 600 && SDL_GetTicks() < shoot_int + 700) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
 		if (SDL_GetTicks() >= shoot_int + 700 && SDL_GetTicks() < shoot_int + 800) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
 
-		if (SDL_GetTicks() >= shoot_int + 790) anim_shoot = false;
+		if (SDL_GetTicks() >= shoot_int + 790) {
+			App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+			anim_shoot = false;
+		}
 	}
 
 	else if (timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){
