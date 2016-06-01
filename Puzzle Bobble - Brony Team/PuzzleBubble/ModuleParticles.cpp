@@ -392,7 +392,7 @@ bool look_around(int y, int x){
 
 		if (i == y){
 
-			for (int j = x - 1; j <= x + 1 && j >= 0; j++){
+			for (int j = x - 1; j <= x + 1; j++){
 
 				if (j >= 0 && j <= 7 && App->scene_1to3->bubble_board[i][j] == App->player->rnd && App->particles->board_copy[i][j] == E){
 
@@ -464,10 +464,11 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 			for (int j = 0; j < 8; j++)
 				App->particles->board_copy[i][j] = E;
 
+		
 		if (y % 2 != 0){
 
 			App->scene_1to3->bubble_board[y][x_ODD] = App->player->rnd;
-			App->particles->board_copy[y][x_ODD] = App->player->rnd;
+			App->particles->board_copy[y][x_ODD] = 420;
 			while (done == false)
 				done = look_around(y, x_ODD);
 
@@ -477,7 +478,7 @@ int chain(int y, int x_ODD, int x_PAIR){ //chain returns the total amount of col
 		else{
 
 			App->scene_1to3->bubble_board[y][x_PAIR] = App->player->rnd;
-			App->particles->board_copy[y][x_PAIR] = App->player->rnd;
+			App->particles->board_copy[y][x_PAIR] = 420;
 			while (done == false)
 				done = look_around(y, x_PAIR);
 
