@@ -1301,15 +1301,11 @@ void ModulePlayer::PlayerShoot() {
 
 	for (int i = 1; i < 9; i++)
 		total_bubs += Bubble_count[i];
-<<<<<<< HEAD
-	if (total_bubs > 0)
-		rnd_aux_2 = rand() % (total_bubs)+1;
-=======
-
+	
 	int random;
 	random = rand();
+	if (random > 0)
 	rnd_aux_2 = random % (total_bubs)+1;
->>>>>>> origin/master
 
 
 	for (int i = 1; i < 9; i++){
