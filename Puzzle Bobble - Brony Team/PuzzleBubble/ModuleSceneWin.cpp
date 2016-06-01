@@ -14,10 +14,10 @@
 
 ModuleSceneWin::ModuleSceneWin()
 {
-	background.x = 489;
-	background.y = 1392;
-	background.w = 111;
-	background.h = 32;
+	background.x = 213;
+	background.y = 179;
+	background.w = 213;
+	background.h = 63;
 
 }
 
@@ -30,7 +30,7 @@ bool ModuleSceneWin::Start()
 
 	App->input->Enable();
 
-	background_graphics = App->textures->Load("Resources/Sprites/Game Sprites.png");
+	background_graphics = App->textures->Load("Resources/Sprites/congratsscreen.png");
 
 	Mix_PlayMusic(App->audio->music07, -1);
 
@@ -50,7 +50,7 @@ bool ModuleSceneWin::CleanUp()
 update_status ModuleSceneWin::Update()
 {
 
-	App->render->Blit(background_graphics, 95, 90, &background, 0.75f);
+	App->render->Blit(background_graphics, 43, 70, &background, 0.75f);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->scene_mainmenu, FADE_SPEED);

@@ -1304,8 +1304,9 @@ void ModulePlayer::PlayerShoot() {
 	
 	int random;
 	random = rand();
-	if (random > 0)
-	rnd_aux_2 = random % (total_bubs)+1;
+	if (random > 0 && total_bubs > 0) {
+		rnd_aux_2 = random % (total_bubs)+1;
+	}
 
 
 	for (int i = 1; i < 9; i++){
