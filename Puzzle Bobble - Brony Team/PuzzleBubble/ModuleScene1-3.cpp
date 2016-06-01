@@ -270,6 +270,8 @@ bool ModuleScene1to3::CleanUp()
 	App->textures->Unload(background_graphics);
 	App->textures->Unload(foreground_graphics);
 	App->textures->Unload(game_sprites_graphics);
+	App->textures->Unload(greenbubfont_graphics);
+	App->textures->Unload(falling_graphics);
 	App->player->Disable();
 	App->particles->Disable();
 	App->collision->Disable();

@@ -763,6 +763,8 @@ bool ModulePlayer::CleanUp() {
 	LOG("\nFreeing sfx01");
 	//Mix_FreeChunk(sfx01);
 
+	timer_shot = SDL_GetTicks();
+
 	App->textures->Unload(graphics);
 	App->textures->Unload(sign_graphics);
 	App->textures->Unload(greenbub_graphics);
@@ -927,7 +929,6 @@ update_status ModulePlayer::Update()
 			App->input->Enable();
 			timer_shot = SDL_GetTicks();
 			enable_once = true;
-			App->input->keyboard[SDL_SCANCODE_A] = KEY_IDLE;
 		}
 	}
 	else {

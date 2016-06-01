@@ -56,6 +56,11 @@ bool ModuleSceneMainMenu::Start()
 bool ModuleSceneMainMenu::CleanUp()
 {
 	LOG("Unloading Main Menu scene");
+	
+	App->textures->Unload(graphics);
+	App->textures->Unload(UI_graphics);
+	App->textures->Unload(background_graphics);
+
 	App->player->Disable();
 	App->input->Disable();
 
