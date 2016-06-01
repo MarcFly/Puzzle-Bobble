@@ -1037,18 +1037,6 @@ update_status ModulePlayer::Update()
 
 		anim_shoot = true;
 		get_shoot = true;
-
-		//shoot_int = SDL_GetTicks();
-
-		//if (SDL_GetTicks() > shoot_int + 500 || SDL_GetTicks() < shoot_int + 1000) App->render->Blit(graphics, 120, 198, &bub_ball[7], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 1000 || SDL_GetTicks() < shoot_int + 1500) App->render->Blit(graphics, 120, 198, &bub_ball[8], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 1500 || SDL_GetTicks() < shoot_int + 2000) App->render->Blit(graphics, 120, 198, &bub_ball[9], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 2000 || SDL_GetTicks() < shoot_int + 2500) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 2500 || SDL_GetTicks() < shoot_int + 3000) App->render->Blit(graphics, 120, 198, &bub_ball[4], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 2000 || SDL_GetTicks() < shoot_int + 3500) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
-		//if (SDL_GetTicks() > shoot_int + 3500 || SDL_GetTicks() < shoot_int + 4000) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
-
-		//App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
 	}
 
 	else if (anim_shoot == true){
