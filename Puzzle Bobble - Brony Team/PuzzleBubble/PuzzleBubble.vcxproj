@@ -87,7 +87,6 @@
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleSceneMainMenu.h" />
     <ClInclude Include="ModuleScene1-3.h" />
-    <ClInclude Include="ModuleScene4-6.h" />
     <ClInclude Include="ModuleSceneGameOver.h" />
     <ClInclude Include="ModuleSceneWin.h" />
   </ItemGroup>
@@ -110,7 +109,6 @@
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleSceneMainMenu.cpp" />
     <ClCompile Include="ModuleScene1-3.cpp" />
-    <ClCompile Include="ModuleScene4-6.cpp" />
     <ClCompile Include="ModuleSceneGameOver.cpp" />
     <ClCompile Include="ModuleSceneWin.cpp" />
   </ItemGroup>

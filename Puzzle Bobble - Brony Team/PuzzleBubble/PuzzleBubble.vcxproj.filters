@@ -56,9 +56,6 @@
     <ClInclude Include="ModuleScene1-3.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleScene4-6.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -119,9 +116,6 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="ModuleScene1-3.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleScene4-6.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFadeToBlack.cpp">
