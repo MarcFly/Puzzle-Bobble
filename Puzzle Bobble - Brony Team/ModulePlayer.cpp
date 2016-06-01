@@ -765,9 +765,9 @@ bool ModulePlayer::CleanUp() {
 
 	timer_shot = SDL_GetTicks();
 
-	App->textures->Unload(graphics);
-	App->textures->Unload(sign_graphics);
-	App->textures->Unload(greenbub_graphics);
+	//App->textures->Unload(graphics);
+	//App->textures->Unload(sign_graphics);
+	//App->textures->Unload(greenbub_graphics);
 
 	ply_score = score;
 
