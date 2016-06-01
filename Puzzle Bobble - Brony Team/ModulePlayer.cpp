@@ -715,14 +715,14 @@ ModulePlayer::ModulePlayer()
 	score = ply_score;
 
 
-	BUB_yawn.PushBack({ bub_wheel[0] });
-	BUB_yawn.PushBack({ bub_wheel[1] });
-	BUB_yawn.PushBack({ bub_wheel[4] });
-	BUB_yawn.PushBack({ bub_wheel[5] });
-	BUB_yawn.PushBack({ bub_wheel[4] });
-	BUB_yawn.PushBack({ bub_wheel[5] });
-	BUB_yawn.PushBack({ bub_wheel[4] });
-	BUB_yawn.PushBack({ bub_wheel[2] });
+	BUB_yawn.PushBack({ bub_wheel2[0] });
+	BUB_yawn.PushBack({ bub_wheel2[1] });
+	BUB_yawn.PushBack({ bub_wheel2[4] });
+	BUB_yawn.PushBack({ bub_wheel2[5] });
+	BUB_yawn.PushBack({ bub_wheel2[4] });
+	BUB_yawn.PushBack({ bub_wheel2[5] });
+	BUB_yawn.PushBack({ bub_wheel2[4] });
+	BUB_yawn.PushBack({ bub_wheel2[2] });
 
 	BUB_yawn.speed = 0.1f;
 
@@ -1099,7 +1099,7 @@ update_status ModulePlayer::Update()
 			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
 		}
 		else 
-		App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
+		App->render->Blit(graphics, 171, 198, &bub_wheel2[0], 0.75f);
 	}
 
 	// Tube blit
