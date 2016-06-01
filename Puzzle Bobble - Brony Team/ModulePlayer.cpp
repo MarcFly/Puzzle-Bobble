@@ -1083,6 +1083,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT){
 
+		//if (bubwheel_pos != -1 && bubwheel_pos != 0 && bubwheel_pos != 1 && bubwheel_pos != 2 && bubwheel_pos != 3 && bubwheel_pos != 4 && bubwheel_pos != 5 && bubwheel_pos != 6 && bubwheel_pos != 7 && bubwheel_pos != 8) bubwheel_pos = 0;
 		if (bubwheel_pos >= 8) bubwheel_pos = 0;
 		else if (bubwheel_pos <= -1) bubwheel_pos = 7;
 
