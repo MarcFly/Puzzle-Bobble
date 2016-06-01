@@ -724,19 +724,18 @@ ModulePlayer::ModulePlayer()
 	BUB_yawn.PushBack({ bub_wheel[12] });
 	BUB_yawn.PushBack({ bub_wheel[10] });
 
-	BUB_yawn.speed = 0.05f;
+	BUB_yawn.speed = 0.1f;
 
 
 	Bub_shoot.PushBack({ bub_ball[7] });
 	Bub_shoot.PushBack({ bub_ball[8] });
 	Bub_shoot.PushBack({ bub_ball[9] });
-	Bub_hurry.PushBack({ bub_ball[0] });
-	Bub_hurry.PushBack({ bub_ball[4] });
-	Bub_hurry.PushBack({ bub_ball[5] });
-	Bub_hurry.PushBack({ bub_ball[6] });
+	Bub_shoot.PushBack({ bub_ball[0] });
+	Bub_shoot.PushBack({ bub_ball[4] });
+	Bub_shoot.PushBack({ bub_ball[5] });
+	Bub_shoot.PushBack({ bub_ball[6] });
 
 	Bub_shoot.speed = 0.1f;
-
 
 	Bub_hurry.PushBack({ bub_ball[10] });
 	Bub_hurry.PushBack({ bub_ball[11] });
@@ -1032,22 +1031,27 @@ update_status ModulePlayer::Update()
 	shoot = &Bub_shoot;
 	stand = &Bub_stand;
 
-	//if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-	//	App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
-	//}
+	if (App->input->IsEnabled() && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+		//shoot_int = SDL_GetTicks();
 
-	//else if (SDL_GetTicks() == (timer_shot + 4500 || timer_shot + 5500 || timer_shot + 6500 || timer_shot + 7500 || timer_shot + 8500)) App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
+		//if (SDL_GetTicks() > shoot_int + 500 || SDL_GetTicks() < shoot_int + 1000) App->render->Blit(graphics, 120, 198, &bub_ball[7], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 1000 || SDL_GetTicks() < shoot_int + 1500) App->render->Blit(graphics, 120, 198, &bub_ball[8], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 1500 || SDL_GetTicks() < shoot_int + 2000) App->render->Blit(graphics, 120, 198, &bub_ball[9], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 2000 || SDL_GetTicks() < shoot_int + 2500) App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 2500 || SDL_GetTicks() < shoot_int + 3000) App->render->Blit(graphics, 120, 198, &bub_ball[4], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 2000 || SDL_GetTicks() < shoot_int + 3500) App->render->Blit(graphics, 120, 198, &bub_ball[5], 0.75f);
+		//if (SDL_GetTicks() > shoot_int + 3500 || SDL_GetTicks() < shoot_int + 4000) App->render->Blit(graphics, 120, 198, &bub_ball[6], 0.75f);
 
-	if (SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 4700 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 5700 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 6700 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 7700 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 8700){
+		App->render->Blit(graphics, 120, 198, &(shoot->GetCurrentFrame()));
+	}
+
+	else if (timer_shot > 3500 && SDL_GetTicks() > timer_shot + 4500 && SDL_GetTicks() < timer_shot + 5000 || SDL_GetTicks() > timer_shot + 5500 && SDL_GetTicks() < timer_shot + 6000 || SDL_GetTicks() > timer_shot + 6500 && SDL_GetTicks() < timer_shot + 7000 || SDL_GetTicks() > timer_shot + 7500 && SDL_GetTicks() < timer_shot + 8000 || SDL_GetTicks() > timer_shot + 8500 && SDL_GetTicks() < timer_shot + 9000){
 		App->render->Blit(graphics, 120, 198, &(hurry->GetCurrentFrame()));
 	}
 
-	//else if (SDL_GetTicks() % 3000) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
+	else if (SDL_GetTicks() % 2000 == 10) App->render->Blit(graphics, 120, 198, &(stand->GetCurrentFrame()));
 
 	else App->render->Blit(graphics, 120, 198, &bub_ball[0], 0.75f);
-
-
-
 
 	// Bub wheel blit
 
@@ -1060,13 +1064,6 @@ update_status ModulePlayer::Update()
 	}
 
 	else {
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[8], 0.75f);
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[9], 0.75f);
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[10], 0.75f);
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[11], 0.75f);
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[12], 0.75f);
-		//App->render->Blit(graphics, 171, 198, &bub_wheel[13], 0.75f);
-
 
 		//animation of BUB yawning
 		

@@ -72,6 +72,7 @@ public:
 	int rnd;
 	int rnd_aux;
 	int rnd_aux_2;
+	int shoot_int;
 
 	uint timer_secs;
 	bool ready_playonce;
