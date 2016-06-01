@@ -245,35 +245,35 @@ ModulePlayer::ModulePlayer()
 	bub_wheel[7].w = 26;
 	bub_wheel[7].h = 19;
 
-	bub_wheel[8].x = 281;
-	bub_wheel[8].y = 539;
-	bub_wheel[8].w = 26;
-	bub_wheel[8].h = 19;
-
-	bub_wheel[9].x = 309;
-	bub_wheel[9].y = 539;
-	bub_wheel[9].w = 26;
-	bub_wheel[9].h = 19;
-
-	bub_wheel[10].x = 336;
-	bub_wheel[10].y = 539;
-	bub_wheel[10].w = 26;
-	bub_wheel[10].h = 19;
-
-	bub_wheel[11].x = 363;
-	bub_wheel[11].y = 539;
-	bub_wheel[11].w = 26;
-	bub_wheel[11].h = 19;
-
-	bub_wheel[12].x = 390;
-	bub_wheel[12].y = 539;
-	bub_wheel[12].w = 26;
-	bub_wheel[12].h = 19;
-
-	bub_wheel[13].x = 417;
-	bub_wheel[13].y = 539;
-	bub_wheel[13].w = 26;
-	bub_wheel[13].h = 19;
+	bub_wheel2[0].x = 281;
+	bub_wheel2[0].y = 539;
+	bub_wheel2[0].w = 26;
+	bub_wheel2[0].h = 19;
+			 
+	bub_wheel2[1].x = 309;
+	bub_wheel2[1].y = 539;
+	bub_wheel2[1].w = 26;
+	bub_wheel2[1].h = 19;
+			 
+	bub_wheel2[2].x = 336;
+	bub_wheel2[2].y = 539;
+	bub_wheel2[2].w = 26;
+	bub_wheel2[2].h = 19;
+			 
+	bub_wheel2[3].x = 363;
+	bub_wheel2[3].y = 539;
+	bub_wheel2[3].w = 26;
+	bub_wheel2[3].h = 19;
+			 
+	bub_wheel2[4].x = 390;
+	bub_wheel2[4].y = 539;
+	bub_wheel2[4].w = 26;
+	bub_wheel2[4].h = 19;
+			 
+	bub_wheel2[5].x = 417;
+	bub_wheel2[5].y = 539;
+	bub_wheel2[5].w = 26;
+	bub_wheel2[5].h = 19;
 
 	//BUB ball
 
@@ -715,14 +715,14 @@ ModulePlayer::ModulePlayer()
 	score = ply_score;
 
 
-	BUB_yawn.PushBack({ bub_wheel[8] });
-	BUB_yawn.PushBack({ bub_wheel[9] });
-	BUB_yawn.PushBack({ bub_wheel[12] });
-	BUB_yawn.PushBack({ bub_wheel[13] });
-	BUB_yawn.PushBack({ bub_wheel[12] });
-	BUB_yawn.PushBack({ bub_wheel[13] });
-	BUB_yawn.PushBack({ bub_wheel[12] });
-	BUB_yawn.PushBack({ bub_wheel[10] });
+	BUB_yawn.PushBack({ bub_wheel[0] });
+	BUB_yawn.PushBack({ bub_wheel[1] });
+	BUB_yawn.PushBack({ bub_wheel[4] });
+	BUB_yawn.PushBack({ bub_wheel[5] });
+	BUB_yawn.PushBack({ bub_wheel[4] });
+	BUB_yawn.PushBack({ bub_wheel[5] });
+	BUB_yawn.PushBack({ bub_wheel[4] });
+	BUB_yawn.PushBack({ bub_wheel[2] });
 
 	BUB_yawn.speed = 0.1f;
 
@@ -1093,7 +1093,7 @@ update_status ModulePlayer::Update()
 
 		//animation of BUB yawning
 		
-		//yawn = &BUB_yawn;
+		yawn = &BUB_yawn;
 		
 		if (SDL_GetTicks() > timer_still + 4000) {
 			App->render->Blit(graphics, 171, 198, &(yawn->GetCurrentFrame()));
